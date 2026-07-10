@@ -282,6 +282,7 @@
       width: 100%; font-size: 1.3rem; text-align: center;
       padding: 10px 12px; border: 1.5px solid var(--border-2);
       border-radius: var(--radius); background: var(--bg);
+      color: transparent; caret-color: var(--text-3);
       color: transparent; caret-color: transparent;
       outline: none; height: 54px; transition: border-color .15s;
       font-family: inherit;
@@ -421,7 +422,8 @@
       <div class="ime-wrap">
         <input class="ime-inp" id="ime-input"
           autocomplete="off" autocorrect="off"
-          autocapitalize="off" spellcheck="false" readonly>
+          autocapitalize="off" spellcheck="false"
+          inputmode="text" enterkeyhint="done">
         <div class="ime-over">
           <span id="hira-out" style="color:var(--text)"></span>
           <span class="pend" id="pend-out"></span>
@@ -1051,6 +1053,7 @@ function shuffle(a) { for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.ran
 function loadNext() {
   cur.answered = false;
   cur.ime.reset();
+  document.getElementById('ime-input').value = '';
   document.getElementById('hira-out').textContent = '';
   document.getElementById('pend-out').textContent = '';
   document.getElementById('q-result').innerHTML = '';
@@ -1261,7 +1264,7 @@ function buildKKFields(entry, practiceOn, practiceKun) {
       wrap.innerHTML = `
         <div class="kk-field-label">${label}</div>
         <div style="position:relative">
-          <input class="kk-inp" id="${id}" readonly autocomplete="off">
+          <input class="kk-inp" id="${id}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">
           <div class="kk-over">
             <span id="${id}-hira" style="color:var(--text)"></span>
             <span class="pend" id="${id}-pend"></span>
@@ -1269,6 +1272,16 @@ function buildKKFields(entry, practiceOn, practiceKun) {
           </div>
         </div>`;
       wrap.querySelector('input').addEventListener('click', () => setKKActiveIdx(kkFields.findIndex(f => f.id === id)));
+      wrap.querySelector('input').addEventListener('input', (function(fieldId) { return function() {
+        const fi = kkFields.find(f => f.id === fieldId);
+        if (!fi) return;
+        const val = this.value.toLowerCase().replace(/[^a-z]/g, '');
+        if (val !== this.value) this.value = val;
+        fi.ime.reset();
+        for (const ch of val) fi.ime.add(ch);
+        document.getElementById(fieldId+'-hira').textContent = fi.ime.h;
+        document.getElementById(fieldId+'-pend').textContent = fi.ime.p;
+      }; })(id));
       container.appendChild(wrap);
     });
   };
@@ -1441,10 +1454,7 @@ document.addEventListener('keydown', function(e) {
   }
   if (kkCur && kkCur.answered) return;
   if (!kkFields.length) return;
-  const f = kkFields[kkActiveIdx];
-  if (e.key === 'Backspace') { e.preventDefault(); f.ime.bs(); document.getElementById(f.id+'-hira').textContent=f.ime.h; document.getElementById(f.id+'-pend').textContent=f.ime.p; return; }
-  if (e.key === 'Tab') { e.preventDefault(); setKKActiveIdx((kkActiveIdx + (e.shiftKey?-1:1) + kkFields.length) % kkFields.length); return; }
-  if (e.key.length===1 && !e.ctrlKey && !e.metaKey) { e.preventDefault(); f.ime.add(e.key); document.getElementById(f.id+'-hira').textContent=f.ime.h; document.getElementById(f.id+'-pend').textContent=f.ime.p; }
+  if (e.key === 'Tab') { e.preventDefault(); setKKActiveIdx((kkActiveIdx + (e.shiftKey?-1:1) + kkFields.length) % kkFields.length); }
 });
 
 // ─── CLOUD SYNC ───────────────────────────────────────────────────────────────
@@ -1899,28 +1909,21 @@ document.getElementById('fr-input').addEventListener('keydown', function(e) {
 
 // ─── END FRENCH ───────────────────────────────────────────────────────────────
 
-// IME keyboard handler
+// IME keyboard handler — Enter only (char input handled by 'input' event for iOS compat)
 document.getElementById('ime-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
     if (cur && cur.answered) nextVerb(); else checkAnswer();
-    return;
   }
-  if (e.key === 'Backspace') {
-    e.preventDefault();
-    if (cur && !cur.answered) {
-      cur.ime.bs();
-      document.getElementById('hira-out').textContent = cur.ime.h;
-      document.getElementById('pend-out').textContent = cur.ime.p;
-    }
-    return;
-  }
-  if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && cur && !cur.answered) {
-    e.preventDefault();
-    cur.ime.add(e.key);
-    document.getElementById('hira-out').textContent = cur.ime.h;
-    document.getElementById('pend-out').textContent = cur.ime.p;
-  }
+});
+document.getElementById('ime-input').addEventListener('input', function() {
+  if (!cur || cur.answered) { this.value = ''; return; }
+  const val = this.value.toLowerCase().replace(/[^a-z]/g, '');
+  if (val !== this.value) this.value = val;
+  cur.ime.reset();
+  for (const ch of val) cur.ime.add(ch);
+  document.getElementById('hira-out').textContent = cur.ime.h;
+  document.getElementById('pend-out').textContent = cur.ime.p;
 });
 
 // Init
