@@ -272,6 +272,28 @@
     .lang-tab:hover { background: var(--surface); color: var(--text); }
     .lang-tab.active { background: var(--text); color: var(--bg); border-color: var(--text); }
 
+    /* Kanji Kentei */
+    .kk-kanji { font-size: 5rem; font-weight: 400; color: var(--text); line-height: 1; margin-bottom: 6px; text-align: center; }
+    .kk-meaning { font-size: 13px; color: var(--text-2); text-align: center; margin-bottom: 20px; }
+    .kk-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .kk-field-wrap { position: relative; }
+    .kk-field-label { font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
+    .kk-inp {
+      width: 100%; font-size: 1.3rem; text-align: center;
+      padding: 10px 12px; border: 1.5px solid var(--border-2);
+      border-radius: var(--radius); background: var(--bg);
+      color: transparent; caret-color: transparent;
+      outline: none; height: 54px; transition: border-color .15s;
+      font-family: inherit;
+    }
+    .kk-inp:focus { border-color: var(--border-3); }
+    .kk-inp.active-field { border-color: var(--border-3); }
+    .kk-over {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; pointer-events: none;
+    }
+
     /* French quiz */
     .fr-verb-card {
       background: var(--surface); border: 0.5px solid var(--border);
@@ -323,7 +345,7 @@
             <span class="sync-dot" id="sync-dot"></span>
             <span id="sync-lbl">Set up sync</span>
           </button>
-          <button class="btn btn-primary" onclick="currentLang==='fr'?goFrSettings():goSettings()">
+          <button class="btn btn-primary" onclick="currentLang==='fr'?goFrSettings():currentLang==='kk'?goKKSettings():goSettings()">
             <i class="ti ti-plus" aria-hidden="true"></i> New session
           </button>
         </div>
@@ -331,6 +353,7 @@
       <div class="lang-tabs">
         <button class="lang-tab active" id="tab-jp" onclick="switchLang('jp')">🇯🇵 Japanese</button>
         <button class="lang-tab" id="tab-fr" onclick="switchLang('fr')">🇫🇷 French</button>
+        <button class="lang-tab" id="tab-kk" onclick="switchLang('kk')">漢字 Kanji</button>
       </div>
       <div class="stat-grid" id="d-cards"></div>
       <div id="d-trend"></div>
@@ -439,6 +462,97 @@
       <div class="res-cards" id="res-cards"></div>
       <p class="sec" style="margin-bottom:10px">Breakdown</p>
       <div id="res-qs"></div>
+    </div>
+
+    <!-- KANJI KENTEI SETTINGS -->
+    <div class="screen" id="s-kk-settings">
+      <div class="brand">
+        <div class="brand-name">
+          <div class="brand-dot"></div>
+          <span class="brand-kanji">Grammar Trainer</span>
+        </div>
+        <button class="btn btn-ghost" onclick="goDash()"><i class="ti ti-arrow-left"></i> Back</button>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">What to practise</p>
+        <div class="cb-grid">
+          <label class="cb-item"><input type="checkbox" id="kk-on" checked> 音読み (on'yomi)</label>
+          <label class="cb-item"><input type="checkbox" id="kk-kun" checked> 訓読み (kun'yomi)</label>
+        </div>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">Kanji set</p>
+        <div class="cb-grid" id="kk-set-grid">
+          <label class="cb-item"><input type="checkbox" value="1-20" checked> #1–20 (numbers, directions)</label>
+          <label class="cb-item"><input type="checkbox" value="21-40"> #21–40 (nature, people)</label>
+          <label class="cb-item"><input type="checkbox" value="41-60"> #41–60 (body, actions)</label>
+          <label class="cb-item"><input type="checkbox" value="61-80"> #61–80 (school, colours)</label>
+        </div>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">Order</p>
+        <div class="cb-grid">
+          <label class="cb-item"><input type="radio" name="kk-order" value="random" checked> Randomised</label>
+          <label class="cb-item"><input type="radio" name="kk-order" value="shuffle"> Shuffled (no repeats)</label>
+        </div>
+      </div>
+      <p id="kk-set-err" style="color:var(--lo);font-size:12px;display:none;margin-bottom:10px">Select at least one reading type and one set.</p>
+      <button class="btn btn-primary btn-full" onclick="beginKKQuiz()">Start session</button>
+    </div>
+
+    <!-- KANJI KENTEI QUIZ -->
+    <div class="screen" id="s-kk-quiz">
+      <div class="brand">
+        <div class="brand-name">
+          <div class="brand-dot"></div>
+          <span class="brand-kanji">Grammar Trainer</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span style="font-size:13px;color:var(--text-2)">
+            <strong id="kq-score" style="color:var(--text)">0</strong>
+            <span style="color:var(--text-3)"> / </span>
+            <span id="kq-total">0</span>
+          </span>
+          <button class="btn" onclick="finishKKSession()" style="font-size:12px;padding:6px 12px">
+            <i class="ti ti-flag-3"></i> Finish
+          </button>
+        </div>
+      </div>
+      <div class="verb-card">
+        <div class="verb-ask" id="kq-prompt">What are the readings?</div>
+        <div class="kk-kanji" id="kq-kanji"></div>
+        <div class="kk-meaning" id="kq-meaning"></div>
+      </div>
+
+      <div class="kk-fields" id="kq-fields"></div>
+
+      <div id="kq-result" style="min-height:46px"></div>
+      <div style="display:flex;gap:8px">
+        <button id="kk-skip-btn" class="btn" onclick="skipKK()" style="flex:1;justify-content:center;padding:11px">Skip</button>
+        <button id="kk-next-btn" class="btn btn-primary" onclick="nextKK()" style="flex:2;justify-content:center;padding:11px;display:none">Next →</button>
+      </div>
+      <p class="quiz-hint">Click a box · type romaji → hiragana · Enter to check · Enter again for next</p>
+    </div>
+
+    <!-- KANJI KENTEI RESULTS -->
+    <div class="screen" id="s-kk-results">
+      <div class="brand">
+        <div class="brand-name">
+          <div class="brand-dot"></div>
+          <span class="brand-kanji">Grammar Trainer</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="goDash()"><i class="ti ti-arrow-left"></i> Dashboard</button>
+          <button class="btn btn-primary" onclick="goKKSettings()">Practice again</button>
+        </div>
+      </div>
+      <div class="res-hero">
+        <div class="res-num" id="kk-res-num"></div>
+        <div class="res-meta" id="kk-res-meta"></div>
+      </div>
+      <div class="res-cards" id="kk-res-cards"></div>
+      <p class="sec" style="margin-bottom:10px">Breakdown</p>
+      <div id="kk-res-qs"></div>
     </div>
 
     <!-- CLOUD SYNC -->
@@ -771,7 +885,7 @@ const STORE = 'jp_quiz_v2';
 const R3={sha:'しゃ',shi:'し',shu:'しゅ',sho:'しょ',chi:'ち',cha:'ちゃ',chu:'ちゅ',cho:'ちょ',tsu:'つ',kya:'きゃ',kyu:'きゅ',kyo:'きょ',gya:'ぎゃ',gyu:'ぎゅ',gyo:'ぎょ',sya:'しゃ',syu:'しゅ',syo:'しょ',zya:'じゃ',zyu:'じゅ',zyo:'じょ',tya:'ちゃ',tyu:'ちゅ',tyo:'ちょ',nya:'にゃ',nyu:'にゅ',nyo:'にょ',hya:'ひゃ',hyu:'ひゅ',hyo:'ひょ',mya:'みゃ',myu:'みゅ',myo:'みょ',rya:'りゃ',ryu:'りゅ',ryo:'りょ',bya:'びゃ',byu:'びゅ',byo:'びょ',pya:'ぴゃ',pyu:'ぴゅ',pyo:'ぴょ'};
 const R2={ka:'か',ki:'き',ku:'く',ke:'け',ko:'こ',sa:'さ',si:'し',su:'す',se:'せ',so:'そ',ta:'た',ti:'ち',tu:'つ',te:'て',to:'と',na:'な',ni:'に',nu:'ぬ',ne:'ね',no:'の',ha:'は',hi:'ひ',hu:'ふ',fu:'ふ',he:'へ',ho:'ほ',ma:'ま',mi:'み',mu:'む',me:'め',mo:'も',ya:'や',yu:'ゆ',yo:'よ',ra:'ら',ri:'り',ru:'る',re:'れ',ro:'ろ',wa:'わ',wo:'を',ga:'が',gi:'ぎ',gu:'ぐ',ge:'げ',go:'ご',za:'ざ',zi:'じ',ji:'じ',zu:'ず',ze:'ぜ',zo:'ぞ',da:'だ',di:'ぢ',du:'づ',de:'で',do:'ど',ba:'ば',bi:'び',bu:'ぶ',be:'べ',bo:'ぼ',pa:'ぱ',pi:'ぴ',pu:'ぷ',pe:'ぺ',po:'ぽ',ja:'じゃ',ju:'じゅ',jo:'じょ'};
 const R1={a:'あ',i:'い',u:'う',e:'え',o:'お'};
-const CONS = 'kgsztdnhfmbpryjw';
+const CONS = 'kgsztdnhfmbpryjwc';
 
 class IME {
   constructor() { this.h = ''; this.p = ''; }
@@ -848,6 +962,7 @@ function goSettings() { show('s-settings'); }
 // Dashboard render
 function renderDash() {
   if (currentLang === 'fr') { renderFrDash(); return; }
+  if (currentLang === 'kk') { renderKKDash(); return; }
   const st = calcStats(sessions);
 
   document.getElementById('d-cards').innerHTML = `
@@ -931,6 +1046,7 @@ function beginQuiz() {
 }
 
 function rand(a) { return a[Math.floor(Math.random() * a.length)]; }
+function shuffle(a) { for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
 
 function loadNext() {
   cur.answered = false;
@@ -1025,6 +1141,311 @@ function renderResults(s) {
       <span style="font-size:13px;margin-left:auto;color:${q.correct ? 'var(--hi)' : 'var(--lo)'}">${q.correct ? '✓' : '✗'}</span>
     </div>`).join('');
 }
+
+// ─── KANJI KENTEI ─────────────────────────────────────────────────────────────
+const KK_STORE = 'kk_quiz_v1';
+const KANJI_KEN = [
+  {n:1,  k:'一', m:'one',            on:['いち','いつ'],           kun:['ひとつ']},
+  {n:2,  k:'二', m:'two',            on:['に','じ'],               kun:['ふたつ']},
+  {n:3,  k:'三', m:'three',          on:['さん'],                  kun:['みっつ']},
+  {n:4,  k:'四', m:'four',           on:['し'],                    kun:['よっつ','よん']},
+  {n:5,  k:'五', m:'five',           on:['ご'],                    kun:['いつつ']},
+  {n:6,  k:'六', m:'six',            on:['ろく'],                  kun:['むっつ']},
+  {n:7,  k:'七', m:'seven',          on:['しち'],                  kun:['ななつ']},
+  {n:8,  k:'八', m:'eight',          on:['はち'],                  kun:['やっつ']},
+  {n:9,  k:'九', m:'nine',           on:['く','きゅう'],           kun:['ここのつ']},
+  {n:10, k:'十', m:'ten',            on:['じゅう'],                kun:['とお']},
+  {n:11, k:'百', m:'hundred',        on:['ひゃく'],                kun:['もも']},
+  {n:12, k:'千', m:'thousand',       on:['せん'],                  kun:['ち']},
+  {n:13, k:'上', m:'top, above',     on:['じょう'],                kun:['うえ']},
+  {n:14, k:'下', m:'bottom, below',  on:['か','げ'],               kun:['した','しも','もと']},
+  {n:15, k:'左', m:'left',           on:['さ'],                    kun:['ひだり']},
+  {n:16, k:'右', m:'right',          on:['う','ゆう'],             kun:['みぎ']},
+  {n:17, k:'中', m:'inside, middle', on:['ちゅう','じゅう'],       kun:['なか']},
+  {n:18, k:'大', m:'large',          on:['だい','たい'],           kun:['おおきい']},
+  {n:19, k:'小', m:'small',          on:['しょう'],                kun:['ちいさい','こ','お']},
+  {n:20, k:'月', m:'month; moon',    on:['がつ','げつ'],           kun:['つき']},
+  {n:21, k:'日', m:'day; sun',       on:['にち','じつ'],           kun:['ひ','か']},
+  {n:22, k:'年', m:'year',           on:['ねん'],                  kun:['とし']},
+  {n:23, k:'早', m:'early',          on:['そう','さ'],             kun:['はやい']},
+  {n:24, k:'木', m:'tree',           on:['もく','ぼく'],           kun:['き']},
+  {n:25, k:'林', m:'woods',          on:['りん'],                  kun:['はやし']},
+  {n:26, k:'山', m:'mountain',       on:['さん','ざん'],           kun:['やま']},
+  {n:27, k:'川', m:'river',          on:['せん'],                  kun:['かわ']},
+  {n:28, k:'土', m:'soil',           on:['ど','と'],               kun:['つち']},
+  {n:29, k:'空', m:'sky',            on:['くう'],                  kun:['そら','あく','から']},
+  {n:30, k:'田', m:'rice paddy',     on:['でん'],                  kun:['だ','た']},
+  {n:31, k:'天', m:'heaven or sky',  on:['てん'],                  kun:['あめ','あま']},
+  {n:32, k:'生', m:'life; raw',      on:['せい','しょう'],         kun:['いきる','うむ','なま']},
+  {n:33, k:'花', m:'flower',         on:['か'],                    kun:['はな']},
+  {n:34, k:'草', m:'grass',          on:['そう'],                  kun:['くさ']},
+  {n:35, k:'虫', m:'insect',         on:['ちゅう'],                kun:['むし']},
+  {n:36, k:'犬', m:'dog',            on:['けん'],                  kun:['いぬ']},
+  {n:37, k:'人', m:'person',         on:['じん','にん'],           kun:['ひと']},
+  {n:38, k:'名', m:'name',           on:['めい','みょう'],         kun:['な']},
+  {n:39, k:'女', m:'female',         on:['じょ','にょ'],           kun:['おんな']},
+  {n:40, k:'男', m:'male',           on:['だん','なん'],           kun:['おとこ']},
+  {n:41, k:'子', m:'child',          on:['し','す'],               kun:['こ']},
+  {n:42, k:'目', m:'eye',            on:['もく'],                  kun:['め']},
+  {n:43, k:'耳', m:'ear',            on:['じ','に'],               kun:['みみ']},
+  {n:44, k:'口', m:'mouth',          on:['こう'],                  kun:['くち']},
+  {n:45, k:'手', m:'hand',           on:['しゅ'],                  kun:['て']},
+  {n:46, k:'足', m:'foot',           on:['そく'],                  kun:['あし']},
+  {n:47, k:'見', m:'see',            on:['けん','げん'],           kun:['みる']},
+  {n:48, k:'音', m:'sound',          on:['おん'],                  kun:['ね','おと']},
+  {n:49, k:'力', m:'power',          on:['りき','りょく'],         kun:['ちから']},
+  {n:50, k:'気', m:'spirit; air',    on:['き','け'],               kun:['いき']},
+  {n:51, k:'円', m:'yen; circle',    on:['えん'],                  kun:['まる']},
+  {n:52, k:'入', m:'enter',          on:['にゅう'],                kun:['はいる','いる']},
+  {n:53, k:'出', m:'exit',           on:['しゅつ'],                kun:['で']},
+  {n:54, k:'立', m:'stand up',       on:['りつ'],                  kun:['たつ']},
+  {n:55, k:'休', m:'rest',           on:['きゅう'],                kun:['やすむ']},
+  {n:56, k:'先', m:'previous',       on:['せん'],                  kun:['さき']},
+  {n:57, k:'夕', m:'evening',        on:['せき'],                  kun:['ゆう']},
+  {n:58, k:'本', m:'book',           on:['ほん'],                  kun:['もと']},
+  {n:59, k:'文', m:'text',           on:['ぶん','もん'],           kun:['ふみ']},
+  {n:60, k:'字', m:'character',      on:['じ'],                    kun:['あざ']},
+  {n:61, k:'学', m:'study',          on:['がく'],                  kun:['まなぶ']},
+  {n:62, k:'校', m:'school',         on:['こう'],                  kun:['かせ']},
+  {n:63, k:'村', m:'village',        on:['そん'],                  kun:['むら']},
+  {n:64, k:'町', m:'town',           on:['ちょう'],                kun:['まち']},
+  {n:65, k:'森', m:'forest',         on:['しん'],                  kun:['もり']},
+  {n:66, k:'正', m:'correct',        on:['せい','しょう'],         kun:['ただしい','まさ']},
+  {n:67, k:'水', m:'water',          on:['すい'],                  kun:['みず']},
+  {n:68, k:'火', m:'fire',           on:['か'],                    kun:['ひ']},
+  {n:69, k:'玉', m:'gem',            on:['ぎょく'],                kun:['たま']},
+  {n:70, k:'王', m:'king',           on:['おう'],                  kun:['きみ']},
+  {n:71, k:'石', m:'stone',          on:['せき','こく'],           kun:['いし']},
+  {n:72, k:'竹', m:'bamboo',         on:['ちく'],                  kun:['たけ']},
+  {n:73, k:'糸', m:'thread',         on:['し'],                    kun:['いと']},
+  {n:74, k:'貝', m:'shellfish',      on:['ばい'],                  kun:['かい']},
+  {n:75, k:'車', m:'vehicle',        on:['しゃ'],                  kun:['くるま']},
+  {n:76, k:'金', m:'gold, money',    on:['きん'],                  kun:['かね','かな']},
+  {n:77, k:'雨', m:'rain',           on:['う'],                    kun:['あめ','あま']},
+  {n:78, k:'赤', m:'red',            on:['せき'],                  kun:['あか']},
+  {n:79, k:'青', m:'blue',           on:['せい','しょう'],         kun:['あお']},
+  {n:80, k:'白', m:'white',          on:['はく'],                  kun:['しろ','しら']},
+];
+
+let kkSessions = (function(){ try { return JSON.parse(localStorage.getItem(KK_STORE)||'[]'); } catch(e){ return []; } })();
+function saveKKSess(s) { try { localStorage.setItem(KK_STORE, JSON.stringify(s)); } catch(e){} }
+
+let kkCur = null;
+let kkFields = []; // [{id, ime, type, readings}]
+let kkActiveIdx = 0;
+
+function goKKSettings() { show('s-kk-settings'); }
+
+function setKKActiveIdx(idx) {
+  kkActiveIdx = idx;
+  kkFields.forEach((f, i) => {
+    document.getElementById(f.id).classList.toggle('active-field', i === idx);
+    document.getElementById(f.id + '-cur').style.opacity = i === idx ? '1' : '0';
+  });
+  document.getElementById(kkFields[idx].id).focus();
+}
+
+function buildKKFields(entry, practiceOn, practiceKun) {
+  kkFields = [];
+  const container = document.getElementById('kq-fields');
+  container.innerHTML = '';
+  const addFields = (type, readings) => {
+    readings.forEach((_, i) => {
+      const id = `kkf-${type}-${i}`;
+      kkFields.push({ id, ime: new IME(), type, readings });
+      const label = type === 'on'
+        ? (readings.length > 1 ? `音読み ${i+1}` : '音読み')
+        : (readings.length > 1 ? `訓読み ${i+1}` : '訓読み');
+      const wrap = document.createElement('div');
+      wrap.className = 'kk-field-wrap';
+      wrap.innerHTML = `
+        <div class="kk-field-label">${label}</div>
+        <div style="position:relative">
+          <input class="kk-inp" id="${id}" readonly autocomplete="off">
+          <div class="kk-over">
+            <span id="${id}-hira" style="color:var(--text)"></span>
+            <span class="pend" id="${id}-pend"></span>
+            <span id="${id}-cur" class="cur" style="opacity:0">|</span>
+          </div>
+        </div>`;
+      wrap.querySelector('input').addEventListener('click', () => setKKActiveIdx(kkFields.findIndex(f => f.id === id)));
+      container.appendChild(wrap);
+    });
+  };
+  if (practiceOn)  addFields('on',  entry.on);
+  if (practiceKun) addFields('kun', entry.kun);
+  const total = kkFields.length;
+  container.style.gridTemplateColumns = total <= 2 ? '1fr 1fr' : total === 3 ? '1fr 1fr 1fr' : '1fr 1fr';
+}
+
+function renderKKDash() {
+  const all = kkSessions;
+  const tQ = all.reduce((s,x)=>s+x.total,0);
+  const tC = all.reduce((s,x)=>s+x.correct,0);
+  document.getElementById('d-cards').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Sessions</div><div class="stat-val">${all.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Questions</div><div class="stat-val">${tQ}</div></div>
+    <div class="stat-card"><div class="stat-label">Accuracy</div><div class="stat-val">${pct(tC,tQ)}%</div></div>
+    <div class="stat-card"><div class="stat-label">Kanji seen</div><div class="stat-val">${new Set(all.flatMap(s=>s.questions.map(q=>q.kanji))).size}</div></div>
+  `;
+  const trend = all.slice(0,12).reverse();
+  if (trend.length > 1) {
+    const bars = trend.map((s,i) => { const p=pct(s.correct,s.total); return `<div class="tbar${i===trend.length-1?' now':''}" style="height:${Math.max(4,Math.round(p/100*36))}px" title="${p}%"></div>`; }).join('');
+    document.getElementById('d-trend').innerHTML = `<p class="sec" style="margin-bottom:8px">Accuracy trend</p><div class="trend">${bars}</div>`;
+  } else { document.getElementById('d-trend').innerHTML = ''; }
+
+  const missed = {};
+  all.forEach(s => s.questions && s.questions.forEach(q => { if (!q.correct) missed[q.kanji] = (missed[q.kanji]||0)+1; }));
+  const missRows = Object.entries(missed).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([k,n]) =>
+    `<div class="missed-row"><span class="missed-v">${k}</span><span class="missed-n">${n} miss${n!==1?'es':''}</span></div>`).join('');
+  document.getElementById('d-bars').innerHTML = `<div>${missRows?`<p class="sec" style="margin-bottom:10px">Most missed</p>${missRows}`:''}</div><div></div>`;
+
+  if (!all.length) { document.getElementById('d-sessions').innerHTML = `<div class="empty"><i class="ti ti-writing"></i>No Kanji sessions yet.</div>`; return; }
+  const rows = all.slice(0,8).map(s => { const p=pct(s.correct,s.total); return `<div class="sess-row"><span class="sess-date">${fmtDate(s.date)}</span><div class="badges"><span class="badge">#${s.range}</span></div><span class="sess-frac">${s.correct}/${s.total}</span><span class="sess-pct ${acCls(p)}">${p}%</span></div>`; }).join('');
+  document.getElementById('d-sessions').innerHTML = `<p class="sec" style="margin-bottom:10px">Recent sessions</p>${rows}`;
+}
+
+function beginKKQuiz() {
+  const practiceOn  = document.getElementById('kk-on').checked;
+  const practiceKun = document.getElementById('kk-kun').checked;
+  const sets = [...document.querySelectorAll('#kk-set-grid input:checked')].map(x => x.value);
+  if ((!practiceOn && !practiceKun) || !sets.length) { document.getElementById('kk-set-err').style.display='block'; return; }
+  document.getElementById('kk-set-err').style.display = 'none';
+  const pool = KANJI_KEN.filter(k => sets.some(s => { const [a,b]=s.split('-').map(Number); return k.n>=a&&k.n<=b; }));
+  const order = document.querySelector('input[name="kk-order"]:checked').value;
+  const queue = order === 'shuffle' ? shuffle([...pool]) : [];
+  kkCur = { practiceOn, practiceKun, pool, order, queue, questions:[], startTime:Date.now(), correct:0, total:0, answered:false, range:sets.join(', ') };
+  show('s-kk-quiz');
+  loadNextKK();
+}
+
+function loadNextKK() {
+  kkCur.answered = false;
+  document.getElementById('kq-result').innerHTML = '';
+  document.getElementById('kk-skip-btn').style.display = '';
+  document.getElementById('kk-next-btn').style.display = 'none';
+  if (kkCur.order === 'shuffle' && kkCur.queue.length === 0) kkCur.queue = shuffle([...kkCur.pool]);
+  const entry = kkCur.order === 'shuffle' ? kkCur.queue.pop() : rand(kkCur.pool);
+  kkCur.entry = entry;
+  document.getElementById('kq-kanji').textContent   = entry.k;
+  document.getElementById('kq-meaning').textContent = entry.m;
+  document.getElementById('kq-score').textContent   = kkCur.correct;
+  document.getElementById('kq-total').textContent   = kkCur.total;
+  buildKKFields(entry, kkCur.practiceOn, kkCur.practiceKun);
+  setTimeout(() => setKKActiveIdx(0), 50);
+}
+
+function checkKKAnswer() {
+  if (kkCur.answered) return;
+  kkFields.forEach(f => f.ime.fin());
+  const anyTyped = kkFields.some(f => f.ime.h.trim());
+  if (!anyTyped) return;
+  kkCur.answered = true;
+
+  // Check each field: typed value must be one of that field's readings
+  // We match greedily: mark a reading as "used" once matched to avoid double-credit
+  const usedOn = [], usedKun = [];
+  let pts = 0;
+  kkFields.forEach(f => {
+    const typed = f.ime.h.trim();
+    const used  = f.type === 'on' ? usedOn : usedKun;
+    const ok    = !!typed && f.readings.includes(typed) && !used.includes(typed);
+    if (ok) { pts++; used.push(typed); }
+    document.getElementById(f.id).style.borderColor = ok ? 'var(--ok-border)' : 'var(--err-border)';
+    document.getElementById(f.id + '-hira').textContent = typed || '—';
+    document.getElementById(f.id + '-pend').textContent = '';
+  });
+
+  const allOk = pts === kkFields.length;
+  kkCur.correct += allOk ? 1 : 0;
+  kkCur.total++;
+
+  let feedback = '';
+  if (kkCur.practiceOn)  feedback += `音: <strong>${kkCur.entry.on.join('、')}</strong>`;
+  if (kkCur.practiceOn && kkCur.practiceKun) feedback += '　';
+  if (kkCur.practiceKun) feedback += `訓: <strong>${kkCur.entry.kun.join('、')}</strong>`;
+
+  document.getElementById('kq-result').innerHTML = allOk
+    ? `<div class="res-ok"><i class="ti ti-check"></i> Correct — ${feedback}</div>`
+    : `<div class="res-err"><i class="ti ti-x"></i> ${feedback}</div>`;
+
+  const typed = kkFields.map(f => ({type:f.type, val:f.ime.h.trim()}));
+  kkCur.questions.push({ kanji:kkCur.entry.k, meaning:kkCur.entry.m, typed, correct:allOk, onAnswers:kkCur.entry.on, kunAnswers:kkCur.entry.kun });
+  document.getElementById('kq-score').textContent = kkCur.correct;
+  document.getElementById('kq-total').textContent = kkCur.total;
+  document.getElementById('kk-skip-btn').style.display = 'none';
+  document.getElementById('kk-next-btn').style.display = '';
+}
+
+function skipKK() {
+  if (kkCur.answered) return;
+  kkCur.answered = true; kkCur.total++;
+  const e = kkCur.entry;
+  kkCur.questions.push({ kanji:e.k, meaning:e.m, typed:[], correct:false, onAnswers:e.on, kunAnswers:e.kun, skipped:true });
+  let feedback = '';
+  if (kkCur.practiceOn)  feedback += `音: <strong>${e.on.join('、')}</strong>`;
+  if (kkCur.practiceOn && kkCur.practiceKun) feedback += '　';
+  if (kkCur.practiceKun) feedback += `訓: <strong>${e.kun.join('、')}</strong>`;
+  document.getElementById('kq-result').innerHTML = `<div class="res-err">Skipped — ${feedback}</div>`;
+  document.getElementById('kq-total').textContent = kkCur.total;
+  document.getElementById('kk-skip-btn').style.display = 'none';
+  document.getElementById('kk-next-btn').style.display = '';
+}
+
+function nextKK() { loadNextKK(); }
+
+function finishKKSession() {
+  if (!kkCur || kkCur.questions.length === 0) { goDash(); return; }
+  const sess = { id:Date.now(), date:new Date().toISOString(), range:kkCur.range,
+    correct:kkCur.correct, total:kkCur.total,
+    duration:Math.round((Date.now()-kkCur.startTime)/1000), questions:kkCur.questions };
+  kkSessions.unshift(sess);
+  saveKKSess(kkSessions);
+  syncNow(true);
+  renderKKResults(sess);
+  show('s-kk-results');
+}
+
+function renderKKResults(s) {
+  const p = pct(s.correct, s.total);
+  document.getElementById('kk-res-num').textContent = s.correct + ' / ' + s.total;
+  document.getElementById('kk-res-meta').textContent = p + '% accuracy · ' + fmtDur(s.duration);
+  document.getElementById('kk-res-cards').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Correct</div><div class="stat-val hi">${s.correct}</div></div>
+    <div class="stat-card"><div class="stat-label">Wrong</div><div class="stat-val lo">${s.total-s.correct}</div></div>
+    <div class="stat-card"><div class="stat-label">Accuracy</div><div class="stat-val ${acCls(p)}">${p}%</div></div>
+  `;
+  document.getElementById('kk-res-qs').innerHTML = s.questions.map(q => `
+    <div class="q-row">
+      <span class="q-v">${q.kanji}</span>
+      <span style="font-size:11px;color:var(--text-3);width:60px;flex-shrink:0">${q.meaning}</span>
+      <span class="q-a" style="flex:1;font-size:12px">
+        ${q.skipped ? '<span style="color:var(--text-3)">skipped</span>' : ''}
+        ${(q.typed||[]).map(t => `<span class="${t.val&&(t.type==='on'?q.onAnswers:q.kunAnswers).includes(t.val)?'q-c':'q-w'}">${t.val||'—'}</span>`).join(' ')}
+        <span class="q-right">→ ${[...q.onAnswers, ...q.kunAnswers].join('、')}</span>
+      </span>
+      <span style="font-size:13px;margin-left:auto;color:${q.correct?'var(--hi)':'var(--lo)'}">${q.correct?'✓':'✗'}</span>
+    </div>`).join('');
+}
+
+// KK keyboard handler
+document.addEventListener('keydown', function(e) {
+  const screen = document.querySelector('.screen.active');
+  if (!screen || screen.id !== 's-kk-quiz') return;
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (kkCur && kkCur.answered) { nextKK(); return; }
+    if (kkActiveIdx < kkFields.length - 1) setKKActiveIdx(kkActiveIdx + 1);
+    else checkKKAnswer();
+    return;
+  }
+  if (kkCur && kkCur.answered) return;
+  if (!kkFields.length) return;
+  const f = kkFields[kkActiveIdx];
+  if (e.key === 'Backspace') { e.preventDefault(); f.ime.bs(); document.getElementById(f.id+'-hira').textContent=f.ime.h; document.getElementById(f.id+'-pend').textContent=f.ime.p; return; }
+  if (e.key === 'Tab') { e.preventDefault(); setKKActiveIdx((kkActiveIdx + (e.shiftKey?-1:1) + kkFields.length) % kkFields.length); return; }
+  if (e.key.length===1 && !e.ctrlKey && !e.metaKey) { e.preventDefault(); f.ime.add(e.key); document.getElementById(f.id+'-hira').textContent=f.ime.h; document.getElementById(f.id+'-pend').textContent=f.ime.p; }
+});
 
 // ─── CLOUD SYNC ───────────────────────────────────────────────────────────────
 const SYNC_CFG_KEY = 'grammar_sync_cfg';
@@ -1288,6 +1709,7 @@ function switchLang(lang) {
   currentLang = lang;
   document.getElementById('tab-jp').classList.toggle('active', lang === 'jp');
   document.getElementById('tab-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('tab-kk').classList.toggle('active', lang === 'kk');
   renderDash();
 }
 
