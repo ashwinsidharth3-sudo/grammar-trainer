@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>日本語 — Grammar Trainer</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇯🇵</text></svg>">
+  <title>æ—¥æœ¬èªž â€” Grammar Trainer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ‡¯ðŸ‡µ</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.29.0/dist/tabler-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
@@ -328,33 +328,160 @@
       .two-col { grid-template-columns: 1fr; gap: 16px; }
       .sess-date { width: 80px; font-size: 11px; }
     }
+
+    /* â”€â”€ Engineering Materials â”€â”€ */
+    .em-mat-card {
+      background: var(--surface); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 24px 22px;
+      text-align: center; margin-bottom: 18px;
+    }
+    .em-mat-name { font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1.1; }
+    .em-mat-category { font-size: 12px; color: var(--text-3); margin-top: 6px; text-transform: uppercase; letter-spacing: .06em; }
+    .em-mat-img { max-width: 100%; max-height: 140px; border-radius: var(--radius); object-fit: contain; margin-bottom: 12px; }
+    .em-spec-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px;
+    }
+    .em-spec-label { font-size: 13px; color: var(--text-2); min-width: 130px; flex-shrink: 0; }
+    .em-spec-prefix {
+      font-size: 15px; font-weight: 600; color: var(--text);
+      background: var(--surface); border: 0.5px solid var(--border-2);
+      border-radius: var(--radius) 0 0 var(--radius);
+      padding: 9px 10px; height: 42px; display: flex; align-items: center;
+      flex-shrink: 0; border-right: none;
+    }
+    .em-spec-inp {
+      flex: 1; font-size: 14px; padding: 9px 12px;
+      border: 0.5px solid var(--border-2); border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--bg); color: var(--text); outline: none;
+      height: 42px; font-family: inherit; transition: border-color .15s;
+    }
+    .em-spec-inp-solo {
+      flex: 1; font-size: 14px; padding: 9px 12px;
+      border: 0.5px solid var(--border-2); border-radius: var(--radius);
+      background: var(--bg); color: var(--text); outline: none;
+      height: 42px; font-family: inherit; transition: border-color .15s;
+    }
+    .em-spec-inp:focus, .em-spec-inp-solo:focus { border-color: var(--border-3); }
+    .em-prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .em-prop-inp {
+      width: 100%; font-size: 13px; padding: 9px 12px;
+      border: 0.5px solid var(--border-2); border-radius: var(--radius);
+      background: var(--bg); color: var(--text); outline: none;
+      font-family: inherit; transition: border-color .15s;
+    }
+    .em-prop-inp:focus { border-color: var(--border-3); }
+    .em-use-inp {
+      width: 100%; font-size: 14px; padding: 10px 14px;
+      border: 0.5px solid var(--border-2); border-radius: var(--radius);
+      background: var(--bg); color: var(--text); outline: none;
+      font-family: inherit; transition: border-color .15s;
+    }
+    .em-use-inp:focus { border-color: var(--border-3); }
+    .em-reveal-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .em-reveal-chip {
+      font-size: 12px; padding: 4px 10px; border-radius: 100px;
+      background: var(--surface); border: 0.5px solid var(--border); color: var(--text-2);
+    }
+    .em-reveal-chip.ok { background: var(--ok-bg); border-color: var(--ok-border); color: var(--ok-text); }
+    .em-reveal-chip.miss { background: var(--err-bg); border-color: var(--err-border); color: var(--err-text); }
+
+    /* â”€â”€ Home screen â”€â”€ */
+    .home-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 36px 0 0;
+    }
+    .home-greeting {
+      font-size: 28px; font-weight: 700; color: var(--text);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .home-date {
+      font-size: 13px; color: var(--text-3); margin-top: 24px;
+      text-transform: uppercase; letter-spacing: .06em; font-weight: 500;
+    }
+    .home-prompt {
+      font-size: 15px; color: var(--text-2); margin: 6px 0 28px;
+    }
+    .subject-grid { display: flex; flex-direction: column; gap: 12px; }
+    .subject-card {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--bg); border: 0.5px solid var(--border-2);
+      border-radius: var(--radius-lg); padding: 18px 18px;
+      cursor: pointer; transition: border-color .14s, background .14s;
+      font-family: inherit; text-align: left; width: 100%;
+    }
+    .subject-card:hover { border-color: var(--border-3); background: var(--surface); }
+    .subject-card:active { transform: scale(.99); }
+    .subject-flag {
+      font-size: 2rem; width: 44px; text-align: center; flex-shrink: 0;
+      line-height: 1;
+    }
+    .subject-name { font-size: 17px; font-weight: 600; color: var(--text); }
+    .subject-sub { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+    .subject-card > span:not(.subject-flag):not(.subject-arrow) { display: flex; flex-direction: column; flex: 1; }
+    .subject-arrow { color: var(--text-3); font-size: 16px; flex-shrink: 0; }
   </style>
 </head>
 <body>
 <div id="app">
   <div class="shell">
 
+    <!-- HOME -->
+    <div class="screen active" id="s-home">
+      <div class="home-top">
+        <div class="home-greeting" id="home-greeting"></div>
+        <button class="sync-status" onclick="goSync()" style="margin-top:6px">
+          <span class="sync-dot" id="sync-dot2"></span>
+          <span id="sync-lbl2">Set up sync</span>
+        </button>
+      </div>
+      <div class="home-date" id="home-date"></div>
+      <p class="home-prompt">What are you revising today?</p>
+      <div class="subject-grid">
+        <button class="subject-card" onclick="openSubject('jp')">
+          <span class="subject-flag">ðŸ‡¯ðŸ‡µ</span>
+          <span class="subject-name">Japanese</span>
+          <span class="subject-sub">Verb conjugation</span>
+          <span class="subject-arrow"><i class="ti ti-arrow-right"></i></span>
+        </button>
+        <button class="subject-card" onclick="openSubject('fr')">
+          <span class="subject-flag">ðŸ‡«ðŸ‡·</span>
+          <span class="subject-name">French</span>
+          <span class="subject-sub">Tense practice</span>
+          <span class="subject-arrow"><i class="ti ti-arrow-right"></i></span>
+        </button>
+        <button class="subject-card" onclick="openSubject('kk')">
+          <span class="subject-flag">æ¼¢</span>
+          <span class="subject-name">Kanji Kentei</span>
+          <span class="subject-sub">On'yomi &amp; kun'yomi</span>
+          <span class="subject-arrow"><i class="ti ti-arrow-right"></i></span>
+        </button>
+        <button class="subject-card" onclick="openSubject('em')">
+          <span class="subject-flag">âš™ï¸</span>
+          <span class="subject-name">Engineering Materials</span>
+          <span class="subject-sub">Properties &amp; uses</span>
+          <span class="subject-arrow"><i class="ti ti-arrow-right"></i></span>
+        </button>
+      </div>
+    </div>
+
     <!-- DASHBOARD -->
-    <div class="screen active" id="s-dash">
+    <div class="screen" id="s-dash">
       <div class="brand">
         <div class="brand-name">
-          <div class="brand-dot"></div>
-          <span class="brand-kanji">Grammar Trainer</span>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <button class="sync-status" onclick="goSync()">
-            <span class="sync-dot" id="sync-dot"></span>
-            <span id="sync-lbl">Set up sync</span>
+          <button class="btn btn-ghost" onclick="goHome()" style="padding:6px 8px;margin-left:-8px">
+            <i class="ti ti-arrow-left" aria-hidden="true"></i>
           </button>
-          <button class="btn btn-primary" onclick="currentLang==='fr'?goFrSettings():currentLang==='kk'?goKKSettings():goSettings()">
-            <i class="ti ti-plus" aria-hidden="true"></i> New session
-          </button>
+          <span class="brand-kanji" id="dash-title">Grammar Trainer</span>
         </div>
+        <button class="btn btn-primary" onclick="currentLang==='fr'?goFrSettings():currentLang==='kk'?goKKSettings():goSettings()">
+          <i class="ti ti-plus" aria-hidden="true"></i> New session
+        </button>
       </div>
       <div class="lang-tabs">
-        <button class="lang-tab active" id="tab-jp" onclick="switchLang('jp')">🇯🇵 Japanese</button>
-        <button class="lang-tab" id="tab-fr" onclick="switchLang('fr')">🇫🇷 French</button>
-        <button class="lang-tab" id="tab-kk" onclick="switchLang('kk')">漢字 Kanji</button>
+        <button class="lang-tab active" id="tab-jp" onclick="switchLang('jp')">ðŸ‡¯ðŸ‡µ Japanese</button>
+        <button class="lang-tab" id="tab-fr" onclick="switchLang('fr')">ðŸ‡«ðŸ‡· French</button>
+        <button class="lang-tab" id="tab-kk" onclick="switchLang('kk')">æ¼¢å­— Kanji</button>
       </div>
       <div class="stat-grid" id="d-cards"></div>
       <div id="d-trend"></div>
@@ -376,18 +503,18 @@
       <div class="cb-group">
         <p class="sec" style="margin-bottom:10px">Forms to practice</p>
         <div class="cb-grid" id="forms-grid">
-          <label class="cb-item"><input type="checkbox" value="te" checked> て form (te-form)</label>
-          <label class="cb-item"><input type="checkbox" value="nai"> ない form (negative)</label>
+          <label class="cb-item"><input type="checkbox" value="te" checked> ã¦ form (te-form)</label>
+          <label class="cb-item"><input type="checkbox" value="nai"> ãªã„ form (negative)</label>
           <label class="cb-item"><input type="checkbox" value="dict"> Dictionary form</label>
-          <label class="cb-item"><input type="checkbox" value="ta"> た form (past plain)</label>
+          <label class="cb-item"><input type="checkbox" value="ta"> ãŸ form (past plain)</label>
         </div>
       </div>
       <div class="cb-group">
         <p class="sec" style="margin-bottom:10px">Verb groups</p>
         <div class="cb-grid" id="groups-grid">
-          <label class="cb-item"><input type="checkbox" value="1" checked> Group 1 — u-verbs</label>
-          <label class="cb-item"><input type="checkbox" value="2" checked> Group 2 — ru-verbs</label>
-          <label class="cb-item"><input type="checkbox" value="3" checked> Group 3 — irregular</label>
+          <label class="cb-item"><input type="checkbox" value="1" checked> Group 1 â€” u-verbs</label>
+          <label class="cb-item"><input type="checkbox" value="2" checked> Group 2 â€” ru-verbs</label>
+          <label class="cb-item"><input type="checkbox" value="3" checked> Group 3 â€” irregular</label>
         </div>
       </div>
       <p id="set-err" style="color:var(--lo);font-size:12px;display:none;margin-bottom:10px">
@@ -415,7 +542,7 @@
         </div>
       </div>
       <div class="verb-card">
-        <div class="verb-ask">Convert to <span id="q-formname">て form</span></div>
+        <div class="verb-ask">Convert to <span id="q-formname">ã¦ form</span></div>
         <div class="verb-jp" id="q-verb"></div>
         <div class="verb-en" id="q-eng"></div>
       </div>
@@ -437,10 +564,10 @@
         </button>
         <button id="next-btn" class="btn btn-primary" onclick="nextVerb()"
           style="flex:2;justify-content:center;padding:11px;display:none">
-          Next →
+          Next â†’
         </button>
       </div>
-      <p class="quiz-hint">Click the box · type romaji → converts to hiragana · Enter to check · Enter again for next</p>
+      <p class="quiz-hint">Click the box Â· type romaji â†’ converts to hiragana Â· Enter to check Â· Enter again for next</p>
     </div>
 
     <!-- RESULTS -->
@@ -478,17 +605,17 @@
       <div class="cb-group">
         <p class="sec" style="margin-bottom:10px">What to practise</p>
         <div class="cb-grid">
-          <label class="cb-item"><input type="checkbox" id="kk-on" checked> 音読み (on'yomi)</label>
-          <label class="cb-item"><input type="checkbox" id="kk-kun" checked> 訓読み (kun'yomi)</label>
+          <label class="cb-item"><input type="checkbox" id="kk-on" checked> éŸ³èª­ã¿ (on'yomi)</label>
+          <label class="cb-item"><input type="checkbox" id="kk-kun" checked> è¨“èª­ã¿ (kun'yomi)</label>
         </div>
       </div>
       <div class="cb-group">
         <p class="sec" style="margin-bottom:10px">Kanji set</p>
         <div class="cb-grid" id="kk-set-grid">
-          <label class="cb-item"><input type="checkbox" value="1-20" checked> #1–20 (numbers, directions)</label>
-          <label class="cb-item"><input type="checkbox" value="21-40"> #21–40 (nature, people)</label>
-          <label class="cb-item"><input type="checkbox" value="41-60"> #41–60 (body, actions)</label>
-          <label class="cb-item"><input type="checkbox" value="61-80"> #61–80 (school, colours)</label>
+          <label class="cb-item"><input type="checkbox" value="1-20" checked> #1â€“20 (numbers, directions)</label>
+          <label class="cb-item"><input type="checkbox" value="21-40"> #21â€“40 (nature, people)</label>
+          <label class="cb-item"><input type="checkbox" value="41-60"> #41â€“60 (body, actions)</label>
+          <label class="cb-item"><input type="checkbox" value="61-80"> #61â€“80 (school, colours)</label>
         </div>
       </div>
       <div class="cb-group">
@@ -531,9 +658,9 @@
       <div id="kq-result" style="min-height:46px"></div>
       <div style="display:flex;gap:8px">
         <button id="kk-skip-btn" class="btn" onclick="skipKK()" style="flex:1;justify-content:center;padding:11px">Skip</button>
-        <button id="kk-next-btn" class="btn btn-primary" onclick="nextKK()" style="flex:2;justify-content:center;padding:11px;display:none">Next →</button>
+        <button id="kk-next-btn" class="btn btn-primary" onclick="nextKK()" style="flex:2;justify-content:center;padding:11px;display:none">Next â†’</button>
       </div>
-      <p class="quiz-hint">Click a box · type romaji → hiragana · Enter to check · Enter again for next</p>
+      <p class="quiz-hint">Click a box Â· type romaji â†’ hiragana Â· Enter to check Â· Enter again for next</p>
     </div>
 
     <!-- KANJI KENTEI RESULTS -->
@@ -596,10 +723,10 @@
         </div>
         <div class="sync-group">
           <label class="sync-label">Anon public key</label>
-          <input class="sync-field" id="sync-key" type="password" placeholder="eyJhbGciOi…" autocomplete="off" spellcheck="false">
+          <input class="sync-field" id="sync-key" type="password" placeholder="eyJhbGciOiâ€¦" autocomplete="off" spellcheck="false">
         </div>
         <div class="sync-group">
-          <label class="sync-label">Sync code <span style="color:var(--text-3)">(pick any word or phrase — this identifies your data)</span></label>
+          <label class="sync-label">Sync code <span style="color:var(--text-3)">(pick any word or phrase â€” this identifies your data)</span></label>
           <input class="sync-field" id="sync-code-input" type="text" placeholder="e.g. ashwin-grammar" autocomplete="off" spellcheck="false">
         </div>
         <p id="sync-err" style="color:var(--lo);font-size:12px;display:none;margin-bottom:10px"></p>
@@ -623,8 +750,8 @@
       <div class="cb-group">
         <p class="sec" style="margin-bottom:10px">Tenses to practise</p>
         <div class="cb-grid" id="fr-tenses-grid">
-          <label class="cb-item"><input type="checkbox" value="présent" checked> Présent</label>
-          <label class="cb-item"><input type="checkbox" value="passé_composé"> Passé composé</label>
+          <label class="cb-item"><input type="checkbox" value="prÃ©sent" checked> PrÃ©sent</label>
+          <label class="cb-item"><input type="checkbox" value="passÃ©_composÃ©"> PassÃ© composÃ©</label>
           <label class="cb-item"><input type="checkbox" value="imparfait"> Imparfait</label>
           <label class="cb-item"><input type="checkbox" value="futur_proche"> Futur proche</label>
           <label class="cb-item"><input type="checkbox" value="futur_simple"> Futur simple</label>
@@ -669,30 +796,30 @@
         </div>
       </div>
       <div class="fr-verb-card">
-        <div class="verb-ask">Conjugate in <span id="fq-tense-name">présent</span></div>
+        <div class="verb-ask">Conjugate in <span id="fq-tense-name">prÃ©sent</span></div>
         <div class="fr-inf" id="fq-inf"></div>
         <div class="fr-prompt"><strong id="fq-pronoun"></strong> <span id="fq-meaning" style="color:var(--text-3);font-size:13px"></span></div>
       </div>
       <div class="fr-inp-wrap">
         <input class="fr-inp" id="fr-input" type="text"
           autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-          placeholder="je / tu / il… + conjugation">
+          placeholder="je / tu / ilâ€¦ + conjugation">
       </div>
       <div class="accent-bar">
-        <button class="accent-btn" onclick="insertAccent('é')">é</button>
-        <button class="accent-btn" onclick="insertAccent('è')">è</button>
-        <button class="accent-btn" onclick="insertAccent('ê')">ê</button>
-        <button class="accent-btn" onclick="insertAccent('ë')">ë</button>
-        <button class="accent-btn" onclick="insertAccent('à')">à</button>
-        <button class="accent-btn" onclick="insertAccent('â')">â</button>
-        <button class="accent-btn" onclick="insertAccent('î')">î</button>
-        <button class="accent-btn" onclick="insertAccent('ï')">ï</button>
-        <button class="accent-btn" onclick="insertAccent('ô')">ô</button>
-        <button class="accent-btn" onclick="insertAccent('ù')">ù</button>
-        <button class="accent-btn" onclick="insertAccent('û')">û</button>
-        <button class="accent-btn" onclick="insertAccent('ü')">ü</button>
-        <button class="accent-btn" onclick="insertAccent('ç')">ç</button>
-        <button class="accent-btn" onclick="insertAccent('œ')">œ</button>
+        <button class="accent-btn" onclick="insertAccent('Ã©')">Ã©</button>
+        <button class="accent-btn" onclick="insertAccent('Ã¨')">Ã¨</button>
+        <button class="accent-btn" onclick="insertAccent('Ãª')">Ãª</button>
+        <button class="accent-btn" onclick="insertAccent('Ã«')">Ã«</button>
+        <button class="accent-btn" onclick="insertAccent('Ã ')">Ã </button>
+        <button class="accent-btn" onclick="insertAccent('Ã¢')">Ã¢</button>
+        <button class="accent-btn" onclick="insertAccent('Ã®')">Ã®</button>
+        <button class="accent-btn" onclick="insertAccent('Ã¯')">Ã¯</button>
+        <button class="accent-btn" onclick="insertAccent('Ã´')">Ã´</button>
+        <button class="accent-btn" onclick="insertAccent('Ã¹')">Ã¹</button>
+        <button class="accent-btn" onclick="insertAccent('Ã»')">Ã»</button>
+        <button class="accent-btn" onclick="insertAccent('Ã¼')">Ã¼</button>
+        <button class="accent-btn" onclick="insertAccent('Ã§')">Ã§</button>
+        <button class="accent-btn" onclick="insertAccent('Å“')">Å“</button>
         <button class="accent-btn" onclick="insertAccent(\"'\")">&#x2019;</button>
       </div>
       <div id="fq-result" style="min-height:46px"></div>
@@ -702,10 +829,10 @@
         </button>
         <button id="fr-next-btn" class="btn btn-primary" onclick="nextFrVerb()"
           style="flex:2;justify-content:center;padding:11px;display:none">
-          Next →
+          Next â†’
         </button>
       </div>
-      <p class="quiz-hint">Type the conjugated form · Enter to check · Enter again for next</p>
+      <p class="quiz-hint">Type the conjugated form Â· Enter to check Â· Enter again for next</p>
     </div>
 
     <!-- FRENCH RESULTS -->
@@ -731,162 +858,265 @@
       <div id="fr-res-qs"></div>
     </div>
 
+    <!-- ENGINEERING MATERIALS SETTINGS -->
+    <div class="screen" id="s-em-settings">
+      <div class="brand">
+        <div class="brand-name">
+          <button class="btn btn-ghost" onclick="goHome()" style="padding:6px 8px;margin-left:-8px"><i class="ti ti-arrow-left"></i></button>
+          <span class="brand-kanji">âš™ï¸ Engineering Materials</span>
+        </div>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">Material groups</p>
+        <div class="cb-grid" id="em-groups-grid"></div>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">What to practise</p>
+        <div class="cb-grid">
+          <label class="cb-item"><input type="checkbox" id="em-do-specs" checked> Composition</label>
+          <label class="cb-item"><input type="checkbox" id="em-do-props" checked> Properties</label>
+          <label class="cb-item"><input type="checkbox" id="em-do-uses" checked> Uses</label>
+        </div>
+      </div>
+      <div class="cb-group">
+        <p class="sec" style="margin-bottom:10px">Order</p>
+        <div class="cb-grid">
+          <label class="cb-item"><input type="radio" name="em-order" value="random" checked> Randomised</label>
+          <label class="cb-item"><input type="radio" name="em-order" value="shuffle"> Shuffled (no repeats)</label>
+        </div>
+      </div>
+      <p id="em-set-err" style="color:var(--lo);font-size:12px;display:none;margin-bottom:10px">Select at least one group.</p>
+      <button class="btn btn-primary btn-full" onclick="beginEMQuiz()">Start session</button>
+    </div>
+
+    <!-- ENGINEERING MATERIALS QUIZ -->
+    <div class="screen" id="s-em-quiz">
+      <div class="brand">
+        <div class="brand-name">
+          <button class="btn btn-ghost" onclick="finishEMSession()" style="padding:6px 8px;margin-left:-8px"><i class="ti ti-arrow-left"></i></button>
+          <span class="brand-kanji">âš™ï¸ Materials</span>
+        </div>
+        <span style="font-size:13px;color:var(--text-2)">
+          <strong id="em-score" style="color:var(--text)">0</strong>
+          <span style="color:var(--text-3)"> / </span>
+          <span id="em-total">0</span>
+        </span>
+      </div>
+
+      <!-- material card -->
+      <div class="em-mat-card">
+        <div class="em-mat-img-wrap" id="em-img-wrap" style="display:none">
+          <img id="em-img" class="em-mat-img" src="" alt="">
+        </div>
+        <div class="em-mat-name" id="em-mat-name"></div>
+        <div class="em-mat-category" id="em-mat-cat"></div>
+      </div>
+
+      <!-- specs section -->
+      <div id="em-specs-section">
+        <p class="sec" style="margin-bottom:8px">Composition / Specs</p>
+        <div id="em-specs-fields"></div>
+      </div>
+
+      <!-- properties section -->
+      <div id="em-props-section">
+        <p class="sec" style="margin:14px 0 8px">Properties <span style="color:var(--text-3);font-weight:400;font-size:10px">(any order)</span></p>
+        <div class="em-prop-grid" id="em-props-fields"></div>
+      </div>
+
+      <!-- uses section -->
+      <div id="em-uses-section">
+        <p class="sec" style="margin:14px 0 8px">Uses <span style="color:var(--text-3);font-weight:400;font-size:10px">(name one)</span></p>
+        <div id="em-uses-fields"></div>
+      </div>
+
+      <div id="em-result" style="min-height:44px;margin-top:12px"></div>
+      <div id="em-reveal" style="display:none;margin-bottom:12px"></div>
+
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button id="em-skip-btn" class="btn" onclick="skipEM()" style="flex:1;justify-content:center;padding:11px">Skip</button>
+        <button id="em-check-btn" class="btn btn-primary" onclick="checkEM()" style="flex:2;justify-content:center;padding:11px">Check</button>
+        <button id="em-next-btn" class="btn btn-primary" onclick="nextEM()" style="flex:2;justify-content:center;padding:11px;display:none">Next â†’</button>
+      </div>
+      <p class="quiz-hint">Fill all boxes Â· Enter to check</p>
+    </div>
+
+    <!-- ENGINEERING MATERIALS RESULTS -->
+    <div class="screen" id="s-em-results">
+      <div class="brand">
+        <div class="brand-name">
+          <div class="brand-dot"></div>
+          <span class="brand-kanji">âš™ï¸ Materials</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost" onclick="goDash()"><i class="ti ti-arrow-left"></i> Dashboard</button>
+          <button class="btn btn-primary" onclick="goEMSettings()">Again</button>
+        </div>
+      </div>
+      <div class="res-hero">
+        <div class="res-num" id="em-res-num"></div>
+        <div class="res-meta" id="em-res-meta"></div>
+      </div>
+      <p class="sec" style="margin-bottom:10px">Breakdown</p>
+      <div id="em-res-qs"></div>
+    </div>
+
   </div>
 </div>
 
 <script>
 const VERBS = [
-  // Group 1 — u-verbs
-  {masu:'かきます',meaning:'write',group:1,forms:{te:'かいて',nai:'かかない',dict:'かく',ta:'かいた'}},
-  {masu:'はなします',meaning:'speak',group:1,forms:{te:'はなして',nai:'はなさない',dict:'はなす',ta:'はなした'}},
-  {masu:'のみます',meaning:'drink',group:1,forms:{te:'のんで',nai:'のまない',dict:'のむ',ta:'のんだ'}},
-  {masu:'よみます',meaning:'read',group:1,forms:{te:'よんで',nai:'よまない',dict:'よむ',ta:'よんだ'}},
-  {masu:'あそびます',meaning:'play',group:1,forms:{te:'あそんで',nai:'あそばない',dict:'あそぶ',ta:'あそんだ'}},
-  {masu:'かいます',meaning:'buy',group:1,forms:{te:'かって',nai:'かわない',dict:'かう',ta:'かった'}},
-  {masu:'まちます',meaning:'wait',group:1,forms:{te:'まって',nai:'またない',dict:'まつ',ta:'まった'}},
-  {masu:'いきます',meaning:'go',group:1,forms:{te:'いって',nai:'いかない',dict:'いく',ta:'いった'}},
-  {masu:'かえります',meaning:'return home',group:1,forms:{te:'かえって',nai:'かえらない',dict:'かえる',ta:'かえった'}},
-  {masu:'とります',meaning:'take',group:1,forms:{te:'とって',nai:'とらない',dict:'とる',ta:'とった'}},
-  {masu:'はしります',meaning:'run',group:1,forms:{te:'はしって',nai:'はしらない',dict:'はしる',ta:'はしった'}},
-  {masu:'きります',meaning:'cut',group:1,forms:{te:'きって',nai:'きらない',dict:'きる',ta:'きった'}},
-  {masu:'およぎます',meaning:'swim',group:1,forms:{te:'およいで',nai:'およがない',dict:'およぐ',ta:'およいだ'}},
-  {masu:'いそぎます',meaning:'hurry',group:1,forms:{te:'いそいで',nai:'いそがない',dict:'いそぐ',ta:'いそいだ'}},
-  {masu:'あいます',meaning:'meet',group:1,forms:{te:'あって',nai:'あわない',dict:'あう',ta:'あった'}},
-  {masu:'あるきます',meaning:'walk',group:1,forms:{te:'あるいて',nai:'あるかない',dict:'あるく',ta:'あるいた'}},
-  {masu:'うたいます',meaning:'sing',group:1,forms:{te:'うたって',nai:'うたわない',dict:'うたう',ta:'うたった'}},
-  {masu:'ききます',meaning:'listen / ask',group:1,forms:{te:'きいて',nai:'きかない',dict:'きく',ta:'きいた'}},
-  {masu:'けします',meaning:'turn off / erase',group:1,forms:{te:'けして',nai:'けさない',dict:'けす',ta:'けした'}},
-  {masu:'つかいます',meaning:'use',group:1,forms:{te:'つかって',nai:'つかわない',dict:'つかう',ta:'つかった'}},
-  {masu:'つきます',meaning:'arrive',group:1,forms:{te:'ついて',nai:'つかない',dict:'つく',ta:'ついた'}},
-  {masu:'てつだいます',meaning:'help / assist',group:1,forms:{te:'てつだって',nai:'てつだわない',dict:'てつだう',ta:'てつだった'}},
-  {masu:'とびます',meaning:'fly / jump',group:1,forms:{te:'とんで',nai:'とばない',dict:'とぶ',ta:'とんだ'}},
-  {masu:'なきます',meaning:'cry',group:1,forms:{te:'ないて',nai:'なかない',dict:'なく',ta:'ないた'}},
-  {masu:'なります',meaning:'become',group:1,forms:{te:'なって',nai:'ならない',dict:'なる',ta:'なった'}},
-  {masu:'のります',meaning:'ride / board',group:1,forms:{te:'のって',nai:'のらない',dict:'のる',ta:'のった'}},
-  {masu:'はたらきます',meaning:'work',group:1,forms:{te:'はたらいて',nai:'はたらかない',dict:'はたらく',ta:'はたらいた'}},
-  {masu:'ひきます',meaning:'play (instrument)',group:1,forms:{te:'ひいて',nai:'ひかない',dict:'ひく',ta:'ひいた'}},
-  {masu:'もちます',meaning:'hold / have',group:1,forms:{te:'もって',nai:'もたない',dict:'もつ',ta:'もった'}},
-  {masu:'もらいます',meaning:'receive',group:1,forms:{te:'もらって',nai:'もらわない',dict:'もらう',ta:'もらった'}},
-  {masu:'やすみます',meaning:'rest / take a day off',group:1,forms:{te:'やすんで',nai:'やすまない',dict:'やすむ',ta:'やすんだ'}},
-  {masu:'やります',meaning:'do / give (casual)',group:1,forms:{te:'やって',nai:'やらない',dict:'やる',ta:'やった'}},
-  {masu:'よびます',meaning:'call / invite',group:1,forms:{te:'よんで',nai:'よばない',dict:'よぶ',ta:'よんだ'}},
-  {masu:'わかります',meaning:'understand',group:1,forms:{te:'わかって',nai:'わからない',dict:'わかる',ta:'わかった'}},
-  {masu:'わらいます',meaning:'laugh',group:1,forms:{te:'わらって',nai:'わらわない',dict:'わらう',ta:'わらった'}},
-  {masu:'いいます',meaning:'say',group:1,forms:{te:'いって',nai:'いわない',dict:'いう',ta:'いった'}},
-  {masu:'うごきます',meaning:'move',group:1,forms:{te:'うごいて',nai:'うごかない',dict:'うごく',ta:'うごいた'}},
-  {masu:'えらびます',meaning:'choose / select',group:1,forms:{te:'えらんで',nai:'えらばない',dict:'えらぶ',ta:'えらんだ'}},
-  {masu:'おわります',meaning:'finish / end',group:1,forms:{te:'おわって',nai:'おわらない',dict:'おわる',ta:'おわった'}},
-  {masu:'さわります',meaning:'touch',group:1,forms:{te:'さわって',nai:'さわらない',dict:'さわる',ta:'さわった'}},
-  {masu:'すわります',meaning:'sit down',group:1,forms:{te:'すわって',nai:'すわらない',dict:'すわる',ta:'すわった'}},
-  {masu:'たちます',meaning:'stand up',group:1,forms:{te:'たって',nai:'たたない',dict:'たつ',ta:'たった'}},
-  {masu:'ちがいます',meaning:'be different',group:1,forms:{te:'ちがって',nai:'ちがわない',dict:'ちがう',ta:'ちがった'}},
-  {masu:'ならいます',meaning:'learn (from a teacher)',group:1,forms:{te:'ならって',nai:'ならわない',dict:'ならう',ta:'ならった'}},
-  {masu:'はじまります',meaning:'begin (intransitive)',group:1,forms:{te:'はじまって',nai:'はじまらない',dict:'はじまる',ta:'はじまった'}},
-  {masu:'まがります',meaning:'turn (a corner)',group:1,forms:{te:'まがって',nai:'まがらない',dict:'まがる',ta:'まがった'}},
-  {masu:'もどります',meaning:'return / go back',group:1,forms:{te:'もどって',nai:'もどらない',dict:'もどる',ta:'もどった'}},
-  {masu:'やきます',meaning:'bake / grill',group:1,forms:{te:'やいて',nai:'やかない',dict:'やく',ta:'やいた'}},
-  {masu:'わたります',meaning:'cross / go over',group:1,forms:{te:'わたって',nai:'わたらない',dict:'わたる',ta:'わたった'}},
-  {masu:'おくります',meaning:'send / see off',group:1,forms:{te:'おくって',nai:'おくらない',dict:'おくる',ta:'おくった'}},
-  {masu:'かします',meaning:'lend',group:1,forms:{te:'かして',nai:'かさない',dict:'かす',ta:'かした'}},
-  {masu:'さがします',meaning:'search for / look for',group:1,forms:{te:'さがして',nai:'さがさない',dict:'さがす',ta:'さがした'}},
-  {masu:'たのみます',meaning:'request / ask a favour',group:1,forms:{te:'たのんで',nai:'たのまない',dict:'たのむ',ta:'たのんだ'}},
-  {masu:'とどきます',meaning:'arrive / be delivered',group:1,forms:{te:'とどいて',nai:'とどかない',dict:'とどく',ta:'とどいた'}},
-  {masu:'はこびます',meaning:'carry / transport',group:1,forms:{te:'はこんで',nai:'はこばない',dict:'はこぶ',ta:'はこんだ'}},
-  {masu:'ひらきます',meaning:'open (a book / door)',group:1,forms:{te:'ひらいて',nai:'ひらかない',dict:'ひらく',ta:'ひらいた'}},
-  {masu:'こまります',meaning:'be troubled',group:1,forms:{te:'こまって',nai:'こまらない',dict:'こまる',ta:'こまった'}},
-  {masu:'すみます',meaning:'live / reside',group:1,forms:{te:'すんで',nai:'すまない',dict:'すむ',ta:'すんだ'}},
-  {masu:'しにます',meaning:'die',group:1,forms:{te:'しんで',nai:'しなない',dict:'しぬ',ta:'しんだ'}},
-  {masu:'ふきます',meaning:'blow / wipe',group:1,forms:{te:'ふいて',nai:'ふかない',dict:'ふく',ta:'ふいた'}},
-  // Group 2 — ru-verbs
-  {masu:'たべます',meaning:'eat',group:2,forms:{te:'たべて',nai:'たべない',dict:'たべる',ta:'たべた'}},
-  {masu:'みます',meaning:'see / watch',group:2,forms:{te:'みて',nai:'みない',dict:'みる',ta:'みた'}},
-  {masu:'おきます',meaning:'wake up',group:2,forms:{te:'おきて',nai:'おきない',dict:'おきる',ta:'おきた'}},
-  {masu:'ねます',meaning:'sleep',group:2,forms:{te:'ねて',nai:'ねない',dict:'ねる',ta:'ねた'}},
-  {masu:'でます',meaning:'exit / leave',group:2,forms:{te:'でて',nai:'でない',dict:'でる',ta:'でた'}},
-  {masu:'あげます',meaning:'give (to others)',group:2,forms:{te:'あげて',nai:'あげない',dict:'あげる',ta:'あげた'}},
-  {masu:'おしえます',meaning:'teach',group:2,forms:{te:'おしえて',nai:'おしえない',dict:'おしえる',ta:'おしえた'}},
-  {masu:'あけます',meaning:'open (a door/window)',group:2,forms:{te:'あけて',nai:'あけない',dict:'あける',ta:'あけた'}},
-  {masu:'おぼえます',meaning:'remember / memorise',group:2,forms:{te:'おぼえて',nai:'おぼえない',dict:'おぼえる',ta:'おぼえた'}},
-  {masu:'しらべます',meaning:'investigate / check',group:2,forms:{te:'しらべて',nai:'しらべない',dict:'しらべる',ta:'しらべた'}},
-  {masu:'すてます',meaning:'throw away / discard',group:2,forms:{te:'すてて',nai:'すてない',dict:'すてる',ta:'すてた'}},
-  {masu:'つかれます',meaning:'get tired',group:2,forms:{te:'つかれて',nai:'つかれない',dict:'つかれる',ta:'つかれた'}},
-  {masu:'つけます',meaning:'turn on / attach',group:2,forms:{te:'つけて',nai:'つけない',dict:'つける',ta:'つけた'}},
-  {masu:'とめます',meaning:'stop / park',group:2,forms:{te:'とめて',nai:'とめない',dict:'とめる',ta:'とめた'}},
-  {masu:'にげます',meaning:'escape / run away',group:2,forms:{te:'にげて',nai:'にげない',dict:'にげる',ta:'にげた'}},
-  {masu:'はじめます',meaning:'begin / start (something)',group:2,forms:{te:'はじめて',nai:'はじめない',dict:'はじめる',ta:'はじめた'}},
-  {masu:'まけます',meaning:'lose (a game)',group:2,forms:{te:'まけて',nai:'まけない',dict:'まける',ta:'まけた'}},
-  {masu:'みせます',meaning:'show',group:2,forms:{te:'みせて',nai:'みせない',dict:'みせる',ta:'みせた'}},
-  {masu:'やめます',meaning:'quit / stop doing',group:2,forms:{te:'やめて',nai:'やめない',dict:'やめる',ta:'やめた'}},
-  {masu:'わすれます',meaning:'forget',group:2,forms:{te:'わすれて',nai:'わすれない',dict:'わすれる',ta:'わすれた'}},
-  {masu:'かんがえます',meaning:'think / consider',group:2,forms:{te:'かんがえて',nai:'かんがえない',dict:'かんがえる',ta:'かんがえた'}},
-  {masu:'きめます',meaning:'decide',group:2,forms:{te:'きめて',nai:'きめない',dict:'きめる',ta:'きめた'}},
-  {masu:'こたえます',meaning:'answer / reply',group:2,forms:{te:'こたえて',nai:'こたえない',dict:'こたえる',ta:'こたえた'}},
-  {masu:'しんじます',meaning:'believe / trust',group:2,forms:{te:'しんじて',nai:'しんじない',dict:'しんじる',ta:'しんじた'}},
-  {masu:'つたえます',meaning:'convey / tell',group:2,forms:{te:'つたえて',nai:'つたえない',dict:'つたえる',ta:'つたえた'}},
-  {masu:'いれます',meaning:'put in / insert',group:2,forms:{te:'いれて',nai:'いれない',dict:'いれる',ta:'いれた'}},
-  {masu:'うけます',meaning:'receive / take (an exam)',group:2,forms:{te:'うけて',nai:'うけない',dict:'うける',ta:'うけた'}},
-  {masu:'おちます',meaning:'fall / drop',group:2,forms:{te:'おちて',nai:'おちない',dict:'おちる',ta:'おちた'}},
-  {masu:'かけます',meaning:'make a call / hang',group:2,forms:{te:'かけて',nai:'かけない',dict:'かける',ta:'かけた'}},
-  {masu:'くれます',meaning:'give (to me/us)',group:2,forms:{te:'くれて',nai:'くれない',dict:'くれる',ta:'くれた'}},
-  {masu:'きえます',meaning:'disappear / go out (light)',group:2,forms:{te:'きえて',nai:'きえない',dict:'きえる',ta:'きえた'}},
-  {masu:'たてます',meaning:'build / erect',group:2,forms:{te:'たてて',nai:'たてない',dict:'たてる',ta:'たてた'}},
-  {masu:'おします',meaning:'push',group:1,forms:{te:'おして',nai:'おさない',dict:'おす',ta:'おした'}},
-  {masu:'ひろいます',meaning:'pick up',group:1,forms:{te:'ひろって',nai:'ひろわない',dict:'ひろう',ta:'ひろった'}},
-  {masu:'だします',meaning:'take out / submit',group:1,forms:{te:'だして',nai:'ださない',dict:'だす',ta:'だした'}},
-  {masu:'おとします',meaning:'drop / lose',group:1,forms:{te:'おとして',nai:'おとさない',dict:'おとす',ta:'おとした'}},
-  {masu:'なおします',meaning:'fix / correct',group:1,forms:{te:'なおして',nai:'なおさない',dict:'なおす',ta:'なおした'}},
-  {masu:'こわします',meaning:'break / destroy',group:1,forms:{te:'こわして',nai:'こわさない',dict:'こわす',ta:'こわした'}},
-  {masu:'なおります',meaning:'get better / be fixed',group:1,forms:{te:'なおって',nai:'なおらない',dict:'なおる',ta:'なおった'}},
-  {masu:'おどります',meaning:'dance',group:1,forms:{te:'おどって',nai:'おどらない',dict:'おどる',ta:'おどった'}},
-  {masu:'しまいます',meaning:'put away / end up doing',group:1,forms:{te:'しまって',nai:'しまわない',dict:'しまう',ta:'しまった'}},
-  {masu:'たたきます',meaning:'hit / knock',group:1,forms:{te:'たたいて',nai:'たたかない',dict:'たたく',ta:'たたいた'}},
-  {masu:'ふります',meaning:'fall (rain/snow)',group:1,forms:{te:'ふって',nai:'ふらない',dict:'ふる',ta:'ふった'}},
-  {masu:'ぬぎます',meaning:'take off (clothes)',group:1,forms:{te:'ぬいで',nai:'ぬがない',dict:'ぬぐ',ta:'ぬいだ'}},
-  {masu:'はきます',meaning:'put on (shoes/trousers)',group:1,forms:{te:'はいて',nai:'はかない',dict:'はく',ta:'はいた'}},
-  {masu:'かぶります',meaning:'put on (a hat)',group:1,forms:{te:'かぶって',nai:'かぶらない',dict:'かぶる',ta:'かぶった'}},
-  {masu:'ぬります',meaning:'paint / apply / spread',group:1,forms:{te:'ぬって',nai:'ぬらない',dict:'ぬる',ta:'ぬった'}},
-  {masu:'ころびます',meaning:'fall down / trip',group:1,forms:{te:'ころんで',nai:'ころばない',dict:'ころぶ',ta:'ころんだ'}},
-  {masu:'へります',meaning:'decrease / reduce',group:1,forms:{te:'へって',nai:'へらない',dict:'へる',ta:'へった'}},
-  {masu:'わきます',meaning:'boil / bubble up',group:1,forms:{te:'わいて',nai:'わかない',dict:'わく',ta:'わいた'}},
-  {masu:'あたります',meaning:'hit / win (a prize)',group:1,forms:{te:'あたって',nai:'あたらない',dict:'あたる',ta:'あたった'}},
-  {masu:'かみます',meaning:'bite / chew',group:1,forms:{te:'かんで',nai:'かまない',dict:'かむ',ta:'かんだ'}},
-  {masu:'すべります',meaning:'slide / slip',group:1,forms:{te:'すべって',nai:'すべらない',dict:'すべる',ta:'すべった'}},
-  {masu:'ひっぱります',meaning:'pull / drag',group:1,forms:{te:'ひっぱって',nai:'ひっぱらない',dict:'ひっぱる',ta:'ひっぱった'}},
-  // Group 2 — additional ru-verbs
-  {masu:'かえます',meaning:'change / exchange',group:2,forms:{te:'かえて',nai:'かえない',dict:'かえる',ta:'かえた'}},
-  {masu:'あびます',meaning:'shower / bathe in',group:2,forms:{te:'あびて',nai:'あびない',dict:'あびる',ta:'あびた'}},
-  {masu:'あつめます',meaning:'collect / gather',group:2,forms:{te:'あつめて',nai:'あつめない',dict:'あつめる',ta:'あつめた'}},
-  {masu:'うまれます',meaning:'be born',group:2,forms:{te:'うまれて',nai:'うまれない',dict:'うまれる',ta:'うまれた'}},
-  {masu:'こわれます',meaning:'break (intransitive)',group:2,forms:{te:'こわれて',nai:'こわれない',dict:'こわれる',ta:'こわれた'}},
-  {masu:'つづけます',meaning:'continue (something)',group:2,forms:{te:'つづけて',nai:'つづけない',dict:'つづける',ta:'つづけた'}},
-  {masu:'しめます',meaning:'close / shut',group:2,forms:{te:'しめて',nai:'しめない',dict:'しめる',ta:'しめた'}},
-  {masu:'おります',meaning:'get off / go down',group:2,forms:{te:'おりて',nai:'おりない',dict:'おりる',ta:'おりた'}},
-  {masu:'くらべます',meaning:'compare',group:2,forms:{te:'くらべて',nai:'くらべない',dict:'くらべる',ta:'くらべた'}},
-  {masu:'かぞえます',meaning:'count',group:2,forms:{te:'かぞえて',nai:'かぞえない',dict:'かぞえる',ta:'かぞえた'}},
-  {masu:'まとめます',meaning:'summarise / organise',group:2,forms:{te:'まとめて',nai:'まとめない',dict:'まとめる',ta:'まとめた'}},
-  {masu:'ためます',meaning:'save up / accumulate',group:2,forms:{te:'ためて',nai:'ためない',dict:'ためる',ta:'ためた'}},
-  {masu:'ながめます',meaning:'gaze at / admire',group:2,forms:{te:'ながめて',nai:'ながめない',dict:'ながめる',ta:'ながめた'}},
-  {masu:'ふれます',meaning:'touch / come into contact',group:2,forms:{te:'ふれて',nai:'ふれない',dict:'ふれる',ta:'ふれた'}},
-  {masu:'のせます',meaning:'place on top / give a ride',group:2,forms:{te:'のせて',nai:'のせない',dict:'のせる',ta:'のせた'}},
-  {masu:'たります',meaning:'be enough / be sufficient',group:2,forms:{te:'たりて',nai:'たりない',dict:'たりる',ta:'たりた'}},
-  {masu:'かんじます',meaning:'feel / sense',group:2,forms:{te:'かんじて',nai:'かんじない',dict:'かんじる',ta:'かんじた'}},
-  {masu:'みえます',meaning:'be visible / can see',group:2,forms:{te:'みえて',nai:'みえない',dict:'みえる',ta:'みえた'}},
-  {masu:'きこえます',meaning:'be audible / can hear',group:2,forms:{te:'きこえて',nai:'きこえない',dict:'きこえる',ta:'きこえた'}},
-  {masu:'のびます',meaning:'stretch / grow / extend',group:2,forms:{te:'のびて',nai:'のびない',dict:'のびる',ta:'のびた'}},
-  {masu:'むかえます',meaning:'go to meet / welcome',group:2,forms:{te:'むかえて',nai:'むかえない',dict:'むかえる',ta:'むかえた'}},
-  // Group 3 — irregular only
-  {masu:'します',meaning:'do',group:3,forms:{te:'して',nai:'しない',dict:'する',ta:'した'}},
-  {masu:'きます',meaning:'come',group:3,forms:{te:'きて',nai:'こない',dict:'くる',ta:'きた'}},
+  // Group 1 â€” u-verbs
+  {masu:'ã‹ãã¾ã™',meaning:'write',group:1,forms:{te:'ã‹ã„ã¦',nai:'ã‹ã‹ãªã„',dict:'ã‹ã',ta:'ã‹ã„ãŸ'}},
+  {masu:'ã¯ãªã—ã¾ã™',meaning:'speak',group:1,forms:{te:'ã¯ãªã—ã¦',nai:'ã¯ãªã•ãªã„',dict:'ã¯ãªã™',ta:'ã¯ãªã—ãŸ'}},
+  {masu:'ã®ã¿ã¾ã™',meaning:'drink',group:1,forms:{te:'ã®ã‚“ã§',nai:'ã®ã¾ãªã„',dict:'ã®ã‚€',ta:'ã®ã‚“ã '}},
+  {masu:'ã‚ˆã¿ã¾ã™',meaning:'read',group:1,forms:{te:'ã‚ˆã‚“ã§',nai:'ã‚ˆã¾ãªã„',dict:'ã‚ˆã‚€',ta:'ã‚ˆã‚“ã '}},
+  {masu:'ã‚ãã³ã¾ã™',meaning:'play',group:1,forms:{te:'ã‚ãã‚“ã§',nai:'ã‚ãã°ãªã„',dict:'ã‚ãã¶',ta:'ã‚ãã‚“ã '}},
+  {masu:'ã‹ã„ã¾ã™',meaning:'buy',group:1,forms:{te:'ã‹ã£ã¦',nai:'ã‹ã‚ãªã„',dict:'ã‹ã†',ta:'ã‹ã£ãŸ'}},
+  {masu:'ã¾ã¡ã¾ã™',meaning:'wait',group:1,forms:{te:'ã¾ã£ã¦',nai:'ã¾ãŸãªã„',dict:'ã¾ã¤',ta:'ã¾ã£ãŸ'}},
+  {masu:'ã„ãã¾ã™',meaning:'go',group:1,forms:{te:'ã„ã£ã¦',nai:'ã„ã‹ãªã„',dict:'ã„ã',ta:'ã„ã£ãŸ'}},
+  {masu:'ã‹ãˆã‚Šã¾ã™',meaning:'return home',group:1,forms:{te:'ã‹ãˆã£ã¦',nai:'ã‹ãˆã‚‰ãªã„',dict:'ã‹ãˆã‚‹',ta:'ã‹ãˆã£ãŸ'}},
+  {masu:'ã¨ã‚Šã¾ã™',meaning:'take',group:1,forms:{te:'ã¨ã£ã¦',nai:'ã¨ã‚‰ãªã„',dict:'ã¨ã‚‹',ta:'ã¨ã£ãŸ'}},
+  {masu:'ã¯ã—ã‚Šã¾ã™',meaning:'run',group:1,forms:{te:'ã¯ã—ã£ã¦',nai:'ã¯ã—ã‚‰ãªã„',dict:'ã¯ã—ã‚‹',ta:'ã¯ã—ã£ãŸ'}},
+  {masu:'ãã‚Šã¾ã™',meaning:'cut',group:1,forms:{te:'ãã£ã¦',nai:'ãã‚‰ãªã„',dict:'ãã‚‹',ta:'ãã£ãŸ'}},
+  {masu:'ãŠã‚ˆãŽã¾ã™',meaning:'swim',group:1,forms:{te:'ãŠã‚ˆã„ã§',nai:'ãŠã‚ˆãŒãªã„',dict:'ãŠã‚ˆã',ta:'ãŠã‚ˆã„ã '}},
+  {masu:'ã„ããŽã¾ã™',meaning:'hurry',group:1,forms:{te:'ã„ãã„ã§',nai:'ã„ããŒãªã„',dict:'ã„ãã',ta:'ã„ãã„ã '}},
+  {masu:'ã‚ã„ã¾ã™',meaning:'meet',group:1,forms:{te:'ã‚ã£ã¦',nai:'ã‚ã‚ãªã„',dict:'ã‚ã†',ta:'ã‚ã£ãŸ'}},
+  {masu:'ã‚ã‚‹ãã¾ã™',meaning:'walk',group:1,forms:{te:'ã‚ã‚‹ã„ã¦',nai:'ã‚ã‚‹ã‹ãªã„',dict:'ã‚ã‚‹ã',ta:'ã‚ã‚‹ã„ãŸ'}},
+  {masu:'ã†ãŸã„ã¾ã™',meaning:'sing',group:1,forms:{te:'ã†ãŸã£ã¦',nai:'ã†ãŸã‚ãªã„',dict:'ã†ãŸã†',ta:'ã†ãŸã£ãŸ'}},
+  {masu:'ããã¾ã™',meaning:'listen / ask',group:1,forms:{te:'ãã„ã¦',nai:'ãã‹ãªã„',dict:'ãã',ta:'ãã„ãŸ'}},
+  {masu:'ã‘ã—ã¾ã™',meaning:'turn off / erase',group:1,forms:{te:'ã‘ã—ã¦',nai:'ã‘ã•ãªã„',dict:'ã‘ã™',ta:'ã‘ã—ãŸ'}},
+  {masu:'ã¤ã‹ã„ã¾ã™',meaning:'use',group:1,forms:{te:'ã¤ã‹ã£ã¦',nai:'ã¤ã‹ã‚ãªã„',dict:'ã¤ã‹ã†',ta:'ã¤ã‹ã£ãŸ'}},
+  {masu:'ã¤ãã¾ã™',meaning:'arrive',group:1,forms:{te:'ã¤ã„ã¦',nai:'ã¤ã‹ãªã„',dict:'ã¤ã',ta:'ã¤ã„ãŸ'}},
+  {masu:'ã¦ã¤ã ã„ã¾ã™',meaning:'help / assist',group:1,forms:{te:'ã¦ã¤ã ã£ã¦',nai:'ã¦ã¤ã ã‚ãªã„',dict:'ã¦ã¤ã ã†',ta:'ã¦ã¤ã ã£ãŸ'}},
+  {masu:'ã¨ã³ã¾ã™',meaning:'fly / jump',group:1,forms:{te:'ã¨ã‚“ã§',nai:'ã¨ã°ãªã„',dict:'ã¨ã¶',ta:'ã¨ã‚“ã '}},
+  {masu:'ãªãã¾ã™',meaning:'cry',group:1,forms:{te:'ãªã„ã¦',nai:'ãªã‹ãªã„',dict:'ãªã',ta:'ãªã„ãŸ'}},
+  {masu:'ãªã‚Šã¾ã™',meaning:'become',group:1,forms:{te:'ãªã£ã¦',nai:'ãªã‚‰ãªã„',dict:'ãªã‚‹',ta:'ãªã£ãŸ'}},
+  {masu:'ã®ã‚Šã¾ã™',meaning:'ride / board',group:1,forms:{te:'ã®ã£ã¦',nai:'ã®ã‚‰ãªã„',dict:'ã®ã‚‹',ta:'ã®ã£ãŸ'}},
+  {masu:'ã¯ãŸã‚‰ãã¾ã™',meaning:'work',group:1,forms:{te:'ã¯ãŸã‚‰ã„ã¦',nai:'ã¯ãŸã‚‰ã‹ãªã„',dict:'ã¯ãŸã‚‰ã',ta:'ã¯ãŸã‚‰ã„ãŸ'}},
+  {masu:'ã²ãã¾ã™',meaning:'play (instrument)',group:1,forms:{te:'ã²ã„ã¦',nai:'ã²ã‹ãªã„',dict:'ã²ã',ta:'ã²ã„ãŸ'}},
+  {masu:'ã‚‚ã¡ã¾ã™',meaning:'hold / have',group:1,forms:{te:'ã‚‚ã£ã¦',nai:'ã‚‚ãŸãªã„',dict:'ã‚‚ã¤',ta:'ã‚‚ã£ãŸ'}},
+  {masu:'ã‚‚ã‚‰ã„ã¾ã™',meaning:'receive',group:1,forms:{te:'ã‚‚ã‚‰ã£ã¦',nai:'ã‚‚ã‚‰ã‚ãªã„',dict:'ã‚‚ã‚‰ã†',ta:'ã‚‚ã‚‰ã£ãŸ'}},
+  {masu:'ã‚„ã™ã¿ã¾ã™',meaning:'rest / take a day off',group:1,forms:{te:'ã‚„ã™ã‚“ã§',nai:'ã‚„ã™ã¾ãªã„',dict:'ã‚„ã™ã‚€',ta:'ã‚„ã™ã‚“ã '}},
+  {masu:'ã‚„ã‚Šã¾ã™',meaning:'do / give (casual)',group:1,forms:{te:'ã‚„ã£ã¦',nai:'ã‚„ã‚‰ãªã„',dict:'ã‚„ã‚‹',ta:'ã‚„ã£ãŸ'}},
+  {masu:'ã‚ˆã³ã¾ã™',meaning:'call / invite',group:1,forms:{te:'ã‚ˆã‚“ã§',nai:'ã‚ˆã°ãªã„',dict:'ã‚ˆã¶',ta:'ã‚ˆã‚“ã '}},
+  {masu:'ã‚ã‹ã‚Šã¾ã™',meaning:'understand',group:1,forms:{te:'ã‚ã‹ã£ã¦',nai:'ã‚ã‹ã‚‰ãªã„',dict:'ã‚ã‹ã‚‹',ta:'ã‚ã‹ã£ãŸ'}},
+  {masu:'ã‚ã‚‰ã„ã¾ã™',meaning:'laugh',group:1,forms:{te:'ã‚ã‚‰ã£ã¦',nai:'ã‚ã‚‰ã‚ãªã„',dict:'ã‚ã‚‰ã†',ta:'ã‚ã‚‰ã£ãŸ'}},
+  {masu:'ã„ã„ã¾ã™',meaning:'say',group:1,forms:{te:'ã„ã£ã¦',nai:'ã„ã‚ãªã„',dict:'ã„ã†',ta:'ã„ã£ãŸ'}},
+  {masu:'ã†ã”ãã¾ã™',meaning:'move',group:1,forms:{te:'ã†ã”ã„ã¦',nai:'ã†ã”ã‹ãªã„',dict:'ã†ã”ã',ta:'ã†ã”ã„ãŸ'}},
+  {masu:'ãˆã‚‰ã³ã¾ã™',meaning:'choose / select',group:1,forms:{te:'ãˆã‚‰ã‚“ã§',nai:'ãˆã‚‰ã°ãªã„',dict:'ãˆã‚‰ã¶',ta:'ãˆã‚‰ã‚“ã '}},
+  {masu:'ãŠã‚ã‚Šã¾ã™',meaning:'finish / end',group:1,forms:{te:'ãŠã‚ã£ã¦',nai:'ãŠã‚ã‚‰ãªã„',dict:'ãŠã‚ã‚‹',ta:'ãŠã‚ã£ãŸ'}},
+  {masu:'ã•ã‚ã‚Šã¾ã™',meaning:'touch',group:1,forms:{te:'ã•ã‚ã£ã¦',nai:'ã•ã‚ã‚‰ãªã„',dict:'ã•ã‚ã‚‹',ta:'ã•ã‚ã£ãŸ'}},
+  {masu:'ã™ã‚ã‚Šã¾ã™',meaning:'sit down',group:1,forms:{te:'ã™ã‚ã£ã¦',nai:'ã™ã‚ã‚‰ãªã„',dict:'ã™ã‚ã‚‹',ta:'ã™ã‚ã£ãŸ'}},
+  {masu:'ãŸã¡ã¾ã™',meaning:'stand up',group:1,forms:{te:'ãŸã£ã¦',nai:'ãŸãŸãªã„',dict:'ãŸã¤',ta:'ãŸã£ãŸ'}},
+  {masu:'ã¡ãŒã„ã¾ã™',meaning:'be different',group:1,forms:{te:'ã¡ãŒã£ã¦',nai:'ã¡ãŒã‚ãªã„',dict:'ã¡ãŒã†',ta:'ã¡ãŒã£ãŸ'}},
+  {masu:'ãªã‚‰ã„ã¾ã™',meaning:'learn (from a teacher)',group:1,forms:{te:'ãªã‚‰ã£ã¦',nai:'ãªã‚‰ã‚ãªã„',dict:'ãªã‚‰ã†',ta:'ãªã‚‰ã£ãŸ'}},
+  {masu:'ã¯ã˜ã¾ã‚Šã¾ã™',meaning:'begin (intransitive)',group:1,forms:{te:'ã¯ã˜ã¾ã£ã¦',nai:'ã¯ã˜ã¾ã‚‰ãªã„',dict:'ã¯ã˜ã¾ã‚‹',ta:'ã¯ã˜ã¾ã£ãŸ'}},
+  {masu:'ã¾ãŒã‚Šã¾ã™',meaning:'turn (a corner)',group:1,forms:{te:'ã¾ãŒã£ã¦',nai:'ã¾ãŒã‚‰ãªã„',dict:'ã¾ãŒã‚‹',ta:'ã¾ãŒã£ãŸ'}},
+  {masu:'ã‚‚ã©ã‚Šã¾ã™',meaning:'return / go back',group:1,forms:{te:'ã‚‚ã©ã£ã¦',nai:'ã‚‚ã©ã‚‰ãªã„',dict:'ã‚‚ã©ã‚‹',ta:'ã‚‚ã©ã£ãŸ'}},
+  {masu:'ã‚„ãã¾ã™',meaning:'bake / grill',group:1,forms:{te:'ã‚„ã„ã¦',nai:'ã‚„ã‹ãªã„',dict:'ã‚„ã',ta:'ã‚„ã„ãŸ'}},
+  {masu:'ã‚ãŸã‚Šã¾ã™',meaning:'cross / go over',group:1,forms:{te:'ã‚ãŸã£ã¦',nai:'ã‚ãŸã‚‰ãªã„',dict:'ã‚ãŸã‚‹',ta:'ã‚ãŸã£ãŸ'}},
+  {masu:'ãŠãã‚Šã¾ã™',meaning:'send / see off',group:1,forms:{te:'ãŠãã£ã¦',nai:'ãŠãã‚‰ãªã„',dict:'ãŠãã‚‹',ta:'ãŠãã£ãŸ'}},
+  {masu:'ã‹ã—ã¾ã™',meaning:'lend',group:1,forms:{te:'ã‹ã—ã¦',nai:'ã‹ã•ãªã„',dict:'ã‹ã™',ta:'ã‹ã—ãŸ'}},
+  {masu:'ã•ãŒã—ã¾ã™',meaning:'search for / look for',group:1,forms:{te:'ã•ãŒã—ã¦',nai:'ã•ãŒã•ãªã„',dict:'ã•ãŒã™',ta:'ã•ãŒã—ãŸ'}},
+  {masu:'ãŸã®ã¿ã¾ã™',meaning:'request / ask a favour',group:1,forms:{te:'ãŸã®ã‚“ã§',nai:'ãŸã®ã¾ãªã„',dict:'ãŸã®ã‚€',ta:'ãŸã®ã‚“ã '}},
+  {masu:'ã¨ã©ãã¾ã™',meaning:'arrive / be delivered',group:1,forms:{te:'ã¨ã©ã„ã¦',nai:'ã¨ã©ã‹ãªã„',dict:'ã¨ã©ã',ta:'ã¨ã©ã„ãŸ'}},
+  {masu:'ã¯ã“ã³ã¾ã™',meaning:'carry / transport',group:1,forms:{te:'ã¯ã“ã‚“ã§',nai:'ã¯ã“ã°ãªã„',dict:'ã¯ã“ã¶',ta:'ã¯ã“ã‚“ã '}},
+  {masu:'ã²ã‚‰ãã¾ã™',meaning:'open (a book / door)',group:1,forms:{te:'ã²ã‚‰ã„ã¦',nai:'ã²ã‚‰ã‹ãªã„',dict:'ã²ã‚‰ã',ta:'ã²ã‚‰ã„ãŸ'}},
+  {masu:'ã“ã¾ã‚Šã¾ã™',meaning:'be troubled',group:1,forms:{te:'ã“ã¾ã£ã¦',nai:'ã“ã¾ã‚‰ãªã„',dict:'ã“ã¾ã‚‹',ta:'ã“ã¾ã£ãŸ'}},
+  {masu:'ã™ã¿ã¾ã™',meaning:'live / reside',group:1,forms:{te:'ã™ã‚“ã§',nai:'ã™ã¾ãªã„',dict:'ã™ã‚€',ta:'ã™ã‚“ã '}},
+  {masu:'ã—ã«ã¾ã™',meaning:'die',group:1,forms:{te:'ã—ã‚“ã§',nai:'ã—ãªãªã„',dict:'ã—ã¬',ta:'ã—ã‚“ã '}},
+  {masu:'ãµãã¾ã™',meaning:'blow / wipe',group:1,forms:{te:'ãµã„ã¦',nai:'ãµã‹ãªã„',dict:'ãµã',ta:'ãµã„ãŸ'}},
+  // Group 2 â€” ru-verbs
+  {masu:'ãŸã¹ã¾ã™',meaning:'eat',group:2,forms:{te:'ãŸã¹ã¦',nai:'ãŸã¹ãªã„',dict:'ãŸã¹ã‚‹',ta:'ãŸã¹ãŸ'}},
+  {masu:'ã¿ã¾ã™',meaning:'see / watch',group:2,forms:{te:'ã¿ã¦',nai:'ã¿ãªã„',dict:'ã¿ã‚‹',ta:'ã¿ãŸ'}},
+  {masu:'ãŠãã¾ã™',meaning:'wake up',group:2,forms:{te:'ãŠãã¦',nai:'ãŠããªã„',dict:'ãŠãã‚‹',ta:'ãŠããŸ'}},
+  {masu:'ã­ã¾ã™',meaning:'sleep',group:2,forms:{te:'ã­ã¦',nai:'ã­ãªã„',dict:'ã­ã‚‹',ta:'ã­ãŸ'}},
+  {masu:'ã§ã¾ã™',meaning:'exit / leave',group:2,forms:{te:'ã§ã¦',nai:'ã§ãªã„',dict:'ã§ã‚‹',ta:'ã§ãŸ'}},
+  {masu:'ã‚ã’ã¾ã™',meaning:'give (to others)',group:2,forms:{te:'ã‚ã’ã¦',nai:'ã‚ã’ãªã„',dict:'ã‚ã’ã‚‹',ta:'ã‚ã’ãŸ'}},
+  {masu:'ãŠã—ãˆã¾ã™',meaning:'teach',group:2,forms:{te:'ãŠã—ãˆã¦',nai:'ãŠã—ãˆãªã„',dict:'ãŠã—ãˆã‚‹',ta:'ãŠã—ãˆãŸ'}},
+  {masu:'ã‚ã‘ã¾ã™',meaning:'open (a door/window)',group:2,forms:{te:'ã‚ã‘ã¦',nai:'ã‚ã‘ãªã„',dict:'ã‚ã‘ã‚‹',ta:'ã‚ã‘ãŸ'}},
+  {masu:'ãŠã¼ãˆã¾ã™',meaning:'remember / memorise',group:2,forms:{te:'ãŠã¼ãˆã¦',nai:'ãŠã¼ãˆãªã„',dict:'ãŠã¼ãˆã‚‹',ta:'ãŠã¼ãˆãŸ'}},
+  {masu:'ã—ã‚‰ã¹ã¾ã™',meaning:'investigate / check',group:2,forms:{te:'ã—ã‚‰ã¹ã¦',nai:'ã—ã‚‰ã¹ãªã„',dict:'ã—ã‚‰ã¹ã‚‹',ta:'ã—ã‚‰ã¹ãŸ'}},
+  {masu:'ã™ã¦ã¾ã™',meaning:'throw away / discard',group:2,forms:{te:'ã™ã¦ã¦',nai:'ã™ã¦ãªã„',dict:'ã™ã¦ã‚‹',ta:'ã™ã¦ãŸ'}},
+  {masu:'ã¤ã‹ã‚Œã¾ã™',meaning:'get tired',group:2,forms:{te:'ã¤ã‹ã‚Œã¦',nai:'ã¤ã‹ã‚Œãªã„',dict:'ã¤ã‹ã‚Œã‚‹',ta:'ã¤ã‹ã‚ŒãŸ'}},
+  {masu:'ã¤ã‘ã¾ã™',meaning:'turn on / attach',group:2,forms:{te:'ã¤ã‘ã¦',nai:'ã¤ã‘ãªã„',dict:'ã¤ã‘ã‚‹',ta:'ã¤ã‘ãŸ'}},
+  {masu:'ã¨ã‚ã¾ã™',meaning:'stop / park',group:2,forms:{te:'ã¨ã‚ã¦',nai:'ã¨ã‚ãªã„',dict:'ã¨ã‚ã‚‹',ta:'ã¨ã‚ãŸ'}},
+  {masu:'ã«ã’ã¾ã™',meaning:'escape / run away',group:2,forms:{te:'ã«ã’ã¦',nai:'ã«ã’ãªã„',dict:'ã«ã’ã‚‹',ta:'ã«ã’ãŸ'}},
+  {masu:'ã¯ã˜ã‚ã¾ã™',meaning:'begin / start (something)',group:2,forms:{te:'ã¯ã˜ã‚ã¦',nai:'ã¯ã˜ã‚ãªã„',dict:'ã¯ã˜ã‚ã‚‹',ta:'ã¯ã˜ã‚ãŸ'}},
+  {masu:'ã¾ã‘ã¾ã™',meaning:'lose (a game)',group:2,forms:{te:'ã¾ã‘ã¦',nai:'ã¾ã‘ãªã„',dict:'ã¾ã‘ã‚‹',ta:'ã¾ã‘ãŸ'}},
+  {masu:'ã¿ã›ã¾ã™',meaning:'show',group:2,forms:{te:'ã¿ã›ã¦',nai:'ã¿ã›ãªã„',dict:'ã¿ã›ã‚‹',ta:'ã¿ã›ãŸ'}},
+  {masu:'ã‚„ã‚ã¾ã™',meaning:'quit / stop doing',group:2,forms:{te:'ã‚„ã‚ã¦',nai:'ã‚„ã‚ãªã„',dict:'ã‚„ã‚ã‚‹',ta:'ã‚„ã‚ãŸ'}},
+  {masu:'ã‚ã™ã‚Œã¾ã™',meaning:'forget',group:2,forms:{te:'ã‚ã™ã‚Œã¦',nai:'ã‚ã™ã‚Œãªã„',dict:'ã‚ã™ã‚Œã‚‹',ta:'ã‚ã™ã‚ŒãŸ'}},
+  {masu:'ã‹ã‚“ãŒãˆã¾ã™',meaning:'think / consider',group:2,forms:{te:'ã‹ã‚“ãŒãˆã¦',nai:'ã‹ã‚“ãŒãˆãªã„',dict:'ã‹ã‚“ãŒãˆã‚‹',ta:'ã‹ã‚“ãŒãˆãŸ'}},
+  {masu:'ãã‚ã¾ã™',meaning:'decide',group:2,forms:{te:'ãã‚ã¦',nai:'ãã‚ãªã„',dict:'ãã‚ã‚‹',ta:'ãã‚ãŸ'}},
+  {masu:'ã“ãŸãˆã¾ã™',meaning:'answer / reply',group:2,forms:{te:'ã“ãŸãˆã¦',nai:'ã“ãŸãˆãªã„',dict:'ã“ãŸãˆã‚‹',ta:'ã“ãŸãˆãŸ'}},
+  {masu:'ã—ã‚“ã˜ã¾ã™',meaning:'believe / trust',group:2,forms:{te:'ã—ã‚“ã˜ã¦',nai:'ã—ã‚“ã˜ãªã„',dict:'ã—ã‚“ã˜ã‚‹',ta:'ã—ã‚“ã˜ãŸ'}},
+  {masu:'ã¤ãŸãˆã¾ã™',meaning:'convey / tell',group:2,forms:{te:'ã¤ãŸãˆã¦',nai:'ã¤ãŸãˆãªã„',dict:'ã¤ãŸãˆã‚‹',ta:'ã¤ãŸãˆãŸ'}},
+  {masu:'ã„ã‚Œã¾ã™',meaning:'put in / insert',group:2,forms:{te:'ã„ã‚Œã¦',nai:'ã„ã‚Œãªã„',dict:'ã„ã‚Œã‚‹',ta:'ã„ã‚ŒãŸ'}},
+  {masu:'ã†ã‘ã¾ã™',meaning:'receive / take (an exam)',group:2,forms:{te:'ã†ã‘ã¦',nai:'ã†ã‘ãªã„',dict:'ã†ã‘ã‚‹',ta:'ã†ã‘ãŸ'}},
+  {masu:'ãŠã¡ã¾ã™',meaning:'fall / drop',group:2,forms:{te:'ãŠã¡ã¦',nai:'ãŠã¡ãªã„',dict:'ãŠã¡ã‚‹',ta:'ãŠã¡ãŸ'}},
+  {masu:'ã‹ã‘ã¾ã™',meaning:'make a call / hang',group:2,forms:{te:'ã‹ã‘ã¦',nai:'ã‹ã‘ãªã„',dict:'ã‹ã‘ã‚‹',ta:'ã‹ã‘ãŸ'}},
+  {masu:'ãã‚Œã¾ã™',meaning:'give (to me/us)',group:2,forms:{te:'ãã‚Œã¦',nai:'ãã‚Œãªã„',dict:'ãã‚Œã‚‹',ta:'ãã‚ŒãŸ'}},
+  {masu:'ããˆã¾ã™',meaning:'disappear / go out (light)',group:2,forms:{te:'ããˆã¦',nai:'ããˆãªã„',dict:'ããˆã‚‹',ta:'ããˆãŸ'}},
+  {masu:'ãŸã¦ã¾ã™',meaning:'build / erect',group:2,forms:{te:'ãŸã¦ã¦',nai:'ãŸã¦ãªã„',dict:'ãŸã¦ã‚‹',ta:'ãŸã¦ãŸ'}},
+  {masu:'ãŠã—ã¾ã™',meaning:'push',group:1,forms:{te:'ãŠã—ã¦',nai:'ãŠã•ãªã„',dict:'ãŠã™',ta:'ãŠã—ãŸ'}},
+  {masu:'ã²ã‚ã„ã¾ã™',meaning:'pick up',group:1,forms:{te:'ã²ã‚ã£ã¦',nai:'ã²ã‚ã‚ãªã„',dict:'ã²ã‚ã†',ta:'ã²ã‚ã£ãŸ'}},
+  {masu:'ã ã—ã¾ã™',meaning:'take out / submit',group:1,forms:{te:'ã ã—ã¦',nai:'ã ã•ãªã„',dict:'ã ã™',ta:'ã ã—ãŸ'}},
+  {masu:'ãŠã¨ã—ã¾ã™',meaning:'drop / lose',group:1,forms:{te:'ãŠã¨ã—ã¦',nai:'ãŠã¨ã•ãªã„',dict:'ãŠã¨ã™',ta:'ãŠã¨ã—ãŸ'}},
+  {masu:'ãªãŠã—ã¾ã™',meaning:'fix / correct',group:1,forms:{te:'ãªãŠã—ã¦',nai:'ãªãŠã•ãªã„',dict:'ãªãŠã™',ta:'ãªãŠã—ãŸ'}},
+  {masu:'ã“ã‚ã—ã¾ã™',meaning:'break / destroy',group:1,forms:{te:'ã“ã‚ã—ã¦',nai:'ã“ã‚ã•ãªã„',dict:'ã“ã‚ã™',ta:'ã“ã‚ã—ãŸ'}},
+  {masu:'ãªãŠã‚Šã¾ã™',meaning:'get better / be fixed',group:1,forms:{te:'ãªãŠã£ã¦',nai:'ãªãŠã‚‰ãªã„',dict:'ãªãŠã‚‹',ta:'ãªãŠã£ãŸ'}},
+  {masu:'ãŠã©ã‚Šã¾ã™',meaning:'dance',group:1,forms:{te:'ãŠã©ã£ã¦',nai:'ãŠã©ã‚‰ãªã„',dict:'ãŠã©ã‚‹',ta:'ãŠã©ã£ãŸ'}},
+  {masu:'ã—ã¾ã„ã¾ã™',meaning:'put away / end up doing',group:1,forms:{te:'ã—ã¾ã£ã¦',nai:'ã—ã¾ã‚ãªã„',dict:'ã—ã¾ã†',ta:'ã—ã¾ã£ãŸ'}},
+  {masu:'ãŸãŸãã¾ã™',meaning:'hit / knock',group:1,forms:{te:'ãŸãŸã„ã¦',nai:'ãŸãŸã‹ãªã„',dict:'ãŸãŸã',ta:'ãŸãŸã„ãŸ'}},
+  {masu:'ãµã‚Šã¾ã™',meaning:'fall (rain/snow)',group:1,forms:{te:'ãµã£ã¦',nai:'ãµã‚‰ãªã„',dict:'ãµã‚‹',ta:'ãµã£ãŸ'}},
+  {masu:'ã¬ãŽã¾ã™',meaning:'take off (clothes)',group:1,forms:{te:'ã¬ã„ã§',nai:'ã¬ãŒãªã„',dict:'ã¬ã',ta:'ã¬ã„ã '}},
+  {masu:'ã¯ãã¾ã™',meaning:'put on (shoes/trousers)',group:1,forms:{te:'ã¯ã„ã¦',nai:'ã¯ã‹ãªã„',dict:'ã¯ã',ta:'ã¯ã„ãŸ'}},
+  {masu:'ã‹ã¶ã‚Šã¾ã™',meaning:'put on (a hat)',group:1,forms:{te:'ã‹ã¶ã£ã¦',nai:'ã‹ã¶ã‚‰ãªã„',dict:'ã‹ã¶ã‚‹',ta:'ã‹ã¶ã£ãŸ'}},
+  {masu:'ã¬ã‚Šã¾ã™',meaning:'paint / apply / spread',group:1,forms:{te:'ã¬ã£ã¦',nai:'ã¬ã‚‰ãªã„',dict:'ã¬ã‚‹',ta:'ã¬ã£ãŸ'}},
+  {masu:'ã“ã‚ã³ã¾ã™',meaning:'fall down / trip',group:1,forms:{te:'ã“ã‚ã‚“ã§',nai:'ã“ã‚ã°ãªã„',dict:'ã“ã‚ã¶',ta:'ã“ã‚ã‚“ã '}},
+  {masu:'ã¸ã‚Šã¾ã™',meaning:'decrease / reduce',group:1,forms:{te:'ã¸ã£ã¦',nai:'ã¸ã‚‰ãªã„',dict:'ã¸ã‚‹',ta:'ã¸ã£ãŸ'}},
+  {masu:'ã‚ãã¾ã™',meaning:'boil / bubble up',group:1,forms:{te:'ã‚ã„ã¦',nai:'ã‚ã‹ãªã„',dict:'ã‚ã',ta:'ã‚ã„ãŸ'}},
+  {masu:'ã‚ãŸã‚Šã¾ã™',meaning:'hit / win (a prize)',group:1,forms:{te:'ã‚ãŸã£ã¦',nai:'ã‚ãŸã‚‰ãªã„',dict:'ã‚ãŸã‚‹',ta:'ã‚ãŸã£ãŸ'}},
+  {masu:'ã‹ã¿ã¾ã™',meaning:'bite / chew',group:1,forms:{te:'ã‹ã‚“ã§',nai:'ã‹ã¾ãªã„',dict:'ã‹ã‚€',ta:'ã‹ã‚“ã '}},
+  {masu:'ã™ã¹ã‚Šã¾ã™',meaning:'slide / slip',group:1,forms:{te:'ã™ã¹ã£ã¦',nai:'ã™ã¹ã‚‰ãªã„',dict:'ã™ã¹ã‚‹',ta:'ã™ã¹ã£ãŸ'}},
+  {masu:'ã²ã£ã±ã‚Šã¾ã™',meaning:'pull / drag',group:1,forms:{te:'ã²ã£ã±ã£ã¦',nai:'ã²ã£ã±ã‚‰ãªã„',dict:'ã²ã£ã±ã‚‹',ta:'ã²ã£ã±ã£ãŸ'}},
+  // Group 2 â€” additional ru-verbs
+  {masu:'ã‹ãˆã¾ã™',meaning:'change / exchange',group:2,forms:{te:'ã‹ãˆã¦',nai:'ã‹ãˆãªã„',dict:'ã‹ãˆã‚‹',ta:'ã‹ãˆãŸ'}},
+  {masu:'ã‚ã³ã¾ã™',meaning:'shower / bathe in',group:2,forms:{te:'ã‚ã³ã¦',nai:'ã‚ã³ãªã„',dict:'ã‚ã³ã‚‹',ta:'ã‚ã³ãŸ'}},
+  {masu:'ã‚ã¤ã‚ã¾ã™',meaning:'collect / gather',group:2,forms:{te:'ã‚ã¤ã‚ã¦',nai:'ã‚ã¤ã‚ãªã„',dict:'ã‚ã¤ã‚ã‚‹',ta:'ã‚ã¤ã‚ãŸ'}},
+  {masu:'ã†ã¾ã‚Œã¾ã™',meaning:'be born',group:2,forms:{te:'ã†ã¾ã‚Œã¦',nai:'ã†ã¾ã‚Œãªã„',dict:'ã†ã¾ã‚Œã‚‹',ta:'ã†ã¾ã‚ŒãŸ'}},
+  {masu:'ã“ã‚ã‚Œã¾ã™',meaning:'break (intransitive)',group:2,forms:{te:'ã“ã‚ã‚Œã¦',nai:'ã“ã‚ã‚Œãªã„',dict:'ã“ã‚ã‚Œã‚‹',ta:'ã“ã‚ã‚ŒãŸ'}},
+  {masu:'ã¤ã¥ã‘ã¾ã™',meaning:'continue (something)',group:2,forms:{te:'ã¤ã¥ã‘ã¦',nai:'ã¤ã¥ã‘ãªã„',dict:'ã¤ã¥ã‘ã‚‹',ta:'ã¤ã¥ã‘ãŸ'}},
+  {masu:'ã—ã‚ã¾ã™',meaning:'close / shut',group:2,forms:{te:'ã—ã‚ã¦',nai:'ã—ã‚ãªã„',dict:'ã—ã‚ã‚‹',ta:'ã—ã‚ãŸ'}},
+  {masu:'ãŠã‚Šã¾ã™',meaning:'get off / go down',group:2,forms:{te:'ãŠã‚Šã¦',nai:'ãŠã‚Šãªã„',dict:'ãŠã‚Šã‚‹',ta:'ãŠã‚ŠãŸ'}},
+  {masu:'ãã‚‰ã¹ã¾ã™',meaning:'compare',group:2,forms:{te:'ãã‚‰ã¹ã¦',nai:'ãã‚‰ã¹ãªã„',dict:'ãã‚‰ã¹ã‚‹',ta:'ãã‚‰ã¹ãŸ'}},
+  {masu:'ã‹ãžãˆã¾ã™',meaning:'count',group:2,forms:{te:'ã‹ãžãˆã¦',nai:'ã‹ãžãˆãªã„',dict:'ã‹ãžãˆã‚‹',ta:'ã‹ãžãˆãŸ'}},
+  {masu:'ã¾ã¨ã‚ã¾ã™',meaning:'summarise / organise',group:2,forms:{te:'ã¾ã¨ã‚ã¦',nai:'ã¾ã¨ã‚ãªã„',dict:'ã¾ã¨ã‚ã‚‹',ta:'ã¾ã¨ã‚ãŸ'}},
+  {masu:'ãŸã‚ã¾ã™',meaning:'save up / accumulate',group:2,forms:{te:'ãŸã‚ã¦',nai:'ãŸã‚ãªã„',dict:'ãŸã‚ã‚‹',ta:'ãŸã‚ãŸ'}},
+  {masu:'ãªãŒã‚ã¾ã™',meaning:'gaze at / admire',group:2,forms:{te:'ãªãŒã‚ã¦',nai:'ãªãŒã‚ãªã„',dict:'ãªãŒã‚ã‚‹',ta:'ãªãŒã‚ãŸ'}},
+  {masu:'ãµã‚Œã¾ã™',meaning:'touch / come into contact',group:2,forms:{te:'ãµã‚Œã¦',nai:'ãµã‚Œãªã„',dict:'ãµã‚Œã‚‹',ta:'ãµã‚ŒãŸ'}},
+  {masu:'ã®ã›ã¾ã™',meaning:'place on top / give a ride',group:2,forms:{te:'ã®ã›ã¦',nai:'ã®ã›ãªã„',dict:'ã®ã›ã‚‹',ta:'ã®ã›ãŸ'}},
+  {masu:'ãŸã‚Šã¾ã™',meaning:'be enough / be sufficient',group:2,forms:{te:'ãŸã‚Šã¦',nai:'ãŸã‚Šãªã„',dict:'ãŸã‚Šã‚‹',ta:'ãŸã‚ŠãŸ'}},
+  {masu:'ã‹ã‚“ã˜ã¾ã™',meaning:'feel / sense',group:2,forms:{te:'ã‹ã‚“ã˜ã¦',nai:'ã‹ã‚“ã˜ãªã„',dict:'ã‹ã‚“ã˜ã‚‹',ta:'ã‹ã‚“ã˜ãŸ'}},
+  {masu:'ã¿ãˆã¾ã™',meaning:'be visible / can see',group:2,forms:{te:'ã¿ãˆã¦',nai:'ã¿ãˆãªã„',dict:'ã¿ãˆã‚‹',ta:'ã¿ãˆãŸ'}},
+  {masu:'ãã“ãˆã¾ã™',meaning:'be audible / can hear',group:2,forms:{te:'ãã“ãˆã¦',nai:'ãã“ãˆãªã„',dict:'ãã“ãˆã‚‹',ta:'ãã“ãˆãŸ'}},
+  {masu:'ã®ã³ã¾ã™',meaning:'stretch / grow / extend',group:2,forms:{te:'ã®ã³ã¦',nai:'ã®ã³ãªã„',dict:'ã®ã³ã‚‹',ta:'ã®ã³ãŸ'}},
+  {masu:'ã‚€ã‹ãˆã¾ã™',meaning:'go to meet / welcome',group:2,forms:{te:'ã‚€ã‹ãˆã¦',nai:'ã‚€ã‹ãˆãªã„',dict:'ã‚€ã‹ãˆã‚‹',ta:'ã‚€ã‹ãˆãŸ'}},
+  // Group 3 â€” irregular only
+  {masu:'ã—ã¾ã™',meaning:'do',group:3,forms:{te:'ã—ã¦',nai:'ã—ãªã„',dict:'ã™ã‚‹',ta:'ã—ãŸ'}},
+  {masu:'ãã¾ã™',meaning:'come',group:3,forms:{te:'ãã¦',nai:'ã“ãªã„',dict:'ãã‚‹',ta:'ããŸ'}},
 ];
 
-const FL = {te:'て form',nai:'ない form',dict:'dictionary form',ta:'た form'};
-const FJ = {te:'て',nai:'ない',dict:'辞書',ta:'た'};
+const FL = {te:'ã¦ form',nai:'ãªã„ form',dict:'dictionary form',ta:'ãŸ form'};
+const FJ = {te:'ã¦',nai:'ãªã„',dict:'è¾žæ›¸',ta:'ãŸ'};
 const STORE = 'jp_quiz_v2';
 
-// Romaji → Hiragana IME
-const R3={sha:'しゃ',shi:'し',shu:'しゅ',sho:'しょ',chi:'ち',cha:'ちゃ',chu:'ちゅ',cho:'ちょ',tsu:'つ',kya:'きゃ',kyu:'きゅ',kyo:'きょ',gya:'ぎゃ',gyu:'ぎゅ',gyo:'ぎょ',sya:'しゃ',syu:'しゅ',syo:'しょ',zya:'じゃ',zyu:'じゅ',zyo:'じょ',tya:'ちゃ',tyu:'ちゅ',tyo:'ちょ',nya:'にゃ',nyu:'にゅ',nyo:'にょ',hya:'ひゃ',hyu:'ひゅ',hyo:'ひょ',mya:'みゃ',myu:'みゅ',myo:'みょ',rya:'りゃ',ryu:'りゅ',ryo:'りょ',bya:'びゃ',byu:'びゅ',byo:'びょ',pya:'ぴゃ',pyu:'ぴゅ',pyo:'ぴょ'};
-const R2={ka:'か',ki:'き',ku:'く',ke:'け',ko:'こ',sa:'さ',si:'し',su:'す',se:'せ',so:'そ',ta:'た',ti:'ち',tu:'つ',te:'て',to:'と',na:'な',ni:'に',nu:'ぬ',ne:'ね',no:'の',ha:'は',hi:'ひ',hu:'ふ',fu:'ふ',he:'へ',ho:'ほ',ma:'ま',mi:'み',mu:'む',me:'め',mo:'も',ya:'や',yu:'ゆ',yo:'よ',ra:'ら',ri:'り',ru:'る',re:'れ',ro:'ろ',wa:'わ',wo:'を',ga:'が',gi:'ぎ',gu:'ぐ',ge:'げ',go:'ご',za:'ざ',zi:'じ',ji:'じ',zu:'ず',ze:'ぜ',zo:'ぞ',da:'だ',di:'ぢ',du:'づ',de:'で',do:'ど',ba:'ば',bi:'び',bu:'ぶ',be:'べ',bo:'ぼ',pa:'ぱ',pi:'ぴ',pu:'ぷ',pe:'ぺ',po:'ぽ',ja:'じゃ',ju:'じゅ',jo:'じょ'};
-const R1={a:'あ',i:'い',u:'う',e:'え',o:'お'};
+// Romaji â†’ Hiragana IME
+const R3={sha:'ã—ã‚ƒ',shi:'ã—',shu:'ã—ã‚…',sho:'ã—ã‚‡',chi:'ã¡',cha:'ã¡ã‚ƒ',chu:'ã¡ã‚…',cho:'ã¡ã‚‡',tsu:'ã¤',kya:'ãã‚ƒ',kyu:'ãã‚…',kyo:'ãã‚‡',gya:'ãŽã‚ƒ',gyu:'ãŽã‚…',gyo:'ãŽã‚‡',sya:'ã—ã‚ƒ',syu:'ã—ã‚…',syo:'ã—ã‚‡',zya:'ã˜ã‚ƒ',zyu:'ã˜ã‚…',zyo:'ã˜ã‚‡',tya:'ã¡ã‚ƒ',tyu:'ã¡ã‚…',tyo:'ã¡ã‚‡',nya:'ã«ã‚ƒ',nyu:'ã«ã‚…',nyo:'ã«ã‚‡',hya:'ã²ã‚ƒ',hyu:'ã²ã‚…',hyo:'ã²ã‚‡',mya:'ã¿ã‚ƒ',myu:'ã¿ã‚…',myo:'ã¿ã‚‡',rya:'ã‚Šã‚ƒ',ryu:'ã‚Šã‚…',ryo:'ã‚Šã‚‡',bya:'ã³ã‚ƒ',byu:'ã³ã‚…',byo:'ã³ã‚‡',pya:'ã´ã‚ƒ',pyu:'ã´ã‚…',pyo:'ã´ã‚‡'};
+const R2={ka:'ã‹',ki:'ã',ku:'ã',ke:'ã‘',ko:'ã“',sa:'ã•',si:'ã—',su:'ã™',se:'ã›',so:'ã',ta:'ãŸ',ti:'ã¡',tu:'ã¤',te:'ã¦',to:'ã¨',na:'ãª',ni:'ã«',nu:'ã¬',ne:'ã­',no:'ã®',ha:'ã¯',hi:'ã²',hu:'ãµ',fu:'ãµ',he:'ã¸',ho:'ã»',ma:'ã¾',mi:'ã¿',mu:'ã‚€',me:'ã‚',mo:'ã‚‚',ya:'ã‚„',yu:'ã‚†',yo:'ã‚ˆ',ra:'ã‚‰',ri:'ã‚Š',ru:'ã‚‹',re:'ã‚Œ',ro:'ã‚',wa:'ã‚',wo:'ã‚’',ga:'ãŒ',gi:'ãŽ',gu:'ã',ge:'ã’',go:'ã”',za:'ã–',zi:'ã˜',ji:'ã˜',zu:'ãš',ze:'ãœ',zo:'ãž',da:'ã ',di:'ã¢',du:'ã¥',de:'ã§',do:'ã©',ba:'ã°',bi:'ã³',bu:'ã¶',be:'ã¹',bo:'ã¼',pa:'ã±',pi:'ã´',pu:'ã·',pe:'ãº',po:'ã½',ja:'ã˜ã‚ƒ',ju:'ã˜ã‚…',jo:'ã˜ã‚‡'};
+const R1={a:'ã‚',i:'ã„',u:'ã†',e:'ãˆ',o:'ãŠ'};
 const CONS = 'kgsztdnhfmbpryjwc';
 
 class IME {
@@ -901,18 +1131,18 @@ class IME {
     let ok = true;
     while (ok && this.p.length > 0) {
       ok = false;
-      if (this.p.startsWith('nn')) { this.h += 'ん'; this.p = this.p.slice(2); ok = true; continue; }
+      if (this.p.startsWith('nn')) { this.h += 'ã‚“'; this.p = this.p.slice(2); ok = true; continue; }
       if (this.p.length >= 2 && this.p[0] === this.p[1] && this.p[0] !== 'n' && CONS.includes(this.p[0])) {
-        this.h += 'っ'; this.p = this.p.slice(1); ok = true; continue;
+        this.h += 'ã£'; this.p = this.p.slice(1); ok = true; continue;
       }
       if (this.p.length >= 3 && R3[this.p.slice(0,3)]) { this.h += R3[this.p.slice(0,3)]; this.p = this.p.slice(3); ok = true; continue; }
-      if (this.p[0] === 'n' && this.p.length >= 2 && !'aiueony'.includes(this.p[1])) { this.h += 'ん'; this.p = this.p.slice(1); ok = true; continue; }
+      if (this.p[0] === 'n' && this.p.length >= 2 && !'aiueony'.includes(this.p[1])) { this.h += 'ã‚“'; this.p = this.p.slice(1); ok = true; continue; }
       if (this.p.length >= 2 && R2[this.p.slice(0,2)]) { this.h += R2[this.p.slice(0,2)]; this.p = this.p.slice(2); ok = true; continue; }
       if (R1[this.p[0]]) { this.h += R1[this.p[0]]; this.p = this.p.slice(1); ok = true; continue; }
       if (!CONS.includes(this.p[0]) && this.p[0] !== 'n') { this.p = this.p.slice(1); ok = true; }
     }
   }
-  fin() { if (this.p === 'n' || this.p === 'nn') { this.h += 'ん'; this.p = ''; } }
+  fin() { if (this.p === 'n' || this.p === 'nn') { this.h += 'ã‚“'; this.p = ''; } }
 }
 
 // Storage
@@ -958,6 +1188,34 @@ function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+function goHome() {
+  show('s-home');
+  const h = new Date().getHours();
+  const greeting = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+  document.getElementById('home-greeting').textContent = greeting + ',\nAshwin.';
+  const d = new Date();
+  document.getElementById('home-date').textContent = d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long' });
+  syncSyncDot();
+}
+function syncSyncDot() {
+  const dot = document.getElementById('sync-dot');
+  const lbl = document.getElementById('sync-lbl');
+  const dot2 = document.getElementById('sync-dot2');
+  const lbl2 = document.getElementById('sync-lbl2');
+  [dot, dot2].forEach(el => { if (el && dot) { el.className = dot.className; } });
+  if (lbl2 && lbl) lbl2.textContent = lbl.textContent;
+}
+const SUBJECT_TITLES = { jp:'ðŸ‡¯ðŸ‡µ Japanese', fr:'ðŸ‡«ðŸ‡· French', kk:'æ¼¢å­— Kanji', em:'âš™ï¸ Eng. Materials' };
+function openSubject(lang) {
+  currentLang = lang;
+  if (lang === 'em') { goEMSettings(); return; }
+  document.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+  const tabMap = { jp:'tab-jp', fr:'tab-fr', kk:'tab-kk' };
+  if (tabMap[lang]) document.getElementById(tabMap[lang]).classList.add('active');
+  const t = document.getElementById('dash-title');
+  if (t) t.textContent = SUBJECT_TITLES[lang] || 'Grammar Trainer';
+  goDash();
+}
 function goDash() { show('s-dash'); renderDash(); }
 function goSettings() { show('s-settings'); }
 
@@ -979,7 +1237,7 @@ function renderDash() {
     const bars = trend.map((s,i) => {
       const p = pct(s.correct, s.total);
       const h = Math.max(4, Math.round(p/100*36));
-      return `<div class="tbar${i === trend.length-1 ? ' now' : ''}" style="height:${h}px" title="${p}% — ${fmtDate(s.date)}"></div>`;
+      return `<div class="tbar${i === trend.length-1 ? ' now' : ''}" style="height:${h}px" title="${p}% â€” ${fmtDate(s.date)}"></div>`;
     }).join('');
     document.getElementById('d-trend').innerHTML = `<p class="sec" style="margin-bottom:8px">Accuracy trend</p><div class="trend">${bars}</div>`;
   } else {
@@ -1010,7 +1268,7 @@ function renderDash() {
   `;
 
   if (!sessions.length) {
-    document.getElementById('d-sessions').innerHTML = `<div class="empty"><i class="ti ti-books" aria-hidden="true"></i>No sessions yet — start your first practice above.</div>`;
+    document.getElementById('d-sessions').innerHTML = `<div class="empty"><i class="ti ti-books" aria-hidden="true"></i>No sessions yet â€” start your first practice above.</div>`;
     return;
   }
   const rows = sessions.slice(0,8).map(s => {
@@ -1026,7 +1284,7 @@ function renderDash() {
   document.getElementById('d-sessions').innerHTML = `<p class="sec" style="margin-bottom:10px">Recent sessions</p>${rows}`;
 }
 
-// Settings → Quiz
+// Settings â†’ Quiz
 function getChecked(id) { return [...document.querySelectorAll('#' + id + ' input:checked')].map(x => x.value); }
 
 function beginQuiz() {
@@ -1085,7 +1343,7 @@ function checkAnswer() {
   const inp = document.getElementById('ime-input');
   const ra = document.getElementById('q-result');
   if (ok) {
-    ra.innerHTML = `<div class="res-ok"><i class="ti ti-check" aria-hidden="true"></i> Correct — <strong>${ans}</strong></div>`;
+    ra.innerHTML = `<div class="res-ok"><i class="ti ti-check" aria-hidden="true"></i> Correct â€” <strong>${ans}</strong></div>`;
     inp.style.borderColor = 'var(--ok-border)';
   } else {
     ra.innerHTML = `<div class="res-err"><i class="ti ti-x" aria-hidden="true"></i> The answer is <strong>${ans}</strong></div>`;
@@ -1102,7 +1360,7 @@ function skipVerb() {
   cur.answered = true; cur.total++;
   const ans = cur.currentVerb.forms[cur.currentForm];
   cur.questions.push({verb:cur.currentVerb.masu, form:cur.currentForm, group:cur.currentVerb.group, userAnswer:'', answer:ans, correct:false, skipped:true});
-  document.getElementById('q-result').innerHTML = `<div class="res-err">Skipped — answer: <strong>${ans}</strong></div>`;
+  document.getElementById('q-result').innerHTML = `<div class="res-err">Skipped â€” answer: <strong>${ans}</strong></div>`;
   document.getElementById('q-total').textContent = cur.total;
   document.getElementById('skip-btn').style.display = 'none';
   document.getElementById('next-btn').style.display = '';
@@ -1130,7 +1388,7 @@ function finishSession() {
 function renderResults(s) {
   const p = pct(s.correct, s.total);
   document.getElementById('res-num').textContent = s.correct + ' / ' + s.total;
-  document.getElementById('res-meta').textContent = p + '% accuracy · ' + fmtDur(s.duration) + ' · ' + s.forms.map(f => FL[f]).join(', ');
+  document.getElementById('res-meta').textContent = p + '% accuracy Â· ' + fmtDur(s.duration) + ' Â· ' + s.forms.map(f => FL[f]).join(', ');
   document.getElementById('res-cards').innerHTML = `
     <div class="stat-card"><div class="stat-label">Correct</div><div class="stat-val hi">${s.correct}</div></div>
     <div class="stat-card"><div class="stat-label">Wrong / skipped</div><div class="stat-val lo">${s.total - s.correct}</div></div>
@@ -1140,94 +1398,94 @@ function renderResults(s) {
     <div class="q-row">
       <span class="q-v">${q.verb}</span>
       <span class="q-f">${FJ[q.form] || q.form}</span>
-      <span class="q-a ${q.correct ? 'q-c' : 'q-w'}">${q.userAnswer || '—'}${!q.correct ? ` <span class="q-right">→ ${q.answer}</span>` : ''}</span>
-      <span style="font-size:13px;margin-left:auto;color:${q.correct ? 'var(--hi)' : 'var(--lo)'}">${q.correct ? '✓' : '✗'}</span>
+      <span class="q-a ${q.correct ? 'q-c' : 'q-w'}">${q.userAnswer || 'â€”'}${!q.correct ? ` <span class="q-right">â†’ ${q.answer}</span>` : ''}</span>
+      <span style="font-size:13px;margin-left:auto;color:${q.correct ? 'var(--hi)' : 'var(--lo)'}">${q.correct ? 'âœ“' : 'âœ—'}</span>
     </div>`).join('');
 }
 
-// ─── KANJI KENTEI ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ KANJI KENTEI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const KK_STORE = 'kk_quiz_v1';
 const KANJI_KEN = [
-  {n:1,  k:'一', m:'one',            on:['いち','いつ'],           kun:['ひとつ']},
-  {n:2,  k:'二', m:'two',            on:['に','じ'],               kun:['ふたつ']},
-  {n:3,  k:'三', m:'three',          on:['さん'],                  kun:['みっつ']},
-  {n:4,  k:'四', m:'four',           on:['し'],                    kun:['よっつ','よん']},
-  {n:5,  k:'五', m:'five',           on:['ご'],                    kun:['いつつ']},
-  {n:6,  k:'六', m:'six',            on:['ろく'],                  kun:['むっつ']},
-  {n:7,  k:'七', m:'seven',          on:['しち'],                  kun:['ななつ']},
-  {n:8,  k:'八', m:'eight',          on:['はち'],                  kun:['やっつ']},
-  {n:9,  k:'九', m:'nine',           on:['く','きゅう'],           kun:['ここのつ']},
-  {n:10, k:'十', m:'ten',            on:['じゅう'],                kun:['とお']},
-  {n:11, k:'百', m:'hundred',        on:['ひゃく'],                kun:['もも']},
-  {n:12, k:'千', m:'thousand',       on:['せん'],                  kun:['ち']},
-  {n:13, k:'上', m:'top, above',     on:['じょう'],                kun:['うえ']},
-  {n:14, k:'下', m:'bottom, below',  on:['か','げ'],               kun:['した','しも','もと']},
-  {n:15, k:'左', m:'left',           on:['さ'],                    kun:['ひだり']},
-  {n:16, k:'右', m:'right',          on:['う','ゆう'],             kun:['みぎ']},
-  {n:17, k:'中', m:'inside, middle', on:['ちゅう','じゅう'],       kun:['なか']},
-  {n:18, k:'大', m:'large',          on:['だい','たい'],           kun:['おおきい']},
-  {n:19, k:'小', m:'small',          on:['しょう'],                kun:['ちいさい','こ','お']},
-  {n:20, k:'月', m:'month; moon',    on:['がつ','げつ'],           kun:['つき']},
-  {n:21, k:'日', m:'day; sun',       on:['にち','じつ'],           kun:['ひ','か']},
-  {n:22, k:'年', m:'year',           on:['ねん'],                  kun:['とし']},
-  {n:23, k:'早', m:'early',          on:['そう','さ'],             kun:['はやい']},
-  {n:24, k:'木', m:'tree',           on:['もく','ぼく'],           kun:['き']},
-  {n:25, k:'林', m:'woods',          on:['りん'],                  kun:['はやし']},
-  {n:26, k:'山', m:'mountain',       on:['さん','ざん'],           kun:['やま']},
-  {n:27, k:'川', m:'river',          on:['せん'],                  kun:['かわ']},
-  {n:28, k:'土', m:'soil',           on:['ど','と'],               kun:['つち']},
-  {n:29, k:'空', m:'sky',            on:['くう'],                  kun:['そら','あく','から']},
-  {n:30, k:'田', m:'rice paddy',     on:['でん'],                  kun:['だ','た']},
-  {n:31, k:'天', m:'heaven or sky',  on:['てん'],                  kun:['あめ','あま']},
-  {n:32, k:'生', m:'life; raw',      on:['せい','しょう'],         kun:['いきる','うむ','なま']},
-  {n:33, k:'花', m:'flower',         on:['か'],                    kun:['はな']},
-  {n:34, k:'草', m:'grass',          on:['そう'],                  kun:['くさ']},
-  {n:35, k:'虫', m:'insect',         on:['ちゅう'],                kun:['むし']},
-  {n:36, k:'犬', m:'dog',            on:['けん'],                  kun:['いぬ']},
-  {n:37, k:'人', m:'person',         on:['じん','にん'],           kun:['ひと']},
-  {n:38, k:'名', m:'name',           on:['めい','みょう'],         kun:['な']},
-  {n:39, k:'女', m:'female',         on:['じょ','にょ'],           kun:['おんな']},
-  {n:40, k:'男', m:'male',           on:['だん','なん'],           kun:['おとこ']},
-  {n:41, k:'子', m:'child',          on:['し','す'],               kun:['こ']},
-  {n:42, k:'目', m:'eye',            on:['もく'],                  kun:['め']},
-  {n:43, k:'耳', m:'ear',            on:['じ','に'],               kun:['みみ']},
-  {n:44, k:'口', m:'mouth',          on:['こう'],                  kun:['くち']},
-  {n:45, k:'手', m:'hand',           on:['しゅ'],                  kun:['て']},
-  {n:46, k:'足', m:'foot',           on:['そく'],                  kun:['あし']},
-  {n:47, k:'見', m:'see',            on:['けん','げん'],           kun:['みる']},
-  {n:48, k:'音', m:'sound',          on:['おん'],                  kun:['ね','おと']},
-  {n:49, k:'力', m:'power',          on:['りき','りょく'],         kun:['ちから']},
-  {n:50, k:'気', m:'spirit; air',    on:['き','け'],               kun:['いき']},
-  {n:51, k:'円', m:'yen; circle',    on:['えん'],                  kun:['まる']},
-  {n:52, k:'入', m:'enter',          on:['にゅう'],                kun:['はいる','いる']},
-  {n:53, k:'出', m:'exit',           on:['しゅつ'],                kun:['で']},
-  {n:54, k:'立', m:'stand up',       on:['りつ'],                  kun:['たつ']},
-  {n:55, k:'休', m:'rest',           on:['きゅう'],                kun:['やすむ']},
-  {n:56, k:'先', m:'previous',       on:['せん'],                  kun:['さき']},
-  {n:57, k:'夕', m:'evening',        on:['せき'],                  kun:['ゆう']},
-  {n:58, k:'本', m:'book',           on:['ほん'],                  kun:['もと']},
-  {n:59, k:'文', m:'text',           on:['ぶん','もん'],           kun:['ふみ']},
-  {n:60, k:'字', m:'character',      on:['じ'],                    kun:['あざ']},
-  {n:61, k:'学', m:'study',          on:['がく'],                  kun:['まなぶ']},
-  {n:62, k:'校', m:'school',         on:['こう'],                  kun:['かせ']},
-  {n:63, k:'村', m:'village',        on:['そん'],                  kun:['むら']},
-  {n:64, k:'町', m:'town',           on:['ちょう'],                kun:['まち']},
-  {n:65, k:'森', m:'forest',         on:['しん'],                  kun:['もり']},
-  {n:66, k:'正', m:'correct',        on:['せい','しょう'],         kun:['ただしい','まさ']},
-  {n:67, k:'水', m:'water',          on:['すい'],                  kun:['みず']},
-  {n:68, k:'火', m:'fire',           on:['か'],                    kun:['ひ']},
-  {n:69, k:'玉', m:'gem',            on:['ぎょく'],                kun:['たま']},
-  {n:70, k:'王', m:'king',           on:['おう'],                  kun:['きみ']},
-  {n:71, k:'石', m:'stone',          on:['せき','こく'],           kun:['いし']},
-  {n:72, k:'竹', m:'bamboo',         on:['ちく'],                  kun:['たけ']},
-  {n:73, k:'糸', m:'thread',         on:['し'],                    kun:['いと']},
-  {n:74, k:'貝', m:'shellfish',      on:['ばい'],                  kun:['かい']},
-  {n:75, k:'車', m:'vehicle',        on:['しゃ'],                  kun:['くるま']},
-  {n:76, k:'金', m:'gold, money',    on:['きん'],                  kun:['かね','かな']},
-  {n:77, k:'雨', m:'rain',           on:['う'],                    kun:['あめ','あま']},
-  {n:78, k:'赤', m:'red',            on:['せき'],                  kun:['あか']},
-  {n:79, k:'青', m:'blue',           on:['せい','しょう'],         kun:['あお']},
-  {n:80, k:'白', m:'white',          on:['はく'],                  kun:['しろ','しら']},
+  {n:1,  k:'ä¸€', m:'one',            on:['ã„ã¡','ã„ã¤'],           kun:['ã²ã¨ã¤']},
+  {n:2,  k:'äºŒ', m:'two',            on:['ã«','ã˜'],               kun:['ãµãŸã¤']},
+  {n:3,  k:'ä¸‰', m:'three',          on:['ã•ã‚“'],                  kun:['ã¿ã£ã¤']},
+  {n:4,  k:'å››', m:'four',           on:['ã—'],                    kun:['ã‚ˆã£ã¤','ã‚ˆã‚“']},
+  {n:5,  k:'äº”', m:'five',           on:['ã”'],                    kun:['ã„ã¤ã¤']},
+  {n:6,  k:'å…­', m:'six',            on:['ã‚ã'],                  kun:['ã‚€ã£ã¤']},
+  {n:7,  k:'ä¸ƒ', m:'seven',          on:['ã—ã¡'],                  kun:['ãªãªã¤']},
+  {n:8,  k:'å…«', m:'eight',          on:['ã¯ã¡'],                  kun:['ã‚„ã£ã¤']},
+  {n:9,  k:'ä¹', m:'nine',           on:['ã','ãã‚…ã†'],           kun:['ã“ã“ã®ã¤']},
+  {n:10, k:'å', m:'ten',            on:['ã˜ã‚…ã†'],                kun:['ã¨ãŠ']},
+  {n:11, k:'ç™¾', m:'hundred',        on:['ã²ã‚ƒã'],                kun:['ã‚‚ã‚‚']},
+  {n:12, k:'åƒ', m:'thousand',       on:['ã›ã‚“'],                  kun:['ã¡']},
+  {n:13, k:'ä¸Š', m:'top, above',     on:['ã˜ã‚‡ã†'],                kun:['ã†ãˆ']},
+  {n:14, k:'ä¸‹', m:'bottom, below',  on:['ã‹','ã’'],               kun:['ã—ãŸ','ã—ã‚‚','ã‚‚ã¨']},
+  {n:15, k:'å·¦', m:'left',           on:['ã•'],                    kun:['ã²ã ã‚Š']},
+  {n:16, k:'å³', m:'right',          on:['ã†','ã‚†ã†'],             kun:['ã¿ãŽ']},
+  {n:17, k:'ä¸­', m:'inside, middle', on:['ã¡ã‚…ã†','ã˜ã‚…ã†'],       kun:['ãªã‹']},
+  {n:18, k:'å¤§', m:'large',          on:['ã ã„','ãŸã„'],           kun:['ãŠãŠãã„']},
+  {n:19, k:'å°', m:'small',          on:['ã—ã‚‡ã†'],                kun:['ã¡ã„ã•ã„','ã“','ãŠ']},
+  {n:20, k:'æœˆ', m:'month; moon',    on:['ãŒã¤','ã’ã¤'],           kun:['ã¤ã']},
+  {n:21, k:'æ—¥', m:'day; sun',       on:['ã«ã¡','ã˜ã¤'],           kun:['ã²','ã‹']},
+  {n:22, k:'å¹´', m:'year',           on:['ã­ã‚“'],                  kun:['ã¨ã—']},
+  {n:23, k:'æ—©', m:'early',          on:['ãã†','ã•'],             kun:['ã¯ã‚„ã„']},
+  {n:24, k:'æœ¨', m:'tree',           on:['ã‚‚ã','ã¼ã'],           kun:['ã']},
+  {n:25, k:'æž—', m:'woods',          on:['ã‚Šã‚“'],                  kun:['ã¯ã‚„ã—']},
+  {n:26, k:'å±±', m:'mountain',       on:['ã•ã‚“','ã–ã‚“'],           kun:['ã‚„ã¾']},
+  {n:27, k:'å·', m:'river',          on:['ã›ã‚“'],                  kun:['ã‹ã‚']},
+  {n:28, k:'åœŸ', m:'soil',           on:['ã©','ã¨'],               kun:['ã¤ã¡']},
+  {n:29, k:'ç©º', m:'sky',            on:['ãã†'],                  kun:['ãã‚‰','ã‚ã','ã‹ã‚‰']},
+  {n:30, k:'ç”°', m:'rice paddy',     on:['ã§ã‚“'],                  kun:['ã ','ãŸ']},
+  {n:31, k:'å¤©', m:'heaven or sky',  on:['ã¦ã‚“'],                  kun:['ã‚ã‚','ã‚ã¾']},
+  {n:32, k:'ç”Ÿ', m:'life; raw',      on:['ã›ã„','ã—ã‚‡ã†'],         kun:['ã„ãã‚‹','ã†ã‚€','ãªã¾']},
+  {n:33, k:'èŠ±', m:'flower',         on:['ã‹'],                    kun:['ã¯ãª']},
+  {n:34, k:'è‰', m:'grass',          on:['ãã†'],                  kun:['ãã•']},
+  {n:35, k:'è™«', m:'insect',         on:['ã¡ã‚…ã†'],                kun:['ã‚€ã—']},
+  {n:36, k:'çŠ¬', m:'dog',            on:['ã‘ã‚“'],                  kun:['ã„ã¬']},
+  {n:37, k:'äºº', m:'person',         on:['ã˜ã‚“','ã«ã‚“'],           kun:['ã²ã¨']},
+  {n:38, k:'å', m:'name',           on:['ã‚ã„','ã¿ã‚‡ã†'],         kun:['ãª']},
+  {n:39, k:'å¥³', m:'female',         on:['ã˜ã‚‡','ã«ã‚‡'],           kun:['ãŠã‚“ãª']},
+  {n:40, k:'ç”·', m:'male',           on:['ã ã‚“','ãªã‚“'],           kun:['ãŠã¨ã“']},
+  {n:41, k:'å­', m:'child',          on:['ã—','ã™'],               kun:['ã“']},
+  {n:42, k:'ç›®', m:'eye',            on:['ã‚‚ã'],                  kun:['ã‚']},
+  {n:43, k:'è€³', m:'ear',            on:['ã˜','ã«'],               kun:['ã¿ã¿']},
+  {n:44, k:'å£', m:'mouth',          on:['ã“ã†'],                  kun:['ãã¡']},
+  {n:45, k:'æ‰‹', m:'hand',           on:['ã—ã‚…'],                  kun:['ã¦']},
+  {n:46, k:'è¶³', m:'foot',           on:['ãã'],                  kun:['ã‚ã—']},
+  {n:47, k:'è¦‹', m:'see',            on:['ã‘ã‚“','ã’ã‚“'],           kun:['ã¿ã‚‹']},
+  {n:48, k:'éŸ³', m:'sound',          on:['ãŠã‚“'],                  kun:['ã­','ãŠã¨']},
+  {n:49, k:'åŠ›', m:'power',          on:['ã‚Šã','ã‚Šã‚‡ã'],         kun:['ã¡ã‹ã‚‰']},
+  {n:50, k:'æ°—', m:'spirit; air',    on:['ã','ã‘'],               kun:['ã„ã']},
+  {n:51, k:'å††', m:'yen; circle',    on:['ãˆã‚“'],                  kun:['ã¾ã‚‹']},
+  {n:52, k:'å…¥', m:'enter',          on:['ã«ã‚…ã†'],                kun:['ã¯ã„ã‚‹','ã„ã‚‹']},
+  {n:53, k:'å‡º', m:'exit',           on:['ã—ã‚…ã¤'],                kun:['ã§']},
+  {n:54, k:'ç«‹', m:'stand up',       on:['ã‚Šã¤'],                  kun:['ãŸã¤']},
+  {n:55, k:'ä¼‘', m:'rest',           on:['ãã‚…ã†'],                kun:['ã‚„ã™ã‚€']},
+  {n:56, k:'å…ˆ', m:'previous',       on:['ã›ã‚“'],                  kun:['ã•ã']},
+  {n:57, k:'å¤•', m:'evening',        on:['ã›ã'],                  kun:['ã‚†ã†']},
+  {n:58, k:'æœ¬', m:'book',           on:['ã»ã‚“'],                  kun:['ã‚‚ã¨']},
+  {n:59, k:'æ–‡', m:'text',           on:['ã¶ã‚“','ã‚‚ã‚“'],           kun:['ãµã¿']},
+  {n:60, k:'å­—', m:'character',      on:['ã˜'],                    kun:['ã‚ã–']},
+  {n:61, k:'å­¦', m:'study',          on:['ãŒã'],                  kun:['ã¾ãªã¶']},
+  {n:62, k:'æ ¡', m:'school',         on:['ã“ã†'],                  kun:['ã‹ã›']},
+  {n:63, k:'æ‘', m:'village',        on:['ãã‚“'],                  kun:['ã‚€ã‚‰']},
+  {n:64, k:'ç”º', m:'town',           on:['ã¡ã‚‡ã†'],                kun:['ã¾ã¡']},
+  {n:65, k:'æ£®', m:'forest',         on:['ã—ã‚“'],                  kun:['ã‚‚ã‚Š']},
+  {n:66, k:'æ­£', m:'correct',        on:['ã›ã„','ã—ã‚‡ã†'],         kun:['ãŸã ã—ã„','ã¾ã•']},
+  {n:67, k:'æ°´', m:'water',          on:['ã™ã„'],                  kun:['ã¿ãš']},
+  {n:68, k:'ç«', m:'fire',           on:['ã‹'],                    kun:['ã²']},
+  {n:69, k:'çŽ‰', m:'gem',            on:['ãŽã‚‡ã'],                kun:['ãŸã¾']},
+  {n:70, k:'çŽ‹', m:'king',           on:['ãŠã†'],                  kun:['ãã¿']},
+  {n:71, k:'çŸ³', m:'stone',          on:['ã›ã','ã“ã'],           kun:['ã„ã—']},
+  {n:72, k:'ç«¹', m:'bamboo',         on:['ã¡ã'],                  kun:['ãŸã‘']},
+  {n:73, k:'ç³¸', m:'thread',         on:['ã—'],                    kun:['ã„ã¨']},
+  {n:74, k:'è²', m:'shellfish',      on:['ã°ã„'],                  kun:['ã‹ã„']},
+  {n:75, k:'è»Š', m:'vehicle',        on:['ã—ã‚ƒ'],                  kun:['ãã‚‹ã¾']},
+  {n:76, k:'é‡‘', m:'gold, money',    on:['ãã‚“'],                  kun:['ã‹ã­','ã‹ãª']},
+  {n:77, k:'é›¨', m:'rain',           on:['ã†'],                    kun:['ã‚ã‚','ã‚ã¾']},
+  {n:78, k:'èµ¤', m:'red',            on:['ã›ã'],                  kun:['ã‚ã‹']},
+  {n:79, k:'é’', m:'blue',           on:['ã›ã„','ã—ã‚‡ã†'],         kun:['ã‚ãŠ']},
+  {n:80, k:'ç™½', m:'white',          on:['ã¯ã'],                  kun:['ã—ã‚','ã—ã‚‰']},
 ];
 
 let kkSessions = (function(){ try { return JSON.parse(localStorage.getItem(KK_STORE)||'[]'); } catch(e){ return []; } })();
@@ -1257,8 +1515,8 @@ function buildKKFields(entry, practiceOn, practiceKun) {
       const id = `kkf-${type}-${i}`;
       kkFields.push({ id, ime: new IME(), type, readings });
       const label = type === 'on'
-        ? (readings.length > 1 ? `音読み ${i+1}` : '音読み')
-        : (readings.length > 1 ? `訓読み ${i+1}` : '訓読み');
+        ? (readings.length > 1 ? `éŸ³èª­ã¿ ${i+1}` : 'éŸ³èª­ã¿')
+        : (readings.length > 1 ? `è¨“èª­ã¿ ${i+1}` : 'è¨“èª­ã¿');
       const wrap = document.createElement('div');
       wrap.className = 'kk-field-wrap';
       wrap.innerHTML = `
@@ -1365,7 +1623,7 @@ function checkKKAnswer() {
     const ok    = !!typed && f.readings.includes(typed) && !used.includes(typed);
     if (ok) { pts++; used.push(typed); }
     document.getElementById(f.id).style.borderColor = ok ? 'var(--ok-border)' : 'var(--err-border)';
-    document.getElementById(f.id + '-hira').textContent = typed || '—';
+    document.getElementById(f.id + '-hira').textContent = typed || 'â€”';
     document.getElementById(f.id + '-pend').textContent = '';
   });
 
@@ -1374,12 +1632,12 @@ function checkKKAnswer() {
   kkCur.total++;
 
   let feedback = '';
-  if (kkCur.practiceOn)  feedback += `音: <strong>${kkCur.entry.on.join('、')}</strong>`;
-  if (kkCur.practiceOn && kkCur.practiceKun) feedback += '　';
-  if (kkCur.practiceKun) feedback += `訓: <strong>${kkCur.entry.kun.join('、')}</strong>`;
+  if (kkCur.practiceOn)  feedback += `éŸ³: <strong>${kkCur.entry.on.join('ã€')}</strong>`;
+  if (kkCur.practiceOn && kkCur.practiceKun) feedback += 'ã€€';
+  if (kkCur.practiceKun) feedback += `è¨“: <strong>${kkCur.entry.kun.join('ã€')}</strong>`;
 
   document.getElementById('kq-result').innerHTML = allOk
-    ? `<div class="res-ok"><i class="ti ti-check"></i> Correct — ${feedback}</div>`
+    ? `<div class="res-ok"><i class="ti ti-check"></i> Correct â€” ${feedback}</div>`
     : `<div class="res-err"><i class="ti ti-x"></i> ${feedback}</div>`;
 
   const typed = kkFields.map(f => ({type:f.type, val:f.ime.h.trim()}));
@@ -1396,10 +1654,10 @@ function skipKK() {
   const e = kkCur.entry;
   kkCur.questions.push({ kanji:e.k, meaning:e.m, typed:[], correct:false, onAnswers:e.on, kunAnswers:e.kun, skipped:true });
   let feedback = '';
-  if (kkCur.practiceOn)  feedback += `音: <strong>${e.on.join('、')}</strong>`;
-  if (kkCur.practiceOn && kkCur.practiceKun) feedback += '　';
-  if (kkCur.practiceKun) feedback += `訓: <strong>${e.kun.join('、')}</strong>`;
-  document.getElementById('kq-result').innerHTML = `<div class="res-err">Skipped — ${feedback}</div>`;
+  if (kkCur.practiceOn)  feedback += `éŸ³: <strong>${e.on.join('ã€')}</strong>`;
+  if (kkCur.practiceOn && kkCur.practiceKun) feedback += 'ã€€';
+  if (kkCur.practiceKun) feedback += `è¨“: <strong>${e.kun.join('ã€')}</strong>`;
+  document.getElementById('kq-result').innerHTML = `<div class="res-err">Skipped â€” ${feedback}</div>`;
   document.getElementById('kq-total').textContent = kkCur.total;
   document.getElementById('kk-skip-btn').style.display = 'none';
   document.getElementById('kk-next-btn').style.display = '';
@@ -1422,7 +1680,7 @@ function finishKKSession() {
 function renderKKResults(s) {
   const p = pct(s.correct, s.total);
   document.getElementById('kk-res-num').textContent = s.correct + ' / ' + s.total;
-  document.getElementById('kk-res-meta').textContent = p + '% accuracy · ' + fmtDur(s.duration);
+  document.getElementById('kk-res-meta').textContent = p + '% accuracy Â· ' + fmtDur(s.duration);
   document.getElementById('kk-res-cards').innerHTML = `
     <div class="stat-card"><div class="stat-label">Correct</div><div class="stat-val hi">${s.correct}</div></div>
     <div class="stat-card"><div class="stat-label">Wrong</div><div class="stat-val lo">${s.total-s.correct}</div></div>
@@ -1434,10 +1692,10 @@ function renderKKResults(s) {
       <span style="font-size:11px;color:var(--text-3);width:60px;flex-shrink:0">${q.meaning}</span>
       <span class="q-a" style="flex:1;font-size:12px">
         ${q.skipped ? '<span style="color:var(--text-3)">skipped</span>' : ''}
-        ${(q.typed||[]).map(t => `<span class="${t.val&&(t.type==='on'?q.onAnswers:q.kunAnswers).includes(t.val)?'q-c':'q-w'}">${t.val||'—'}</span>`).join(' ')}
-        <span class="q-right">→ ${[...q.onAnswers, ...q.kunAnswers].join('、')}</span>
+        ${(q.typed||[]).map(t => `<span class="${t.val&&(t.type==='on'?q.onAnswers:q.kunAnswers).includes(t.val)?'q-c':'q-w'}">${t.val||'â€”'}</span>`).join(' ')}
+        <span class="q-right">â†’ ${[...q.onAnswers, ...q.kunAnswers].join('ã€')}</span>
       </span>
-      <span style="font-size:13px;margin-left:auto;color:${q.correct?'var(--hi)':'var(--lo)'}">${q.correct?'✓':'✗'}</span>
+      <span style="font-size:13px;margin-left:auto;color:${q.correct?'var(--hi)':'var(--lo)'}">${q.correct?'âœ“':'âœ—'}</span>
     </div>`).join('');
 }
 
@@ -1457,7 +1715,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Tab') { e.preventDefault(); setKKActiveIdx((kkActiveIdx + (e.shiftKey?-1:1) + kkFields.length) % kkFields.length); }
 });
 
-// ─── CLOUD SYNC ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ CLOUD SYNC â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SYNC_CFG_KEY = 'grammar_sync_cfg';
 let sb = null;
 let _syncCode = null;
@@ -1479,7 +1737,7 @@ function setSyncUI(state) {
   const dot = document.getElementById('sync-dot');
   const lbl = document.getElementById('sync-lbl');
   if (!dot) return;
-  const states = { none:['#a0a0a0','Set up sync'], connected:['#15803d','Synced'], syncing:['#b45309','Syncing…'], error:['#dc2626','Sync error'] };
+  const states = { none:['#a0a0a0','Set up sync'], connected:['#15803d','Synced'], syncing:['#b45309','Syncingâ€¦'], error:['#dc2626','Sync error'] };
   const [col, txt] = states[state] || states.none;
   dot.style.background = col;
   lbl.textContent = txt;
@@ -1528,7 +1786,7 @@ async function connectSupabase() {
     setSyncUI('connected');
     goDash();
   } catch(e) {
-    err.textContent = 'Connection failed — check your URL and key. ' + (e.message || '');
+    err.textContent = 'Connection failed â€” check your URL and key. ' + (e.message || '');
     err.style.display = 'block';
   }
 }
@@ -1550,11 +1808,11 @@ function loadSyncScreen() {
   if (cfg) document.getElementById('sync-code-display').textContent = cfg.syncCode;
 }
 
-// ─── FRENCH ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ FRENCH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const FR_STORE = 'fr_quiz_v1';
 const TENSE_LABELS = {
-  présent: 'Présent',
-  passé_composé: 'Passé composé',
+  prÃ©sent: 'PrÃ©sent',
+  passÃ©_composÃ©: 'PassÃ© composÃ©',
   imparfait: 'Imparfait',
   futur_proche: 'Futur proche',
   futur_simple: 'Futur simple'
@@ -1562,149 +1820,149 @@ const TENSE_LABELS = {
 
 const FR_VERBS = [
   {inf:'parler',meaning:'to speak',type:'-er',forms:{
-    présent:{je:'parle',tu:'parles',il:'parle',elle:'parle',on:'parle',nous:'parlons',vous:'parlez',ils:'parlent',elles:'parlent'},
-    passé_composé:{je:'ai parlé',tu:'as parlé',il:'a parlé',elle:'a parlé',on:'a parlé',nous:'avons parlé',vous:'avez parlé',ils:'ont parlé',elles:'ont parlé'},
+    prÃ©sent:{je:'parle',tu:'parles',il:'parle',elle:'parle',on:'parle',nous:'parlons',vous:'parlez',ils:'parlent',elles:'parlent'},
+    passÃ©_composÃ©:{je:'ai parlÃ©',tu:'as parlÃ©',il:'a parlÃ©',elle:'a parlÃ©',on:'a parlÃ©',nous:'avons parlÃ©',vous:'avez parlÃ©',ils:'ont parlÃ©',elles:'ont parlÃ©'},
     imparfait:{je:'parlais',tu:'parlais',il:'parlait',elle:'parlait',on:'parlait',nous:'parlions',vous:'parliez',ils:'parlaient',elles:'parlaient'},
     futur_proche:{je:'vais parler',tu:'vas parler',il:'va parler',elle:'va parler',on:'va parler',nous:'allons parler',vous:'allez parler',ils:'vont parler',elles:'vont parler'},
     futur_simple:{je:'parlerai',tu:'parleras',il:'parlera',elle:'parlera',on:'parlera',nous:'parlerons',vous:'parlerez',ils:'parleront',elles:'parleront'},
   }},
   {inf:'manger',meaning:'to eat',type:'-er',forms:{
-    présent:{je:'mange',tu:'manges',il:'mange',elle:'mange',on:'mange',nous:'mangeons',vous:'mangez',ils:'mangent',elles:'mangent'},
-    passé_composé:{je:'ai mangé',tu:'as mangé',il:'a mangé',elle:'a mangé',on:'a mangé',nous:'avons mangé',vous:'avez mangé',ils:'ont mangé',elles:'ont mangé'},
+    prÃ©sent:{je:'mange',tu:'manges',il:'mange',elle:'mange',on:'mange',nous:'mangeons',vous:'mangez',ils:'mangent',elles:'mangent'},
+    passÃ©_composÃ©:{je:'ai mangÃ©',tu:'as mangÃ©',il:'a mangÃ©',elle:'a mangÃ©',on:'a mangÃ©',nous:'avons mangÃ©',vous:'avez mangÃ©',ils:'ont mangÃ©',elles:'ont mangÃ©'},
     imparfait:{je:'mangeais',tu:'mangeais',il:'mangeait',elle:'mangeait',on:'mangeait',nous:'mangions',vous:'mangiez',ils:'mangeaient',elles:'mangeaient'},
     futur_proche:{je:'vais manger',tu:'vas manger',il:'va manger',elle:'va manger',on:'va manger',nous:'allons manger',vous:'allez manger',ils:'vont manger',elles:'vont manger'},
     futur_simple:{je:'mangerai',tu:'mangeras',il:'mangera',elle:'mangera',on:'mangera',nous:'mangerons',vous:'mangerez',ils:'mangeront',elles:'mangeront'},
   }},
   {inf:'finir',meaning:'to finish',type:'-ir',forms:{
-    présent:{je:'finis',tu:'finis',il:'finit',elle:'finit',on:'finit',nous:'finissons',vous:'finissez',ils:'finissent',elles:'finissent'},
-    passé_composé:{je:'ai fini',tu:'as fini',il:'a fini',elle:'a fini',on:'a fini',nous:'avons fini',vous:'avez fini',ils:'ont fini',elles:'ont fini'},
+    prÃ©sent:{je:'finis',tu:'finis',il:'finit',elle:'finit',on:'finit',nous:'finissons',vous:'finissez',ils:'finissent',elles:'finissent'},
+    passÃ©_composÃ©:{je:'ai fini',tu:'as fini',il:'a fini',elle:'a fini',on:'a fini',nous:'avons fini',vous:'avez fini',ils:'ont fini',elles:'ont fini'},
     imparfait:{je:'finissais',tu:'finissais',il:'finissait',elle:'finissait',on:'finissait',nous:'finissions',vous:'finissiez',ils:'finissaient',elles:'finissaient'},
     futur_proche:{je:'vais finir',tu:'vas finir',il:'va finir',elle:'va finir',on:'va finir',nous:'allons finir',vous:'allez finir',ils:'vont finir',elles:'vont finir'},
     futur_simple:{je:'finirai',tu:'finiras',il:'finira',elle:'finira',on:'finira',nous:'finirons',vous:'finirez',ils:'finiront',elles:'finiront'},
   }},
-  {inf:'être',meaning:'to be',type:'irreg',forms:{
-    présent:{je:'suis',tu:'es',il:'est',elle:'est',on:'est',nous:'sommes',vous:'êtes',ils:'sont',elles:'sont'},
-    passé_composé:{je:'ai été',tu:'as été',il:'a été',elle:'a été',on:'a été',nous:'avons été',vous:'avez été',ils:'ont été',elles:'ont été'},
-    imparfait:{je:'étais',tu:'étais',il:'était',elle:'était',on:'était',nous:'étions',vous:'étiez',ils:'étaient',elles:'étaient'},
-    futur_proche:{je:'vais être',tu:'vas être',il:'va être',elle:'va être',on:'va être',nous:'allons être',vous:'allez être',ils:'vont être',elles:'vont être'},
+  {inf:'Ãªtre',meaning:'to be',type:'irreg',forms:{
+    prÃ©sent:{je:'suis',tu:'es',il:'est',elle:'est',on:'est',nous:'sommes',vous:'Ãªtes',ils:'sont',elles:'sont'},
+    passÃ©_composÃ©:{je:'ai Ã©tÃ©',tu:'as Ã©tÃ©',il:'a Ã©tÃ©',elle:'a Ã©tÃ©',on:'a Ã©tÃ©',nous:'avons Ã©tÃ©',vous:'avez Ã©tÃ©',ils:'ont Ã©tÃ©',elles:'ont Ã©tÃ©'},
+    imparfait:{je:'Ã©tais',tu:'Ã©tais',il:'Ã©tait',elle:'Ã©tait',on:'Ã©tait',nous:'Ã©tions',vous:'Ã©tiez',ils:'Ã©taient',elles:'Ã©taient'},
+    futur_proche:{je:'vais Ãªtre',tu:'vas Ãªtre',il:'va Ãªtre',elle:'va Ãªtre',on:'va Ãªtre',nous:'allons Ãªtre',vous:'allez Ãªtre',ils:'vont Ãªtre',elles:'vont Ãªtre'},
     futur_simple:{je:'serai',tu:'seras',il:'sera',elle:'sera',on:'sera',nous:'serons',vous:'serez',ils:'seront',elles:'seront'},
   }},
   {inf:'avoir',meaning:'to have',type:'irreg',forms:{
-    présent:{je:'ai',tu:'as',il:'a',elle:'a',on:'a',nous:'avons',vous:'avez',ils:'ont',elles:'ont'},
-    passé_composé:{je:'ai eu',tu:'as eu',il:'a eu',elle:'a eu',on:'a eu',nous:'avons eu',vous:'avez eu',ils:'ont eu',elles:'ont eu'},
+    prÃ©sent:{je:'ai',tu:'as',il:'a',elle:'a',on:'a',nous:'avons',vous:'avez',ils:'ont',elles:'ont'},
+    passÃ©_composÃ©:{je:'ai eu',tu:'as eu',il:'a eu',elle:'a eu',on:'a eu',nous:'avons eu',vous:'avez eu',ils:'ont eu',elles:'ont eu'},
     imparfait:{je:'avais',tu:'avais',il:'avait',elle:'avait',on:'avait',nous:'avions',vous:'aviez',ils:'avaient',elles:'avaient'},
     futur_proche:{je:'vais avoir',tu:'vas avoir',il:'va avoir',elle:'va avoir',on:'va avoir',nous:'allons avoir',vous:'allez avoir',ils:'vont avoir',elles:'vont avoir'},
     futur_simple:{je:'aurai',tu:'auras',il:'aura',elle:'aura',on:'aura',nous:'aurons',vous:'aurez',ils:'auront',elles:'auront'},
   }},
   {inf:'aller',meaning:'to go',type:'irreg',forms:{
-    présent:{je:'vais',tu:'vas',il:'va',elle:'va',on:'va',nous:'allons',vous:'allez',ils:'vont',elles:'vont'},
-    passé_composé:{je:'suis allé',tu:'es allé',il:'est allé',elle:'est allée',on:'est allé',nous:'sommes allés',vous:'êtes allés',ils:'sont allés',elles:'sont allées'},
+    prÃ©sent:{je:'vais',tu:'vas',il:'va',elle:'va',on:'va',nous:'allons',vous:'allez',ils:'vont',elles:'vont'},
+    passÃ©_composÃ©:{je:'suis allÃ©',tu:'es allÃ©',il:'est allÃ©',elle:'est allÃ©e',on:'est allÃ©',nous:'sommes allÃ©s',vous:'Ãªtes allÃ©s',ils:'sont allÃ©s',elles:'sont allÃ©es'},
     imparfait:{je:'allais',tu:'allais',il:'allait',elle:'allait',on:'allait',nous:'allions',vous:'alliez',ils:'allaient',elles:'allaient'},
     futur_proche:{je:'vais aller',tu:'vas aller',il:'va aller',elle:'va aller',on:'va aller',nous:'allons aller',vous:'allez aller',ils:'vont aller',elles:'vont aller'},
     futur_simple:{je:'irai',tu:'iras',il:'ira',elle:'ira',on:'ira',nous:'irons',vous:'irez',ils:'iront',elles:'iront'},
   }},
   {inf:'faire',meaning:'to do / make',type:'irreg',forms:{
-    présent:{je:'fais',tu:'fais',il:'fait',elle:'fait',on:'fait',nous:'faisons',vous:'faites',ils:'font',elles:'font'},
-    passé_composé:{je:'ai fait',tu:'as fait',il:'a fait',elle:'a fait',on:'a fait',nous:'avons fait',vous:'avez fait',ils:'ont fait',elles:'ont fait'},
+    prÃ©sent:{je:'fais',tu:'fais',il:'fait',elle:'fait',on:'fait',nous:'faisons',vous:'faites',ils:'font',elles:'font'},
+    passÃ©_composÃ©:{je:'ai fait',tu:'as fait',il:'a fait',elle:'a fait',on:'a fait',nous:'avons fait',vous:'avez fait',ils:'ont fait',elles:'ont fait'},
     imparfait:{je:'faisais',tu:'faisais',il:'faisait',elle:'faisait',on:'faisait',nous:'faisions',vous:'faisiez',ils:'faisaient',elles:'faisaient'},
     futur_proche:{je:'vais faire',tu:'vas faire',il:'va faire',elle:'va faire',on:'va faire',nous:'allons faire',vous:'allez faire',ils:'vont faire',elles:'vont faire'},
     futur_simple:{je:'ferai',tu:'feras',il:'fera',elle:'fera',on:'fera',nous:'ferons',vous:'ferez',ils:'feront',elles:'feront'},
   }},
   {inf:'vouloir',meaning:'to want',type:'irreg',forms:{
-    présent:{je:'veux',tu:'veux',il:'veut',elle:'veut',on:'veut',nous:'voulons',vous:'voulez',ils:'veulent',elles:'veulent'},
-    passé_composé:{je:'ai voulu',tu:'as voulu',il:'a voulu',elle:'a voulu',on:'a voulu',nous:'avons voulu',vous:'avez voulu',ils:'ont voulu',elles:'ont voulu'},
+    prÃ©sent:{je:'veux',tu:'veux',il:'veut',elle:'veut',on:'veut',nous:'voulons',vous:'voulez',ils:'veulent',elles:'veulent'},
+    passÃ©_composÃ©:{je:'ai voulu',tu:'as voulu',il:'a voulu',elle:'a voulu',on:'a voulu',nous:'avons voulu',vous:'avez voulu',ils:'ont voulu',elles:'ont voulu'},
     imparfait:{je:'voulais',tu:'voulais',il:'voulait',elle:'voulait',on:'voulait',nous:'voulions',vous:'vouliez',ils:'voulaient',elles:'voulaient'},
     futur_proche:{je:'vais vouloir',tu:'vas vouloir',il:'va vouloir',elle:'va vouloir',on:'va vouloir',nous:'allons vouloir',vous:'allez vouloir',ils:'vont vouloir',elles:'vont vouloir'},
     futur_simple:{je:'voudrai',tu:'voudras',il:'voudra',elle:'voudra',on:'voudra',nous:'voudrons',vous:'voudrez',ils:'voudront',elles:'voudront'},
   }},
   {inf:'pouvoir',meaning:'to be able to',type:'irreg',forms:{
-    présent:{je:'peux',tu:'peux',il:'peut',elle:'peut',on:'peut',nous:'pouvons',vous:'pouvez',ils:'peuvent',elles:'peuvent'},
-    passé_composé:{je:'ai pu',tu:'as pu',il:'a pu',elle:'a pu',on:'a pu',nous:'avons pu',vous:'avez pu',ils:'ont pu',elles:'ont pu'},
+    prÃ©sent:{je:'peux',tu:'peux',il:'peut',elle:'peut',on:'peut',nous:'pouvons',vous:'pouvez',ils:'peuvent',elles:'peuvent'},
+    passÃ©_composÃ©:{je:'ai pu',tu:'as pu',il:'a pu',elle:'a pu',on:'a pu',nous:'avons pu',vous:'avez pu',ils:'ont pu',elles:'ont pu'},
     imparfait:{je:'pouvais',tu:'pouvais',il:'pouvait',elle:'pouvait',on:'pouvait',nous:'pouvions',vous:'pouviez',ils:'pouvaient',elles:'pouvaient'},
     futur_proche:{je:'vais pouvoir',tu:'vas pouvoir',il:'va pouvoir',elle:'va pouvoir',on:'va pouvoir',nous:'allons pouvoir',vous:'allez pouvoir',ils:'vont pouvoir',elles:'vont pouvoir'},
     futur_simple:{je:'pourrai',tu:'pourras',il:'pourra',elle:'pourra',on:'pourra',nous:'pourrons',vous:'pourrez',ils:'pourront',elles:'pourront'},
   }},
   {inf:'prendre',meaning:'to take',type:'irreg',forms:{
-    présent:{je:'prends',tu:'prends',il:'prend',elle:'prend',on:'prend',nous:'prenons',vous:'prenez',ils:'prennent',elles:'prennent'},
-    passé_composé:{je:'ai pris',tu:'as pris',il:'a pris',elle:'a pris',on:'a pris',nous:'avons pris',vous:'avez pris',ils:'ont pris',elles:'ont pris'},
+    prÃ©sent:{je:'prends',tu:'prends',il:'prend',elle:'prend',on:'prend',nous:'prenons',vous:'prenez',ils:'prennent',elles:'prennent'},
+    passÃ©_composÃ©:{je:'ai pris',tu:'as pris',il:'a pris',elle:'a pris',on:'a pris',nous:'avons pris',vous:'avez pris',ils:'ont pris',elles:'ont pris'},
     imparfait:{je:'prenais',tu:'prenais',il:'prenait',elle:'prenait',on:'prenait',nous:'prenions',vous:'preniez',ils:'prenaient',elles:'prenaient'},
     futur_proche:{je:'vais prendre',tu:'vas prendre',il:'va prendre',elle:'va prendre',on:'va prendre',nous:'allons prendre',vous:'allez prendre',ils:'vont prendre',elles:'vont prendre'},
     futur_simple:{je:'prendrai',tu:'prendras',il:'prendra',elle:'prendra',on:'prendra',nous:'prendrons',vous:'prendrez',ils:'prendront',elles:'prendront'},
   }},
   {inf:'venir',meaning:'to come',type:'irreg',forms:{
-    présent:{je:'viens',tu:'viens',il:'vient',elle:'vient',on:'vient',nous:'venons',vous:'venez',ils:'viennent',elles:'viennent'},
-    passé_composé:{je:'suis venu',tu:'es venu',il:'est venu',elle:'est venue',on:'est venu',nous:'sommes venus',vous:'êtes venus',ils:'sont venus',elles:'sont venues'},
+    prÃ©sent:{je:'viens',tu:'viens',il:'vient',elle:'vient',on:'vient',nous:'venons',vous:'venez',ils:'viennent',elles:'viennent'},
+    passÃ©_composÃ©:{je:'suis venu',tu:'es venu',il:'est venu',elle:'est venue',on:'est venu',nous:'sommes venus',vous:'Ãªtes venus',ils:'sont venus',elles:'sont venues'},
     imparfait:{je:'venais',tu:'venais',il:'venait',elle:'venait',on:'venait',nous:'venions',vous:'veniez',ils:'venaient',elles:'venaient'},
     futur_proche:{je:'vais venir',tu:'vas venir',il:'va venir',elle:'va venir',on:'va venir',nous:'allons venir',vous:'allez venir',ils:'vont venir',elles:'vont venir'},
     futur_simple:{je:'viendrai',tu:'viendras',il:'viendra',elle:'viendra',on:'viendra',nous:'viendrons',vous:'viendrez',ils:'viendront',elles:'viendront'},
   }},
   {inf:'voir',meaning:'to see',type:'irreg',forms:{
-    présent:{je:'vois',tu:'vois',il:'voit',elle:'voit',on:'voit',nous:'voyons',vous:'voyez',ils:'voient',elles:'voient'},
-    passé_composé:{je:'ai vu',tu:'as vu',il:'a vu',elle:'a vu',on:'a vu',nous:'avons vu',vous:'avez vu',ils:'ont vu',elles:'ont vu'},
+    prÃ©sent:{je:'vois',tu:'vois',il:'voit',elle:'voit',on:'voit',nous:'voyons',vous:'voyez',ils:'voient',elles:'voient'},
+    passÃ©_composÃ©:{je:'ai vu',tu:'as vu',il:'a vu',elle:'a vu',on:'a vu',nous:'avons vu',vous:'avez vu',ils:'ont vu',elles:'ont vu'},
     imparfait:{je:'voyais',tu:'voyais',il:'voyait',elle:'voyait',on:'voyait',nous:'voyions',vous:'voyiez',ils:'voyaient',elles:'voyaient'},
     futur_proche:{je:'vais voir',tu:'vas voir',il:'va voir',elle:'va voir',on:'va voir',nous:'allons voir',vous:'allez voir',ils:'vont voir',elles:'vont voir'},
     futur_simple:{je:'verrai',tu:'verras',il:'verra',elle:'verra',on:'verra',nous:'verrons',vous:'verrez',ils:'verront',elles:'verront'},
   }},
   {inf:'savoir',meaning:'to know',type:'irreg',forms:{
-    présent:{je:'sais',tu:'sais',il:'sait',elle:'sait',on:'sait',nous:'savons',vous:'savez',ils:'savent',elles:'savent'},
-    passé_composé:{je:'ai su',tu:'as su',il:'a su',elle:'a su',on:'a su',nous:'avons su',vous:'avez su',ils:'ont su',elles:'ont su'},
+    prÃ©sent:{je:'sais',tu:'sais',il:'sait',elle:'sait',on:'sait',nous:'savons',vous:'savez',ils:'savent',elles:'savent'},
+    passÃ©_composÃ©:{je:'ai su',tu:'as su',il:'a su',elle:'a su',on:'a su',nous:'avons su',vous:'avez su',ils:'ont su',elles:'ont su'},
     imparfait:{je:'savais',tu:'savais',il:'savait',elle:'savait',on:'savait',nous:'savions',vous:'saviez',ils:'savaient',elles:'savaient'},
     futur_proche:{je:'vais savoir',tu:'vas savoir',il:'va savoir',elle:'va savoir',on:'va savoir',nous:'allons savoir',vous:'allez savoir',ils:'vont savoir',elles:'vont savoir'},
     futur_simple:{je:'saurai',tu:'sauras',il:'saura',elle:'saura',on:'saura',nous:'saurons',vous:'saurez',ils:'sauront',elles:'sauront'},
   }},
   {inf:'partir',meaning:'to leave',type:'irreg',forms:{
-    présent:{je:'pars',tu:'pars',il:'part',elle:'part',on:'part',nous:'partons',vous:'partez',ils:'partent',elles:'partent'},
-    passé_composé:{je:'suis parti',tu:'es parti',il:'est parti',elle:'est partie',on:'est parti',nous:'sommes partis',vous:'êtes partis',ils:'sont partis',elles:'sont parties'},
+    prÃ©sent:{je:'pars',tu:'pars',il:'part',elle:'part',on:'part',nous:'partons',vous:'partez',ils:'partent',elles:'partent'},
+    passÃ©_composÃ©:{je:'suis parti',tu:'es parti',il:'est parti',elle:'est partie',on:'est parti',nous:'sommes partis',vous:'Ãªtes partis',ils:'sont partis',elles:'sont parties'},
     imparfait:{je:'partais',tu:'partais',il:'partait',elle:'partait',on:'partait',nous:'partions',vous:'partiez',ils:'partaient',elles:'partaient'},
     futur_proche:{je:'vais partir',tu:'vas partir',il:'va partir',elle:'va partir',on:'va partir',nous:'allons partir',vous:'allez partir',ils:'vont partir',elles:'vont partir'},
     futur_simple:{je:'partirai',tu:'partiras',il:'partira',elle:'partira',on:'partira',nous:'partirons',vous:'partirez',ils:'partiront',elles:'partiront'},
   }},
   {inf:'boire',meaning:'to drink',type:'irreg',forms:{
-    présent:{je:'bois',tu:'bois',il:'boit',elle:'boit',on:'boit',nous:'buvons',vous:'buvez',ils:'boivent',elles:'boivent'},
-    passé_composé:{je:'ai bu',tu:'as bu',il:'a bu',elle:'a bu',on:'a bu',nous:'avons bu',vous:'avez bu',ils:'ont bu',elles:'ont bu'},
+    prÃ©sent:{je:'bois',tu:'bois',il:'boit',elle:'boit',on:'boit',nous:'buvons',vous:'buvez',ils:'boivent',elles:'boivent'},
+    passÃ©_composÃ©:{je:'ai bu',tu:'as bu',il:'a bu',elle:'a bu',on:'a bu',nous:'avons bu',vous:'avez bu',ils:'ont bu',elles:'ont bu'},
     imparfait:{je:'buvais',tu:'buvais',il:'buvait',elle:'buvait',on:'buvait',nous:'buvions',vous:'buviez',ils:'buvaient',elles:'buvaient'},
     futur_proche:{je:'vais boire',tu:'vas boire',il:'va boire',elle:'va boire',on:'va boire',nous:'allons boire',vous:'allez boire',ils:'vont boire',elles:'vont boire'},
     futur_simple:{je:'boirai',tu:'boiras',il:'boira',elle:'boira',on:'boira',nous:'boirons',vous:'boirez',ils:'boiront',elles:'boiront'},
   }},
   {inf:'travailler',meaning:'to work',type:'-er',forms:{
-    présent:{je:'travaille',tu:'travailles',il:'travaille',elle:'travaille',on:'travaille',nous:'travaillons',vous:'travaillez',ils:'travaillent',elles:'travaillent'},
-    passé_composé:{je:'ai travaillé',tu:'as travaillé',il:'a travaillé',elle:'a travaillé',on:'a travaillé',nous:'avons travaillé',vous:'avez travaillé',ils:'ont travaillé',elles:'ont travaillé'},
+    prÃ©sent:{je:'travaille',tu:'travailles',il:'travaille',elle:'travaille',on:'travaille',nous:'travaillons',vous:'travaillez',ils:'travaillent',elles:'travaillent'},
+    passÃ©_composÃ©:{je:'ai travaillÃ©',tu:'as travaillÃ©',il:'a travaillÃ©',elle:'a travaillÃ©',on:'a travaillÃ©',nous:'avons travaillÃ©',vous:'avez travaillÃ©',ils:'ont travaillÃ©',elles:'ont travaillÃ©'},
     imparfait:{je:'travaillais',tu:'travaillais',il:'travaillait',elle:'travaillait',on:'travaillait',nous:'travaillions',vous:'travailliez',ils:'travaillaient',elles:'travaillaient'},
     futur_proche:{je:'vais travailler',tu:'vas travailler',il:'va travailler',elle:'va travailler',on:'va travailler',nous:'allons travailler',vous:'allez travailler',ils:'vont travailler',elles:'vont travailler'},
     futur_simple:{je:'travaillerai',tu:'travailleras',il:'travaillera',elle:'travaillera',on:'travaillera',nous:'travaillerons',vous:'travaillerez',ils:'travailleront',elles:'travailleront'},
   }},
   {inf:'aimer',meaning:'to like / love',type:'-er',forms:{
-    présent:{je:'aime',tu:'aimes',il:'aime',elle:'aime',on:'aime',nous:'aimons',vous:'aimez',ils:'aiment',elles:'aiment'},
-    passé_composé:{je:'ai aimé',tu:'as aimé',il:'a aimé',elle:'a aimé',on:'a aimé',nous:'avons aimé',vous:'avez aimé',ils:'ont aimé',elles:'ont aimé'},
+    prÃ©sent:{je:'aime',tu:'aimes',il:'aime',elle:'aime',on:'aime',nous:'aimons',vous:'aimez',ils:'aiment',elles:'aiment'},
+    passÃ©_composÃ©:{je:'ai aimÃ©',tu:'as aimÃ©',il:'a aimÃ©',elle:'a aimÃ©',on:'a aimÃ©',nous:'avons aimÃ©',vous:'avez aimÃ©',ils:'ont aimÃ©',elles:'ont aimÃ©'},
     imparfait:{je:'aimais',tu:'aimais',il:'aimait',elle:'aimait',on:'aimait',nous:'aimions',vous:'aimiez',ils:'aimaient',elles:'aimaient'},
     futur_proche:{je:'vais aimer',tu:'vas aimer',il:'va aimer',elle:'va aimer',on:'va aimer',nous:'allons aimer',vous:'allez aimer',ils:'vont aimer',elles:'vont aimer'},
     futur_simple:{je:'aimerai',tu:'aimeras',il:'aimera',elle:'aimera',on:'aimera',nous:'aimerons',vous:'aimerez',ils:'aimeront',elles:'aimeront'},
   }},
   {inf:'choisir',meaning:'to choose',type:'-ir',forms:{
-    présent:{je:'choisis',tu:'choisis',il:'choisit',elle:'choisit',on:'choisit',nous:'choisissons',vous:'choisissez',ils:'choisissent',elles:'choisissent'},
-    passé_composé:{je:'ai choisi',tu:'as choisi',il:'a choisi',elle:'a choisi',on:'a choisi',nous:'avons choisi',vous:'avez choisi',ils:'ont choisi',elles:'ont choisi'},
+    prÃ©sent:{je:'choisis',tu:'choisis',il:'choisit',elle:'choisit',on:'choisit',nous:'choisissons',vous:'choisissez',ils:'choisissent',elles:'choisissent'},
+    passÃ©_composÃ©:{je:'ai choisi',tu:'as choisi',il:'a choisi',elle:'a choisi',on:'a choisi',nous:'avons choisi',vous:'avez choisi',ils:'ont choisi',elles:'ont choisi'},
     imparfait:{je:'choisissais',tu:'choisissais',il:'choisissait',elle:'choisissait',on:'choisissait',nous:'choisissions',vous:'choisissiez',ils:'choisissaient',elles:'choisissaient'},
     futur_proche:{je:'vais choisir',tu:'vas choisir',il:'va choisir',elle:'va choisir',on:'va choisir',nous:'allons choisir',vous:'allez choisir',ils:'vont choisir',elles:'vont choisir'},
     futur_simple:{je:'choisirai',tu:'choisiras',il:'choisira',elle:'choisira',on:'choisira',nous:'choisirons',vous:'choisirez',ils:'choisiront',elles:'choisiront'},
   }},
   {inf:'attendre',meaning:'to wait',type:'-re',forms:{
-    présent:{je:'attends',tu:'attends',il:'attend',elle:'attend',on:'attend',nous:'attendons',vous:'attendez',ils:'attendent',elles:'attendent'},
-    passé_composé:{je:'ai attendu',tu:'as attendu',il:'a attendu',elle:'a attendu',on:'a attendu',nous:'avons attendu',vous:'avez attendu',ils:'ont attendu',elles:'ont attendu'},
+    prÃ©sent:{je:'attends',tu:'attends',il:'attend',elle:'attend',on:'attend',nous:'attendons',vous:'attendez',ils:'attendent',elles:'attendent'},
+    passÃ©_composÃ©:{je:'ai attendu',tu:'as attendu',il:'a attendu',elle:'a attendu',on:'a attendu',nous:'avons attendu',vous:'avez attendu',ils:'ont attendu',elles:'ont attendu'},
     imparfait:{je:'attendais',tu:'attendais',il:'attendait',elle:'attendait',on:'attendait',nous:'attendions',vous:'attendiez',ils:'attendaient',elles:'attendaient'},
     futur_proche:{je:'vais attendre',tu:'vas attendre',il:'va attendre',elle:'va attendre',on:'va attendre',nous:'allons attendre',vous:'allez attendre',ils:'vont attendre',elles:'vont attendre'},
     futur_simple:{je:'attendrai',tu:'attendras',il:'attendra',elle:'attendra',on:'attendra',nous:'attendrons',vous:'attendrez',ils:'attendront',elles:'attendront'},
   }},
-  {inf:'écrire',meaning:'to write',type:'irreg',forms:{
-    présent:{je:'écris',tu:'écris',il:'écrit',elle:'écrit',on:'écrit',nous:'écrivons',vous:'écrivez',ils:'écrivent',elles:'écrivent'},
-    passé_composé:{je:'ai écrit',tu:'as écrit',il:'a écrit',elle:'a écrit',on:'a écrit',nous:'avons écrit',vous:'avez écrit',ils:'ont écrit',elles:'ont écrit'},
-    imparfait:{je:'écrivais',tu:'écrivais',il:'écrivait',elle:'écrivait',on:'écrivait',nous:'écrivions',vous:'écriviez',ils:'écrivaient',elles:'écrivaient'},
-    futur_proche:{je:'vais écrire',tu:'vas écrire',il:'va écrire',elle:'va écrire',on:'va écrire',nous:'allons écrire',vous:'allez écrire',ils:'vont écrire',elles:'vont écrire'},
-    futur_simple:{je:'écrirai',tu:'écriras',il:'écrira',elle:'écrira',on:'écrira',nous:'écrirons',vous:'écrirez',ils:'écriront',elles:'écriront'},
+  {inf:'Ã©crire',meaning:'to write',type:'irreg',forms:{
+    prÃ©sent:{je:'Ã©cris',tu:'Ã©cris',il:'Ã©crit',elle:'Ã©crit',on:'Ã©crit',nous:'Ã©crivons',vous:'Ã©crivez',ils:'Ã©crivent',elles:'Ã©crivent'},
+    passÃ©_composÃ©:{je:'ai Ã©crit',tu:'as Ã©crit',il:'a Ã©crit',elle:'a Ã©crit',on:'a Ã©crit',nous:'avons Ã©crit',vous:'avez Ã©crit',ils:'ont Ã©crit',elles:'ont Ã©crit'},
+    imparfait:{je:'Ã©crivais',tu:'Ã©crivais',il:'Ã©crivait',elle:'Ã©crivait',on:'Ã©crivait',nous:'Ã©crivions',vous:'Ã©criviez',ils:'Ã©crivaient',elles:'Ã©crivaient'},
+    futur_proche:{je:'vais Ã©crire',tu:'vas Ã©crire',il:'va Ã©crire',elle:'va Ã©crire',on:'va Ã©crire',nous:'allons Ã©crire',vous:'allez Ã©crire',ils:'vont Ã©crire',elles:'vont Ã©crire'},
+    futur_simple:{je:'Ã©crirai',tu:'Ã©criras',il:'Ã©crira',elle:'Ã©crira',on:'Ã©crira',nous:'Ã©crirons',vous:'Ã©crirez',ils:'Ã©criront',elles:'Ã©criront'},
   }},
 ];
 
 function fullFrForm(pronoun, conjugation) {
-  if (pronoun === 'je' && /^[aeiouyàâéèêëîïôùûüœæ]/i.test(conjugation)) return "j'" + conjugation;
+  if (pronoun === 'je' && /^[aeiouyÃ Ã¢Ã©Ã¨ÃªÃ«Ã®Ã¯Ã´Ã¹Ã»Ã¼Å“Ã¦]/i.test(conjugation)) return "j'" + conjugation;
   return pronoun + ' ' + conjugation;
 }
 
@@ -1775,7 +2033,7 @@ function renderFrDash() {
   `;
 
   if (!all.length) {
-    document.getElementById('d-sessions').innerHTML = `<div class="empty"><i class="ti ti-language" aria-hidden="true"></i>No French sessions yet — start your first practice above.</div>`;
+    document.getElementById('d-sessions').innerHTML = `<div class="empty"><i class="ti ti-language" aria-hidden="true"></i>No French sessions yet â€” start your first practice above.</div>`;
     return;
   }
   const rows = all.slice(0,8).map(s => {
@@ -1831,7 +2089,7 @@ function checkFrAnswer() {
   const inp = document.getElementById('fr-input');
   const ra = document.getElementById('fq-result');
   if (ok) {
-    ra.innerHTML = `<div class="res-ok"><i class="ti ti-check" aria-hidden="true"></i> Correct — <strong>${ans}</strong></div>`;
+    ra.innerHTML = `<div class="res-ok"><i class="ti ti-check" aria-hidden="true"></i> Correct â€” <strong>${ans}</strong></div>`;
     inp.style.borderColor = 'var(--ok-border)';
   } else {
     ra.innerHTML = `<div class="res-err"><i class="ti ti-x" aria-hidden="true"></i> The answer is <strong>${ans}</strong></div>`;
@@ -1848,7 +2106,7 @@ function skipFrVerb() {
   frCur.answered = true; frCur.total++;
   const ans = fullFrForm(frCur.p, frCur.v.forms[frCur.t][frCur.p]);
   frCur.questions.push({inf:frCur.v.inf, tense:frCur.t, pronoun:frCur.p, userAnswer:'', answer:ans, correct:false, skipped:true});
-  document.getElementById('fq-result').innerHTML = `<div class="res-err">Skipped — answer: <strong>${ans}</strong></div>`;
+  document.getElementById('fq-result').innerHTML = `<div class="res-err">Skipped â€” answer: <strong>${ans}</strong></div>`;
   document.getElementById('fq-total').textContent = frCur.total;
   document.getElementById('fr-skip-btn').style.display = 'none';
   document.getElementById('fr-next-btn').style.display = '';
@@ -1875,7 +2133,7 @@ function finishFrSession() {
 function renderFrResults(s) {
   const p = pct(s.correct, s.total);
   document.getElementById('fr-res-num').textContent = s.correct + ' / ' + s.total;
-  document.getElementById('fr-res-meta').textContent = p + '% accuracy · ' + fmtDur(s.duration) + ' · ' + s.tenses.map(t=>TENSE_LABELS[t]).join(', ');
+  document.getElementById('fr-res-meta').textContent = p + '% accuracy Â· ' + fmtDur(s.duration) + ' Â· ' + s.tenses.map(t=>TENSE_LABELS[t]).join(', ');
   document.getElementById('fr-res-cards').innerHTML = `
     <div class="stat-card"><div class="stat-label">Correct</div><div class="stat-val hi">${s.correct}</div></div>
     <div class="stat-card"><div class="stat-label">Wrong / skipped</div><div class="stat-val lo">${s.total-s.correct}</div></div>
@@ -1886,8 +2144,8 @@ function renderFrResults(s) {
       <span class="q-v" style="font-size:14px;width:80px">${q.inf}</span>
       <span class="q-f" style="width:36px;color:var(--text-3);font-size:11px">${q.pronoun}</span>
       <span class="q-f" style="width:72px">${TENSE_LABELS[q.tense]||q.tense}</span>
-      <span class="q-a ${q.correct?'q-c':'q-w'}">${q.userAnswer||'—'}${!q.correct?` <span class="q-right">→ ${q.answer}</span>`:''}</span>
-      <span style="font-size:13px;margin-left:auto;color:${q.correct?'var(--hi)':'var(--lo)'}">${q.correct?'✓':'✗'}</span>
+      <span class="q-a ${q.correct?'q-c':'q-w'}">${q.userAnswer||'â€”'}${!q.correct?` <span class="q-right">â†’ ${q.answer}</span>`:''}</span>
+      <span style="font-size:13px;margin-left:auto;color:${q.correct?'var(--hi)':'var(--lo)'}">${q.correct?'âœ“':'âœ—'}</span>
     </div>`).join('');
 }
 
@@ -1907,9 +2165,9 @@ document.getElementById('fr-input').addEventListener('keydown', function(e) {
   }
 });
 
-// ─── END FRENCH ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ END FRENCH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-// IME keyboard handler — Enter only (char input handled by 'input' event for iOS compat)
+// IME keyboard handler â€” Enter only (char input handled by 'input' event for iOS compat)
 document.getElementById('ime-input').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
@@ -1926,9 +2184,454 @@ document.getElementById('ime-input').addEventListener('input', function() {
   document.getElementById('pend-out').textContent = cur.ime.p;
 });
 
+// â”€â”€â”€ ENGINEERING MATERIALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// Each material:
+//   name, category, image (path or null),
+//   specs: [{label, prefix (optional), answer}]   â€” composition / key values
+//   props: [string]                                â€” properties, any order
+//   uses:  [string]                               â€” accept any one
+
+const EM_GROUPS = [
+  { id: 'thermoplastics',  name: 'Thermoplastics',          emoji: 'ðŸ§ª' },
+  { id: 'thermosets',      name: 'Thermosetting Polymers',  emoji: 'ðŸ”¥' },
+  { id: 'ferrous',         name: 'Ferrous Metals',          emoji: 'âš™ï¸' },
+  { id: 'nonferrous',      name: 'Non-ferrous Metals',      emoji: 'ðŸ”©' },
+  { id: 'composites',      name: 'Composites & Boards',     emoji: 'ðŸªµ' },
+];
+
+const ENGMAT = [
+  // â”€â”€ THERMOPLASTICS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  { group:'thermoplastics', name:'PET (Polyethylene Terephthalate)',
+    specs:[], props:['moisture resistant','chemical resistant','lightweight','transparent','strong'],
+    uses:['drink bottles'] },
+  { group:'thermoplastics', name:'HDPE (High Density Polyethylene)',
+    specs:[], props:['chemical resistance','high impact resistance','weather resistant','thick','tough'],
+    uses:['cleaning products','bottles','outdoor bins'] },
+  { group:'thermoplastics', name:'PVC (Polyvinyl Chloride)',
+    specs:[], props:['chemical resistance','weather resistance','tough','stiff','hard'],
+    uses:['guttering','pipes'] },
+  { group:'thermoplastics', name:'PS (Polystyrene Foam)',
+    specs:[], props:['compressable','lightweight','insulator (heat + electricity)'],
+    uses:['packaging'] },
+  { group:'thermoplastics', name:'LDPE (Low Density Polyethylene)',
+    specs:[], props:['bendy','flexible','lightweight','chemically resistant','tough','electrical insulator'],
+    uses:['cling film','plastic bags'] },
+  { group:'thermoplastics', name:'ABS (Acrylonitrile Butadiene Styrene)',
+    specs:[], props:['good surface finish','strong','rigid','expensive','impact resistance'],
+    uses:['lego bricks','display cases','car dashboards'] },
+  { group:'thermoplastics', name:'PP (Polypropylene)',
+    specs:[], props:['fatigue resistance','chemical resistance','impact resistance','lightweight','tough'],
+    uses:['food containers','flip-top lids'] },
+  { group:'thermoplastics', name:'PC (Polycarbonate)',
+    specs:[], props:['excellent colour and dimension','heat resistance','high strength','toughness'],
+    uses:['safety goggles','riot shields'] },
+  { group:'thermoplastics', name:'Nylon',
+    specs:[], props:['low friction qualities','wear resistant','ductile','durable'],
+    uses:['gear wheels','bearings'] },
+  { group:'thermoplastics', name:'PMMA (Polymethyl Methacrylate / Acrylic)',
+    specs:[], props:['good optical properties','shatter resistance','weather resistance','transparent'],
+    uses:['windows','outdoor signs','machine guards'] },
+  { group:'thermoplastics', name:'PS (Polystyrene Solid)',
+    specs:[], props:['strong','tough','rigid','brittle','good for vacuum forming'],
+    uses:['foam cups'] },
+
+  // â”€â”€ THERMOSETTING POLYMERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  { group:'thermosets', name:'Polyester resin',
+    specs:[], props:['strong','stiff','brittle','heat resistance','chemical resistance','electrical resistance','lower cost'],
+    uses:['encapsulation','suitcases','luggage'] },
+  { group:'thermosets', name:'Vulcanised rubber',
+    specs:[], props:['high tensile strength','elastic','resistant to abrasion','resistant to swelling'],
+    uses:['bouncy balls','tyres','shoe soles'] },
+  { group:'thermosets', name:'Polyurethane',
+    specs:[], props:['high strength','low thermal conductivity','flexible','tough'],
+    uses:['sealants','foam insulation panels'] },
+  { group:'thermosets', name:'Epoxy resin',
+    specs:[], props:['chemical resistance','heat resistance','electrical resistance','adhesive property','strong','brittle'],
+    uses:['printed circuit boards','composites like CRP'] },
+  { group:'thermosets', name:'Melamine',
+    specs:[], props:['resistant to chemicals','resistant to stains','stiff','hard','strong'],
+    uses:['laminate kitchen worktops','impact-resistant plates'] },
+
+  // â”€â”€ FERROUS METALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  { group:'ferrous', name:'Stainless steel',
+    specs:[{ label:'Chromium content', prefix:'>', answer:'11.5% chromium' }],
+    props:['strong','hard','difficult to machine','corrosion resistant','expensive'],
+    uses:['knives','sinks','forks'] },
+  { group:'ferrous', name:'Cast iron',
+    specs:[{ label:'Carbon content', answer:'3â€“3.5% carbon' }],
+    props:['good compressive strength','difficult to machine','suitable for casting','brittle','poor corrosion resistance','cheap'],
+    uses:['anvils','vices'] },
+  { group:'ferrous', name:'Low carbon steel (mild steel)',
+    specs:[{ label:'Carbon content', prefix:'<', answer:'0.3% carbon' }],
+    props:['lower strength than other steels','tough','low cost','cannot be hardened'],
+    uses:['nails','screws','steel sheets'] },
+  { group:'ferrous', name:'High carbon steel',
+    specs:[{ label:'Carbon content', answer:'0.8â€“1.4% carbon' }],
+    props:['strong','hard','less tough than low carbon steel','can be hardened','difficult to form'],
+    uses:['tools','saw blades','hammers'] },
+
+  // â”€â”€ NON-FERROUS METALS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  { group:'nonferrous', name:'Brass',
+    specs:[{ label:'Composition', answer:'65% copper, 35% zinc' }],
+    props:['corrosion resistant','conductor of heat + electricity','casts well','easily joined'],
+    uses:['castings','forgings','ornaments'] },
+  { group:'nonferrous', name:'Bronze',
+    specs:[{ label:'Composition', answer:'90% copper alloy, 10% zinc' }],
+    props:['tough','hardwearing','corrosion resistant'],
+    uses:['bearings','castings for statues'] },
+  { group:'nonferrous', name:'Aluminium alloys',
+    specs:[], props:['light','soft','ductile','malleable','conducts heat + electricity','corrosion resistance'],
+    uses:['saucepans','foils','cans'] },
+  { group:'nonferrous', name:'Zinc',
+    specs:[], props:['poor strength : weight ratio','low melting point','extremely corrosion-resistant','easily worked'],
+    uses:['galvanisation of steel'] },
+  { group:'nonferrous', name:'Copper (pure metal)',
+    specs:[], props:['malleable','ductile','tough','conductor of heat + electricity','easily joined','corrosion resistant'],
+    uses:['wire','circuits','hot-water tanks'] },
+  { group:'nonferrous', name:'Lead',
+    specs:[], props:['soft','malleable','very heavy','easy to work','low melting point','corrosion resistant'],
+    uses:['soft solders','roof coverings','X-ray protection'] },
+
+  // â”€â”€ COMPOSITES & BOARDS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  { group:'composites', name:'Plywood',
+    specs:[{ label:'Composition', answer:'layers of wood bonded at 90Â° to each other with adhesive' }],
+    props:['smooth surface','covered with veneer','high strength'],
+    uses:['furniture'] },
+  { group:'composites', name:'MDF (Medium Density Fibreboard)',
+    specs:[{ label:'Composition', answer:'manufactured from wood fibres and adhesive' }],
+    props:['smooth surface','uniform properties','easily machined','low cost','can be painted or veneered'],
+    uses:['internal furniture panels'] },
+  { group:'composites', name:'OSB (Oriented Strand Board)',
+    specs:[{ label:'Composition', answer:'manufactured from wood strands compressed in a resin matrix' }],
+    props:['more uniform than plywood','lower cost','high strength','can be covered with veneer'],
+    uses:['roof decking'] },
+  { group:'composites', name:'Structural Concrete',
+    specs:[{ label:'Composition', answer:'concrete reinforced with steel bars' }],
+    props:['high tensile strength'],
+    uses:['high-rise buildings'] },
+  { group:'composites', name:'GRP (Glass Reinforced Plastic)',
+    specs:[{ label:'Composition', answer:'glass fibres in a resin matrix' }],
+    props:['low strength','low cost','low density','chemical resistant'],
+    uses:['canoes','water tanks'] },
+  { group:'composites', name:'CRP (Carbon Reinforced Polymer)',
+    specs:[{ label:'Composition', answer:'carbon fibres in a resin matrix' }],
+    props:['strong','rigid','low density','expensive'],
+    uses:['racing bicycles','helmets'] },
+];
+
+// â”€â”€ EM state â”€â”€
+let emCur = null;
+
+function goEMSettings() {
+  // render group checkboxes
+  const grid = document.getElementById('em-groups-grid');
+  if (grid && grid.children.length === 0) {
+    EM_GROUPS.forEach(g => {
+      const lbl = document.createElement('label');
+      lbl.className = 'cb-item';
+      lbl.innerHTML = `<input type="checkbox" value="${g.id}" checked> ${g.emoji} ${g.name}`;
+      grid.appendChild(lbl);
+    });
+  }
+  show('s-em-settings');
+}
+
+function beginEMQuiz() {
+  const selectedGroups = [...document.querySelectorAll('#em-groups-grid input:checked')].map(el => el.value);
+  const err = document.getElementById('em-set-err');
+  if (!selectedGroups.length) { err.style.display = ''; return; }
+  err.style.display = 'none';
+  const order   = document.querySelector('input[name="em-order"]:checked').value;
+  const doSpecs = document.getElementById('em-do-specs').checked;
+  const doProps = document.getElementById('em-do-props').checked;
+  const doUses  = document.getElementById('em-do-uses').checked;
+  const pool = ENGMAT.map((_, i) => i).filter(i => selectedGroups.includes(ENGMAT[i].group));
+  const queue = order === 'shuffle' ? shuffle([...pool]) : [];
+  emCur = { order, doSpecs, doProps, doUses, pool, queue, correct: 0, total: 0, answered: false, questions: [], startTime: Date.now() };
+  show('s-em-quiz');
+  loadNextEM();
+}
+
+function loadNextEM() {
+  emCur.answered = false;
+  document.getElementById('em-result').innerHTML = '';
+  document.getElementById('em-reveal').style.display = 'none';
+  document.getElementById('em-reveal').innerHTML = '';
+  document.getElementById('em-skip-btn').style.display = '';
+  document.getElementById('em-check-btn').style.display = '';
+  document.getElementById('em-next-btn').style.display = 'none';
+
+  const idx = emCur.order === 'shuffle'
+    ? (emCur.queue.length === 0 ? (emCur.queue = shuffle([...emCur.pool])) && emCur.queue.pop() : emCur.queue.pop())
+    : emCur.pool[Math.floor(Math.random() * emCur.pool.length)];
+  const mat = ENGMAT[idx];
+  emCur.current = mat;
+
+  document.getElementById('em-mat-name').textContent = mat.name;
+  document.getElementById('em-mat-cat').textContent  = mat.category;
+  document.getElementById('em-score').textContent    = emCur.correct;
+  document.getElementById('em-total').textContent    = emCur.total;
+
+  if (mat.image) {
+    document.getElementById('em-img').src = mat.image;
+    document.getElementById('em-img-wrap').style.display = '';
+  } else {
+    document.getElementById('em-img-wrap').style.display = 'none';
+  }
+
+  buildEMFields(mat);
+
+  // focus first input
+  setTimeout(() => {
+    const first = document.querySelector('#s-em-quiz input');
+    if (first) first.focus();
+  }, 60);
+}
+
+function buildEMFields(mat) {
+  const specsSection = document.getElementById('em-specs-section');
+  const propsSection = document.getElementById('em-props-section');
+  const usesSection  = document.getElementById('em-uses-section');
+  const specsFields  = document.getElementById('em-specs-fields');
+  const propsFields  = document.getElementById('em-props-fields');
+  const usesFields   = document.getElementById('em-uses-fields');
+
+  // Specs
+  if (emCur.doSpecs && mat.specs && mat.specs.length) {
+    specsSection.style.display = '';
+    specsFields.innerHTML = '';
+    mat.specs.forEach((spec, i) => {
+      const row = document.createElement('div');
+      row.className = 'em-spec-row';
+      const lbl = document.createElement('span');
+      lbl.className = 'em-spec-label';
+      lbl.textContent = spec.label;
+      row.appendChild(lbl);
+      if (spec.prefix) {
+        const pre = document.createElement('span');
+        pre.className = 'em-spec-prefix';
+        pre.textContent = spec.prefix;
+        row.appendChild(pre);
+        const inp = document.createElement('input');
+        inp.className = 'em-spec-inp';
+        inp.id = `em-spec-${i}`;
+        inp.autocomplete = 'off'; inp.autocorrect = 'off'; inp.autocapitalize = 'off'; inp.spellcheck = false;
+        inp.placeholder = spec.answer;
+        inp.addEventListener('keydown', emKeydown);
+        row.appendChild(inp);
+      } else {
+        const inp = document.createElement('input');
+        inp.className = 'em-spec-inp-solo';
+        inp.id = `em-spec-${i}`;
+        inp.autocomplete = 'off'; inp.autocorrect = 'off'; inp.autocapitalize = 'off'; inp.spellcheck = false;
+        inp.placeholder = 'â€¦';
+        inp.addEventListener('keydown', emKeydown);
+        row.appendChild(inp);
+      }
+      specsFields.appendChild(row);
+    });
+  } else {
+    specsSection.style.display = 'none';
+  }
+
+  // Props
+  if (emCur.doProps && mat.props && mat.props.length) {
+    propsSection.style.display = '';
+    propsFields.innerHTML = '';
+    mat.props.forEach((_, i) => {
+      const inp = document.createElement('input');
+      inp.className = 'em-prop-inp';
+      inp.id = `em-prop-${i}`;
+      inp.autocomplete = 'off'; inp.autocorrect = 'off'; inp.autocapitalize = 'off'; inp.spellcheck = false;
+      inp.placeholder = `Property ${i + 1}`;
+      inp.addEventListener('keydown', emKeydown);
+      propsFields.appendChild(inp);
+    });
+  } else {
+    propsSection.style.display = 'none';
+  }
+
+  // Uses
+  if (emCur.doUses && mat.uses && mat.uses.length) {
+    usesSection.style.display = '';
+    usesFields.innerHTML = '';
+    const inp = document.createElement('input');
+    inp.className = 'em-use-inp';
+    inp.id = 'em-use-0';
+    inp.autocomplete = 'off'; inp.autocorrect = 'off'; inp.autocapitalize = 'off'; inp.spellcheck = false;
+    inp.placeholder = 'e.g. knives, sinksâ€¦';
+    inp.addEventListener('keydown', emKeydown);
+    usesFields.appendChild(inp);
+  } else {
+    usesSection.style.display = 'none';
+  }
+}
+
+function emKeydown(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    if (emCur.answered) nextEM(); else checkEM();
+  }
+}
+
+function emNorm(s) { return s.trim().toLowerCase().replace(/\s+/g, ' '); }
+
+function checkEM() {
+  if (!emCur || emCur.answered) return;
+  const mat = emCur.current;
+  let totalPts = 0, earnedPts = 0;
+  const revealRows = [];
+
+  // Check specs
+  if (emCur.doSpecs && mat.specs && mat.specs.length) {
+    mat.specs.forEach((spec, i) => {
+      totalPts++;
+      const inp = document.getElementById(`em-spec-${i}`);
+      const typed = inp ? emNorm(inp.value) : '';
+      const correct = emNorm(spec.answer);
+      const ok = typed === correct;
+      if (ok) earnedPts++;
+      if (inp) inp.style.borderColor = ok ? 'var(--ok-border)' : 'var(--err-border)';
+      revealRows.push({ label: spec.label, typed, answer: spec.answer, ok, type: 'spec' });
+    });
+  }
+
+  // Check props â€” set match, any order
+  if (emCur.doProps && mat.props && mat.props.length) {
+    const answers = mat.props.map(emNorm);
+    const used = [];
+    mat.props.forEach((_, i) => {
+      totalPts++;
+      const inp = document.getElementById(`em-prop-${i}`);
+      const typed = inp ? emNorm(inp.value) : '';
+      const matchIdx = answers.findIndex((a, ai) => a === typed && !used.includes(ai));
+      const ok = matchIdx !== -1;
+      if (ok) { earnedPts++; used.push(matchIdx); }
+      if (inp) inp.style.borderColor = ok ? 'var(--ok-border)' : 'var(--err-border)';
+      revealRows.push({ label: `Property`, typed, answer: mat.props[i], ok, type: 'prop' });
+    });
+  }
+
+  // Check uses â€” any one accepted answer
+  if (emCur.doUses && mat.uses && mat.uses.length) {
+    totalPts++;
+    const inp = document.getElementById('em-use-0');
+    const typed = inp ? emNorm(inp.value) : '';
+    const ok = mat.uses.some(u => emNorm(u) === typed);
+    if (ok) earnedPts++;
+    if (inp) inp.style.borderColor = ok ? 'var(--ok-border)' : 'var(--err-border)';
+    revealRows.push({ label: 'Use', typed, answer: mat.uses.join(' / '), ok, type: 'use' });
+  }
+
+  const perfect = earnedPts === totalPts;
+  emCur.answered = true;
+  emCur.total++;
+  if (perfect) emCur.correct++;
+
+  emCur.questions.push({
+    name: mat.name, category: mat.category,
+    rows: revealRows, perfect, pts: earnedPts, total: totalPts
+  });
+
+  // Result banner
+  const ra = document.getElementById('em-result');
+  if (perfect) {
+    ra.innerHTML = `<div class="res-ok"><i class="ti ti-check"></i> Perfect â€” ${earnedPts}/${totalPts}</div>`;
+  } else {
+    ra.innerHTML = `<div class="res-err"><i class="ti ti-x"></i> ${earnedPts}/${totalPts} correct</div>`;
+  }
+
+  // Reveal missed answers
+  if (!perfect) {
+    const reveal = document.getElementById('em-reveal');
+    reveal.style.display = '';
+    const missedProps = revealRows.filter(r => !r.ok && r.type === 'prop').map(r => r.answer);
+    const missedSpecs = revealRows.filter(r => !r.ok && r.type === 'spec');
+    const missedUse   = revealRows.filter(r => !r.ok && r.type === 'use');
+    let html = '';
+    if (missedSpecs.length) {
+      html += `<p style="font-size:11px;color:var(--text-3);margin-bottom:4px">Missed specs:</p><div class="em-reveal-grid">`;
+      missedSpecs.forEach(s => { html += `<span class="em-reveal-chip miss">${s.label}: ${s.answer}</span>`; });
+      html += '</div>';
+    }
+    if (missedProps.length) {
+      html += `<p style="font-size:11px;color:var(--text-3);margin:8px 0 4px">Missed properties:</p><div class="em-reveal-grid">`;
+      missedProps.forEach(p => { html += `<span class="em-reveal-chip miss">${p}</span>`; });
+      html += '</div>';
+    }
+    if (missedUse.length) {
+      html += `<p style="font-size:11px;color:var(--text-3);margin:8px 0 4px">Accepted uses:</p><div class="em-reveal-grid">`;
+      mat.uses.forEach(u => { html += `<span class="em-reveal-chip">${u}</span>`; });
+      html += '</div>';
+    }
+    reveal.innerHTML = html;
+  }
+
+  document.getElementById('em-score').textContent = emCur.correct;
+  document.getElementById('em-total').textContent = emCur.total;
+  document.getElementById('em-skip-btn').style.display = 'none';
+  document.getElementById('em-check-btn').style.display = 'none';
+  document.getElementById('em-next-btn').style.display = '';
+}
+
+function skipEM() {
+  if (!emCur || emCur.answered) return;
+  const mat = emCur.current;
+  emCur.answered = true; emCur.total++;
+  emCur.questions.push({ name: mat.name, category: mat.category, rows: [], perfect: false, pts: 0, total: 0, skipped: true });
+
+  // reveal all answers
+  const reveal = document.getElementById('em-reveal');
+  reveal.style.display = '';
+  let html = '';
+  if (emCur.doSpecs && mat.specs) {
+    html += `<p style="font-size:11px;color:var(--text-3);margin-bottom:4px">Specs:</p><div class="em-reveal-grid">`;
+    mat.specs.forEach(s => { html += `<span class="em-reveal-chip">${s.label}: ${s.prefix||''}${s.answer}</span>`; });
+    html += '</div>';
+  }
+  if (emCur.doProps && mat.props) {
+    html += `<p style="font-size:11px;color:var(--text-3);margin:8px 0 4px">Properties:</p><div class="em-reveal-grid">`;
+    mat.props.forEach(p => { html += `<span class="em-reveal-chip">${p}</span>`; });
+    html += '</div>';
+  }
+  if (emCur.doUses && mat.uses) {
+    html += `<p style="font-size:11px;color:var(--text-3);margin:8px 0 4px">Uses:</p><div class="em-reveal-grid">`;
+    mat.uses.forEach(u => { html += `<span class="em-reveal-chip">${u}</span>`; });
+    html += '</div>';
+  }
+  reveal.innerHTML = html;
+
+  document.getElementById('em-result').innerHTML = `<div class="res-err">Skipped â€” see answers below</div>`;
+  document.getElementById('em-total').textContent = emCur.total;
+  document.getElementById('em-skip-btn').style.display = 'none';
+  document.getElementById('em-check-btn').style.display = 'none';
+  document.getElementById('em-next-btn').style.display = '';
+}
+
+function nextEM() { loadNextEM(); }
+
+function finishEMSession() {
+  if (!emCur || emCur.total === 0) { show('s-em-settings'); return; }
+  const secs = Math.round((Date.now() - emCur.startTime) / 1000);
+  const m = Math.floor(secs/60), s = secs%60;
+  document.getElementById('em-res-num').textContent = `${emCur.correct}/${emCur.total}`;
+  document.getElementById('em-res-meta').textContent =
+    `${Math.round(emCur.correct/emCur.total*100)}% Â· ${m}m ${s}s`;
+  document.getElementById('em-res-qs').innerHTML = emCur.questions.map(q => `
+    <div class="q-row">
+      <span class="q-v" style="font-size:14px;width:auto;flex-shrink:0">${q.name}</span>
+      <span style="font-size:11px;color:var(--text-3);margin-left:6px">${q.category||''}</span>
+      <span style="margin-left:auto;font-size:13px;color:${q.perfect?'var(--hi)':'var(--lo)'}">
+        ${q.skipped ? 'skipped' : (q.perfect ? 'âœ“' : `${q.pts}/${q.total}`)}
+      </span>
+    </div>`).join('');
+  show('s-em-results');
+}
+
 // Init
 initSupabase();
-renderDash();
+goHome();
 syncNow(true);
 </script>
 </body>
